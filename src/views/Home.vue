@@ -1,4 +1,5 @@
 <template>
+<!-- home -->
     <!-- Navbar -->
   <div class="bg-white shadow-md w-full text-center py-4 px-3" v-if="mobileView">
     <div class="flex justify-between items-center">
@@ -16,7 +17,7 @@
         </svg>
       </router-link>
       <router-link to="/basket">
-         <span class="material-icons-outlined text-xl hover:text-primary transition duration-200">local_mall</span>
+         <span class="material-icons-outlined text-xl hover:text-primary transition duration-200">The_mall</span>
       </router-link>
     </div>
   </div>
