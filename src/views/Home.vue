@@ -17,7 +17,7 @@
         </svg>
       </router-link>
       <router-link to="/basket">
-         <span class="material-icons-outlined text-xl hover:text-primary transition duration-200">The_mall</span>
+         <span class="material-icons-outlined text-xl hover:text-primary transition duration-200">local_mall</span>
       </router-link>
     </div>
   </div>
