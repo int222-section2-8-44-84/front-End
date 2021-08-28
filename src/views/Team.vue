@@ -1,6 +1,7 @@
 <template>
     <div class="Team">
-        
+        <base-nav-mobile v-if="showNav" />
+        <base-nav v-if="!mobileView" />   
         <!-- component -->
         <!-- <style>
             .bg-dots{
@@ -9,7 +10,7 @@
             }
         </style> -->
         
-        <div class="m-auto max-w-6xl p-12">
+        <div class="m-auto max-w-6xl lg:p-12">
             <div class="flex flex-col md:flex-row">
                 <div class="md:w-1/2 max-w-md flex flex-col justify-center">
                     <div class="md:text-5xl text-2xl uppercase font-black">

@@ -23,21 +23,30 @@
       <router-link to="/">
           <div class="flex justify-center items-center">
             <span class="fi-rr-home text-sm mt-1"></span>
-            <p class="font-medium ml-2 text-base">Home</p>
+            <p class="uppercase font-medium ml-2 text-base">Home</p>
           </div>
       </router-link>
 
       <router-link to="/team">
           <div class="flex justify-center items-center mt-1">
             <span class="fi-rr-users text-sm mt-1"></span>
-            <p class="font-medium ml-2 text-base">Team</p>
+            <p class="uppercase font-medium ml-2 text-base">Team</p>
+          </div>
+      </router-link>
+
+      <router-link to="/team">
+          <div class="flex justify-center items-center mt-1">
+            <span class="fi-rr-users text-sm mt-1"></span>
+            <p class="uppercase font-medium ml-2 text-base">Create +</p>
           </div>
       </router-link>
 
       <router-link to="/login">
           <div class="flex justify-center items-center mt-1">
             <span class="fi-rr-user text-primary text-sm mt-1"></span>
-            <p class="font-medium ml-2 text-base text-primary hover:text-dark transition duration-200">Login</p>
+            <div style="font-size: 24px;">
+                <i class="ri-user-3-line"></i>
+            </div>
           </div>
       </router-link>
 

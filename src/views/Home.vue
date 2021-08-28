@@ -16,9 +16,7 @@
           <path/>
         </svg>
       </router-link>
-      <router-link to="/basket">
-         <span class="material-icons-outlined text-xl hover:text-primary transition duration-200">local_mall</span>
-      </router-link>
+
     </div>
   </div>
   <base-nav-mobile v-if="showNav" />
@@ -29,7 +27,7 @@
     <!-- sm:rounded-lg rounded-md / sm:rounded-t-lg rounded-t-md -->
     <div class="my-8">
         <div class="container mx-auto px-6">
-            <div class="h-96 rounded-3xl overflow-hidden bg-cover bg-center bg-gradient-to-r from-red-300 via-red-400 to-red-300">
+            <!-- <div class="h-96 rounded-3xl overflow-hidden bg-cover bg-center bg-gradient-to-r from-red-300 via-red-400 to-red-300">
                 <div class="bg-opacity-50 flex items-center h-full">
                     <div class="px-10 max-w-xl">
                         <h2 class="text-4xl text-black font-semibold">Lorem ipsum</h2>
@@ -38,7 +36,8 @@
                           nisi ut aliquip ex ea commodo consequat. </p>
                     </div>
                 </div>
-            </div>
+            </div> -->
+            <img src="../assets/header.png"> 
         </div>
     </div>
 
