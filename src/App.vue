@@ -14,7 +14,7 @@ export default {
 
 <style>
 #app {
-  font-family: kanit, Helvetica, Arial, sans-serif;
+  font-family: Kanit, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

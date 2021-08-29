@@ -12,11 +12,11 @@
                 </svg>
             </div>
       
-            <router-link to="/">
+            <!-- <router-link to="/">
                 <svg width="91" height="29" viewBox="0 0 91 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path/>
                 </svg>
-            </router-link>
+            </router-link> -->
 
         </div>
     </div>
