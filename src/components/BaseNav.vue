@@ -50,55 +50,111 @@
     </div> 
 
     <!-- Login / Register -->
-    <div style="font-size: 32px;">
-      <button v-on:click="toggleModal()" class="ml-5 hover:text-red-600 ri-user-3-line"></button>
-        <div v-if="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
-          <div class="relative w-auto my-6 mx-auto max-w-md">
-            <!--content-->
-            <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-              <!--header-->
+      <div style="font-size: 32px;">
+        <button v-on:click="toggleModal()" class="ml-5 hover:text-red-600 ri-user-3-line"></button>
+          <div v-if="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+            <div class="relative w-auto my-6 mx-auto max-w-md">
+      <!--LogInForm-->
+              <form @submit.prevent="submitLoginForm">
+                <div v-bind:class="{'hidden': openTab !== 1, 'block': openTabMobile === 1}">
+                  <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"> 
+                    <!--header-->
+                    <div class="flex items-start justify-between p-3 rounded-t">
+                      <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-medium outline-none focus:outline-none" 
+                        v-on:click="toggleModal()">
+                          <i class="ri-close-fill"></i>
+                      </button>
+                    </div>         
+                    <img class="mx-auto px-20" src="../assets/sapiens.png">
 
-              <div class="flex items-start justify-between p-3 rounded-t">
-                <!-- <img class="w-auto h-60 " src="../assets/sapiens.png"> -->
-                <!-- <h3 class="text-3xl font-semibold">
-                  Modal Title
-                </h3> -->
-                <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-medium outline-none focus:outline-none" 
-                v-on:click="toggleModal()">
-                  <i class="ri-close-fill"></i>
-                </button>
-              </div>
-              <img class="mx-auto px-16" src="../assets/sapiens.png">
+                    <!--body-->
+                    <div class="relative px-12 flex-auto">
+                      <div class="space-y-3">
+                        <div>
+                          <input type="email" v-model="email" placeholder="Email address or Username" class="block text-lg py-2 px-4 rounded-lg w-full  border-2 border-gray-100 shadow-sm outline-none" />
+                          <p v-show="invalidEmailInput" class="text-red-500 text-xs italic">** Please enter your Email! **</p>
+                        </div>
+                  
+                        <div>
+                          <input type="password" v-model="pass" placeholder="Password" class="block text-lg py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
+                          <p v-if="invalidPassInput" class="text-red-500 text-xs italic">** Please enter your Password! **</p>
+                        </div>
 
-              <!--body-->
-              <div class="relative px-6 flex-auto">
-                <div class="space-y-3">
-                  <input type="email" placeholder="example@mail.com" class="block text-lg py-3 px-4 rounded-lg w-full  border-2 border-gray-100 shadow-sm outline-none" />
-                  <input type="text" placeholder="Password" class="block text-lg py-3 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
+                        <button class="ButtonSubmit font-semibold text-2xl text-white py-2 px-4 rounded-lg w-full bg-red-600 hover:bg-red-700 shadow-lg"
+                          type="submit">
+                            Log In
+                        </button>
+                  
+                        <div class="cursor-pointer text-silverPink text-lg font-semibold">
+                          Don’t have an account? 
+                            <a v-on:click="toggleTabs(2)" v-bind:class="{'': openTabMobile !== 2, '': openTabMobile === 2}" 
+                              class="text-yellow-400 hover:text-yellow-500">
+                                Register 
+                            </a>
+                        </div>
+                      </div>
+                    </div>   
+
+                    <!--footer-->
+                    <div class="flex items-center justify-end p-3 rounded-b"></div>
+                  </div>
                 </div>
-                <!-- <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-                  I always felt like I could do anything. That’s the main
-                  thing people are controlled by! Thoughts- their perception
-                  of themselves! They're slowed down by their perception of
-                  themselves. If you're taught you can’t do anything, you
-                  won’t do anything. I was taught I could do everything.
-                </p> -->
-              </div>
+              </form>
+              
+      <!-- RegisterForm -->
+              <form @submit.prevent="submitRegisForm">
+                <div v-bind:class="{'hidden': openTab !== 2, 'block': openTabMobile === 2}">
+                  <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"> 
+                    
+                    <!--header-->
+                    <div class="flex items-start justify-between p-3 rounded-t">
+                      <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-medium outline-none focus:outline-none" 
+                        v-on:click="toggleModal()">
+                          <i class="ri-close-fill"></i>
+                      </button>
+                    </div>          
+                    <p class="font-medium text-3xl text-RedRYB py-2">Get Started</p>
 
-              <!--footer-->
-              <div class="flex items-center justify-end p-6 rounded-b">
-                <!-- <button 
-                  class="text-red-500 bg-transparent border border-solid border-red-500 hover:bg-red-500 hover:text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" 
-                  type="button" 
-                  v-on:click="toggleModal()">
-                    Close
-                </button> -->
-              </div>
+                    <!--body-->
+                    <div class="relative px-12 flex-auto">
+                      <div class="space-y-3">
+
+                        <div>
+                          <input type="text" v-model="pass" placeholder="Username" class="block text-lg py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
+                          <p v-if="invalidPassInput" class="text-red-500 text-xs italic">** Please enter your Password! **</p>
+                        </div>
+                    
+                        <div class="">
+                        <input type="email" v-model="email" placeholder="example@mail.com" class="block text-lg py-2 px-4 rounded-lg w-full  border-2 border-gray-100 shadow-sm outline-none" />
+                        <p v-show="invalidEmailInput" class="text-red-500 text-xs italic">** Please enter your Email! **</p>
+                        </div>
+
+                        <div>
+                          <input type="password" v-model="pass" placeholder="Password" class="block text-lg py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
+                          <p v-if="invalidPassInput" class="text-red-500 text-xs italic">** Please enter your Password! **</p>
+                        </div>
+                  
+                        <button class="ButtonSubmit font-semibold text-2xl text-white py-2 px-32 rounded-lg w-full bg-red-600 hover:bg-red-700 shadow-lg"
+                          type="submit">
+                            Register
+                        </button>
+                  
+                        <div class="cursor-pointer text-silverPink text-lg font-semibold">
+                          Already have an account? 
+                            <a v-on:click="toggleTabs(1)" v-bind:class="{'': openTabMobile !== 1, '': openTabMobile === 1}" class="text-yellow-400 hover:text-yellow-500">Log In</a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--footer-->
+                    <div class="flex items-center justify-end p-3 rounded-b"></div>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
+          <div v-if="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </div>
-        <div v-if="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
-      </div>
     </div>
   </nav>
 </template>
@@ -108,13 +164,37 @@ export default {
   name: "regular-modal",
   data() {
     return {
-      showModal: false
+      openTab: 1,
+      email: null,
+      pass: null,
+      showModal: false,
+      invalidEmailInput: false,
+      invalidPassInput: false,
     }
   },
   methods: {
     toggleModal: function(){
       this.showModal = !this.showModal;
-    }
+      console.log(this.invalidEmailInput);
+      console.log(this.invalidPassInput);
+    },
+    toggleTabs: function(tabNumber){
+      this.openTab = tabNumber
+    },
+    submitLoginForm() {
+      // if(this.email === ""){
+      //   this.invalidEmailInput = true
+      // }
+      this.invalidEmailInput = (this.email === null) ? true : false;
+      this.invalidPassInput = (this.pass === null) ? true : false;
+      // console.log(
+      //   // "Email: " + this.email
+
+      // );
+      console.log(this.invalidEmailInput);
+      console.log(this.invalidPassInput);
+      // this.$router.push("/");
+    },
   }
 }
 </script>
