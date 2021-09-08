@@ -13,7 +13,7 @@
         <ul class="flex flex-col lg:flex-row md:flex-row list-none mx-auto">
           <router-link to="/">
             <li class="nav-item">
-                <div class="px-3 py-2 flex items-center text-xl text-base hover:text-red-600">
+                <div class="px-3 py-2 flex items-center text-xl text-base hover:text-redRYB">
                     Home
                 </div>
             </li>
@@ -21,7 +21,7 @@
 
             <router-link to="/Team">
                 <li class="nav-item">
-                    <div class="px-3 py-2 flex items-center text-xl text-black hover:text-red-600">
+                    <div class="px-3 py-2 flex items-center text-xl text-base hover:text-redRYB">
                         Team
                     </div>
                 </li>
@@ -29,7 +29,7 @@
 
             <router-link to="/Create">
               <li class="nav-item">
-                <div class="px-3 py-2 flex items-center text-base text-xl hover:text-red-600">
+                <div class="px-3 py-2 flex items-center text-base text-xl hover:text-redRYB">
                   + Create
                 </div>
               </li>
@@ -51,7 +51,7 @@
 
     <!-- Login / Register -->
       <div style="font-size: 32px;">
-        <button v-on:click="toggleModal()" class="ml-5 hover:text-red-600 ri-user-3-line"></button>
+        <button v-on:click="toggleModal()" class="items-center justify-center w-12 h-12 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-red-200 ml-5 ri-user-3-line"></button>
           <div v-if="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
             <div class="relative w-auto my-6 mx-auto max-w-md">
       <!--LogInForm-->
@@ -71,13 +71,13 @@
                     <div class="relative px-12 flex-auto">
                       <div class="space-y-3">
                         <div>
-                          <input type="email" v-model="email" placeholder="Email address or Username" class="block text-lg py-2 px-4 rounded-lg w-full  border-2 border-gray-100 shadow-sm outline-none" />
-                          <p v-show="invalidEmailInput" class="text-red-500 text-xs italic">** Please enter your Email! **</p>
+                          <input type="email" v-model="emailLogin" placeholder="Username or Email address" class="placeholder-gray block text-lg py-2 px-4 rounded-lg w-full  border-2 border-gray-100 shadow-sm outline-none" />
+                          <p v-if="invalidEmailLogin" class="text-red-500 text-xs text-left italic">** Please enter your Username or Email! **</p>
                         </div>
                   
                         <div>
-                          <input type="password" v-model="pass" placeholder="Password" class="block text-lg py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
-                          <p v-if="invalidPassInput" class="text-red-500 text-xs italic">** Please enter your Password! **</p>
+                          <input type="password" v-model="passLogin" placeholder="Password" class="placeholder-gray block text-lg py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
+                          <p v-if="invalidPassLogin" class="text-red-500 text-xs text-left italic">** Please enter your Password! **</p>
                         </div>
 
                         <button class="ButtonSubmit font-semibold text-2xl text-white py-2 px-4 rounded-lg w-full bg-red-600 hover:bg-red-700 shadow-lg"
@@ -113,25 +113,24 @@
                           <i class="ri-close-fill"></i>
                       </button>
                     </div>          
-                    <p class="font-medium text-3xl text-RedRYB py-2">Get Started</p>
 
                     <!--body-->
                     <div class="relative px-12 flex-auto">
                       <div class="space-y-3">
-
+                        <p class="font-medium text-3xl text-left text-redRYB py-2">Get Started</p>
                         <div>
-                          <input type="text" v-model="pass" placeholder="Username" class="block text-lg py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
-                          <p v-if="invalidPassInput" class="text-red-500 text-xs italic">** Please enter your Password! **</p>
+                          <input type="text" v-model="userRegis" placeholder="Username" class="placeholder-gray block text-lg py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
+                          <p v-if="invalidUseRegis" class="text-red-500 text-xs text-left italic">** Please enter your Username! **</p>
                         </div>
                     
                         <div class="">
-                        <input type="email" v-model="email" placeholder="example@mail.com" class="block text-lg py-2 px-4 rounded-lg w-full  border-2 border-gray-100 shadow-sm outline-none" />
-                        <p v-show="invalidEmailInput" class="text-red-500 text-xs italic">** Please enter your Email! **</p>
+                        <input type="email" v-model="emailRegis" placeholder="example@mail.com" class="placeholder-gray block text-lg py-2 px-4 rounded-lg w-full  border-2 border-gray-100 shadow-sm outline-none" />
+                        <p v-show="invalidEmailRegis" class="text-red-500 text-xs text-left italic">** Please enter your Email! **</p>
                         </div>
 
                         <div>
-                          <input type="password" v-model="pass" placeholder="Password" class="block text-lg py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
-                          <p v-if="invalidPassInput" class="text-red-500 text-xs italic">** Please enter your Password! **</p>
+                          <input type="password" v-model="passRegis" placeholder="Password" class="placeholder-gray block text-lg py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
+                          <p v-if="invalidPassRegis" class="text-red-500 text-xs text-left italic">** Please enter your Password! **</p>
                         </div>
                   
                         <button class="ButtonSubmit font-semibold text-2xl text-white py-2 px-32 rounded-lg w-full bg-red-600 hover:bg-red-700 shadow-lg"
@@ -165,11 +164,17 @@ export default {
   data() {
     return {
       openTab: 1,
-      email: null,
-      pass: null,
+      emailLogin: "",
+      passLogin: "",
+      userRegis: "",
+      emailRegis: "",
+      passRegis: "",
       showModal: false,
-      invalidEmailInput: false,
-      invalidPassInput: false,
+      invalidEmailLogin: false,
+      invalidPassLogin: false,
+      invalidUseRegis: false,
+      invalidEmailRegis: false,
+      invalidPassRegis: false,
     }
   },
   methods: {
@@ -185,8 +190,8 @@ export default {
       // if(this.email === ""){
       //   this.invalidEmailInput = true
       // }
-      this.invalidEmailInput = (this.email === null) ? true : false;
-      this.invalidPassInput = (this.pass === null) ? true : false;
+      this.invalidEmailLogin = (this.emailLogin === "") ? true : false;
+      this.invalidPassLogin = (this.passLogin === "") ? true : false;
       // console.log(
       //   // "Email: " + this.email
 
@@ -195,6 +200,11 @@ export default {
       console.log(this.invalidPassInput);
       // this.$router.push("/");
     },
+    submitRegisForm(){
+      this.invalidUseRegis = (this.userRegis === "") ?  true : false;
+      this.invalidEmailRegis = (this.emailRegis === "") ? true : false;
+      this.invalidPassRegis = (this.passRegis === "") ? true : false;
+    }
   }
 }
 </script>

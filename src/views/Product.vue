@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            <div class="w-full lg:w-1/2 md:w-1/2 px-10">
+            <div class="w-full lg:w-1/2 md:w-1/2 px-5">
                 <div class="mb-10">
                     <h2 class="text-sm title-font text-gray-500 tracking-widest">CATEGORY</h2>
                     <h1 class="font-bold uppercase text-2xl mb-5">Mens's Ragged <br>Waterproof Jacket</h1>
@@ -80,8 +80,14 @@
 
                     <div class="flex inline-block align-bottom">
                         <span class="title-font font-medium text-2xl text-black">$58.00</span>
-                            <button class="flex ml-auto text-white bg-yellow-400 py-2 px-6 hover:bg-yellow-500 sm:rounded rounded">Edit</button>
-                            <button class="flex ml-4 text-white bg-red-500 py-2 px-6 hover:bg-red-600 sm:rounded rounded">Delete</button>
+
+                        <router-link to='/Edit'>
+                        <button class="ml-auto text-white bg-yellow-400 py-2 px-6 hover:bg-yellow-500 rounded">Edit</button>
+                        </router-link>
+
+                        <button class="ml-4 text-white bg-red-500 px-4 py-2 hover:bg-red-600 rounded">Delete</button>
+                        <!-- <button type="submit" class='sm:w-24 sm:ml-auto bg-red-600 hover:bg-red-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Create</button>
+                        <button type="submit" class='sm:w-24 sm:ml-4 bg-red-600 hover:bg-red-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Create</button> -->
                     </div>
                 </div>
             </div>

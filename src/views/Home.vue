@@ -43,36 +43,36 @@
     <!-- Category -->
     <!-- sm:grid-cols-1 sm:grid-cols-4 lg:grid-cols-4 -->
     <div class="grid sm:grid-cols-3 sm:gap-6 gap-2 md:grid-cols-2 lg:grid-cols-4  grid-cols-2 px-4 sm:mx-40 gap-4">
-        <div class="bg-white shadow-md hover:bg-red-600 transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
-                    <img src="../assets/allblack.png">
+                    <img class="w-24" src="../assets/allblack.png">
                 </div>
-                <h2 class="title-font font-medium sm:text-xl xl:text-3xl text-black uppercase">All</h2>
+                <h2 class="title-font font-normal sm:text-xl xl:text-3xl text-black uppercase">All</h2>
             </div>
         </div>
-        <div class="bg-white shadow-md hover:bg-red-600 transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
-                    <img src="../assets/mainblack.png">
+                    <img class="w-24" src="../assets/mainblack.png">
                 </div>
-                <h2 class="title-font font-medium sm:text-xl xl:text-3xl text-black uppercase">Main</h2>
+                <h2 class="title-font font-normal sm:text-xl xl:text-3xl text-black uppercase">Main</h2>
             </div>
         </div>
-        <div class="bg-white shadow-md hover:bg-red-600 transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
-                    <img src="../assets/dessertblack.png">
+                    <img class="w-24" src="../assets/dessertblack.png">
                 </div>
-                <h2 class="title-font font-medium sm:text-xl xl:text-3xl text-black uppercase">Desserts</h2>
+                <h2 class="title-font font-normal sm:text-xl xl:text-3xl text-black uppercase">Desserts</h2>
             </div>
         </div>
-        <div class="bg-white shadow-md hover:bg-red-600 transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
-                     <img src="../assets/drinkblack.png">
+                     <img class="w-24" src="../assets/drinkblack.png">
                 </div>
-                <h2 class="title-font font-medium sm:text-xl xl:text-3xl text-black uppercase">Drinks</h2>
+                <h2 class="title-font font-normal sm:text-xl xl:text-3xl text-black uppercase">Drinks</h2>
             </div>
         </div>
     </div>

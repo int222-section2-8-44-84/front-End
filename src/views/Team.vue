@@ -35,26 +35,25 @@
 
         <!-- component -->
         <div class="m-auto max-w-6xl p-12 sm:mt-12 lg:mt-2">
-            <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/2 max-w-md flex flex-col justify-center">
-                    <div class="md:text-5xl text-2xl uppercase font-black">
+            <div class="flex flex-col md:flex-row justify-center">
+                <div class="md:w-1/3 max-w-md flex flex-col justify-center">
+                    <div class="md:text-5xl text-2xl text-left uppercase font-black">
                         KRITSANAPON RAKKIATNGAM
                     </div>
-                    <div class="text-xl mt-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
-                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </div>
-                    <div class="my-5 h-16">
-                        <div class="shadow-md font-medium py-2 px-4 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
+                    <div class="text-xl sm:mt-4 text-left">
+                        <div class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
+                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        <button class="shadow-md font-medium py-2 px-4 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
                             Contact
-                        </div>
+                        </button>
                     </div>
+                    
                 </div>
                 
-                <div class="flex md:justify-end w-full md:w-1/2 -mt-5">
+                <div class="flex md:justify-end w-full md:w-1/2 sm:-mt-5">
                     <div class="bg-dots">
                         <div class="max-w-md z-10 mt-6 ml-4">
-                            <img alt="card img" class="shadow-2xl lg:w-80 lg:h-auto rounded-md" src="../assets/melo.jpeg">
+                            <img alt="card img" class="shadow-2xl lg:w-80 lg:h-auto rounded-full" src="../assets/melo.jpeg">
                         </div>
                     </div>
                 </div>
@@ -65,27 +64,27 @@
 
 
         <!-- component -->
-        <div class="m-auto max-w-6xl p-12">
-            <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/2 max-w-md flex flex-col justify-center">
-                    <div class="md:text-5xl text-2xl uppercase font-black">
+        <div class="m-auto max-w-6xl p-12 sm:mt-12 lg:mt-2">
+            <div class="flex flex-col md:flex-row justify-center">
+                <div class="md:w-1/3 max-w-md flex flex-col justify-center">
+                    <div class="md:text-5xl text-2xl text-left uppercase font-black">
                         NIPPIT CHOTIGO
                     </div>
-                    <div class="text-xl mt-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
-                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </div>
-                    <div class="my-5 h-16">
-                        <div class="shadow-md font-medium py-2 px-4 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
+                    <div class="text-xl sm:mt-4 text-left">
+                        <div class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
+                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        <button class="shadow-md font-medium py-2 px-4 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
                             Contact
-                        </div>
+                        </button>
                     </div>
+                    
+                    
                 </div>
                 
-                <div class="flex md:justify-end w-full md:w-1/2 -mt-5">
+                <div class="flex md:justify-end w-full md:w-1/2 sm:-mt-5">
                     <div class="bg-dots">
                         <div class="max-w-md z-10 mt-6 ml-4">
-                            <img alt="card img" class="shadow-2xl lg:w-80 lg:h-auto rounded-md" src="../assets/kin.jpg">
+                            <img alt="card img" class="shadow-2xl lg:w-80 lg:h-auto rounded-full" src="../assets/nippit.jpg">
                         </div>
                     </div>
                 </div>
@@ -93,27 +92,25 @@
         </div>
 
         <!-- component -->
-        <div class="m-auto max-w-6xl p-12">
-            <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/2 max-w-md flex flex-col justify-center">
-                    <div class="md:text-5xl text-2xl uppercase font-black">
+        <div class="m-auto max-w-6xl p-12 sm:mt-12 lg:mt-2">
+            <div class="flex flex-col md:flex-row justify-center">
+                <div class="md:w-1/3 max-w-md flex flex-col justify-center">
+                    <div class="md:text-5xl text-2xl text-left uppercase font-black">
                         WARISARA KHRUAJINLI
                     </div>
-                    <div class="text-xl mt-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
-                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </div>
-                    <div class="my-5 h-16">
-                        <div class="shadow-md font-medium py-2 px-4 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
+                    <div class="text-xl sm:mt-4 text-left">
+                        <div class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
+                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        <button class="shadow-md font-medium py-2 px-4 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
                             Contact
-                        </div>
+                        </button>
                     </div>
                 </div>
                 
-                <div class="flex md:justify-end w-full md:w-1/2 -mt-5">
+                <div class="flex md:justify-end w-full md:w-1/2 sm:-mt-5">
                     <div class="bg-dots">
-                        <div class="shadow-2xl max-w-md z-10 mt-6 ml-4">
-                            <img alt="card img" class="shadow-2xl lg:w-auto lg:h-80 rounded-md" src="../assets/namwaan.jpg"> 
+                        <div class="max-w-md z-10 mt-6 ml-4">
+                            <img alt="card img" class="shadow-2xl lg:w-auto lg:h-80 rounded-full" src="../assets/namwaan.jpg"> 
                         </div>
                     </div>
                 </div>

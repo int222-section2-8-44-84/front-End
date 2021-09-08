@@ -5,7 +5,11 @@ module.exports = {
     extend: {
       colors: { 
         silverPink: '#C9B1AD',
-        RedRYB: '#FF2626' }
+        redRYB: '#FF2626',
+        roseMadder: '#D93F3C',
+        cultured: '#F9FAFB',
+        
+      }
     },
   },
   variants: {

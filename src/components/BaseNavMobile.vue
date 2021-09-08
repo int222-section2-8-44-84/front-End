@@ -20,34 +20,33 @@
         <div class="mt-4">
           <router-link to="/">
           <div class="flex justify-center items-center">
-            <span class="fi-rr-home text-sm mt-1"></span>
-            <p class="uppercase font-medium ml-2 text-base">Home</p>
+            <span class="text-sm mt-1"></span>
+            <p class="uppercase font-medium text-base">Home</p>
           </div>
           </router-link>
           
           <router-link to="/Team">
           <div class="flex justify-center items-center mt-1">
-            <span class="fi-rr-users text-sm mt-1"></span>
-            <p class="uppercase font-medium ml-2 text-base">Team</p>
+            <span class="text-sm mt-1"></span>
+            <p class="uppercase font-medium text-base">Team</p>
           </div>
           </router-link>
 
           <router-link to="/Create">
           <div class="flex justify-center items-center mt-1">
-            <span class="fi-rr-users text-sm mt-1"></span>
-            <p class="uppercase font-medium ml-2 text-base">Create +</p>
+            <span class="text-sm mt-1"></span>
+            <p class="uppercase font-medium text-base">Create +</p>
           </div>
           </router-link>
 
-          <router-link to="/login">
+          <!-- <router-link to="/login"> -->
           <div class="flex justify-center items-center mt-1">
-            <span class="fi-rr-user text-primary text-sm mt-1"></span>
+            <span class="text-sm mt-1"></span>
             <div style="font-size: 24px;">
                 <i class="ri-user-3-line"></i>
             </div>
           </div>
-          </router-link>
-          
+          <!-- </router-link> -->
         </div>
       </div>
     </div>
