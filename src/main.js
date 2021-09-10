@@ -4,7 +4,9 @@ import router from './router'
 import './assets/tailwind.css'
 import 'remixicon/fonts/remixicon.css'
 import BaseNav from './components/BaseNav'
+import Popup from './components/popup.vue'
 
 const app = createApp(App)
 app.use(router).mount('#app')
 app.component('base-nav', BaseNav)
+app.component('pop-up', Popup)

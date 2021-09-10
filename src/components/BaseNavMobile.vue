@@ -19,24 +19,24 @@
       <div v-if="showNav">
         <div class="mt-4">
           <router-link to="/">
-          <div class="flex justify-center items-center">
-            <span class="text-sm mt-1"></span>
-            <p class="uppercase font-medium text-base">Home</p>
-          </div>
+            <div class="flex justify-center items-center">
+              <span class="text-sm mt-1"></span>
+              <p class="uppercase font-medium text-base">Home</p>
+            </div>
           </router-link>
           
           <router-link to="/Team">
-          <div class="flex justify-center items-center mt-1">
-            <span class="text-sm mt-1"></span>
-            <p class="uppercase font-medium text-base">Team</p>
-          </div>
+            <div class="flex justify-center items-center mt-1">
+              <span class="text-sm mt-1"></span>
+              <p class="uppercase font-medium text-base">Team</p>
+            </div>
           </router-link>
 
           <router-link to="/Create">
-          <div class="flex justify-center items-center mt-1">
-            <span class="text-sm mt-1"></span>
-            <p class="uppercase font-medium text-base">Create +</p>
-          </div>
+            <div class="flex justify-center items-center mt-1">
+              <span class="text-sm mt-1"></span>
+              <p class="uppercase font-medium text-base">Create +</p>
+            </div>
           </router-link>
 
           <!-- <router-link to="/login"> -->
