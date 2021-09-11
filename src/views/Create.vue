@@ -93,8 +93,9 @@
                 <p v-if="invalidImage" class="text-red-500 text-xs text-left italic">** Please enter your Photo! **</p>
             </div>
 
-            <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
-                <button type="submit" class='sm:w-11/12 bg-red-600 hover:bg-red-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Create</button>
+            <div class='flex items-center justify-center md:gap-8 gap-4 pt-5 pb-5 xl:px-8 md:px-8'>
+                <button v-on:click="resetCreate()" class='sm:w-6/12 bg-blue-500 hover:bg-blue-600 rounded-lg shadow-xl font-medium text-white text-xl px-4 py-2'>Reset</button>
+                <button type="submit" class='sm:w-6/12 bg-red-600 hover:bg-red-700 rounded-lg shadow-xl font-medium text-white text-xl px-4 py-2'>Create</button>
             </div>
         </div>
         </div>       
@@ -146,6 +147,15 @@ export default {
       reader.readAsDataURL(this.imageshow);
       console.log(this.image);
       console.log(this.image.name);
+    },
+    resetCreate(){
+      this.productName = null
+      this.price = null
+      this.tags = null
+      this.category = null
+      this.description = null
+      this.image = null
+      this.imageshow = null
     },
     submitForm() {
     this.invalidproductName = (this.productName === "") ? true : false;

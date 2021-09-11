@@ -79,10 +79,10 @@
                 <div class='flex items-center justify-center w-full'>
                     <label class='cursor-pointer flex flex-col border-4 border-dashed w-full  hover:bg-gray-100 hover:border-yellow-600 group'>
                         <div v-if="!image" class='flex flex-col items-center justify-center py-7'>
-                            <svg class="w-10 h-10 text-gray-600 group-hover:text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="w-10 h-10 text-gray-400 group-hover:text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
-                            <p class='lowercase text-sm text-gray-600 group-hover:text-yellow-600 pt-1 tracking-wider'>Select a photo</p>
+                            <p class='lowercase text-sm text-gray-400 group-hover:text-yellow-600 pt-1 tracking-wider'>Select a photo</p>
                         </div>
                         <div id="proview" v-else>
                             <img :src="imageshow" class="object-cover object-top w-auto max-h-96"/>
@@ -93,8 +93,9 @@
                 <p v-if="invalidImage" class="text-red-500 text-xs text-left italic">** Please enter your Photo! **</p>
             </div>
 
-            <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
-                <button type="submit" class='sm:w-11/12 bg-yellow-400 hover:bg-yellow-600 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Update</button>
+            <div class='flex items-center justify-center md:gap-8 gap-4 pt-5 pb-5 xl:px-8 md:px-8'>
+                <button v-on:click="resetCreate()" class='sm:w-6/12 bg-blue-500 hover:bg-blue-600 rounded-lg shadow-xl font-medium text-white text-xl px-4 py-2'>Reset</button>
+                <button type="submit" class='sm:w-6/12 bg-yellow-500 hover:bg-yellow-600 rounded-lg shadow-xl font-medium text-white text-xl px-4 py-2'>Update</button>
             </div>
         </div>
         </div>       

@@ -42,7 +42,7 @@
 
     <!-- Category -->
     <!-- sm:grid-cols-1 sm:grid-cols-4 lg:grid-cols-4 -->
-    <div class="grid sm:grid-cols-4 sm:gap-6 sm:mx-40 gap-2 md:grid-cols-4 md:gap-4 md:mx-10 lg:grid-cols-4 lg:mx-36 grid-cols-2 px-4 gap-2">
+    <div class="grid sm:grid-cols-4 sm:gap-6 sm:mx-40 gap-2 md:grid-cols-4 md:gap-4 md:mx-10 lg:grid-cols-4 lg:mx-36 xl:mx-48 grid-cols-2 px-4 gap-2">
         <div class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">

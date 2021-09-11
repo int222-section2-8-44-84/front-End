@@ -35,8 +35,8 @@
                 </div>
             </div>
 
-            <div class="w-full lg:w-1/2 md:w-1/2 px-5">
-                <div class="mb-10">
+            <div class="w-full lg:w-1/2 md:w-1/2 px-5 xl:pr-24">
+                <div class="mb-3">
                     <h2 class="text-sm title-font text-gray-500 tracking-widest">CATEGORY</h2>
                     <h1 class="font-bold uppercase text-2xl mb-5">Mens's Ragged <br>Waterproof Jacket</h1>
                     <div class="flex mb-4">
@@ -62,7 +62,7 @@
                         </span>
                     </div>
                 
-                    <p class="text-sm text-justify">
+                    <p class="text-base text-justify">
                         Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia
                         microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn.
                         Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over,
@@ -71,7 +71,7 @@
                 </div>
 
                 <div>
-                    <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
+                    <div class="flex items-center pb-5 border-b-2 border-gray-200 mb-5">
                         <div class="flex items-center">
                             <span class="text-gray-400 mr-3">Tag : </span>
                             <!-- <div class="flex ml-2 text-black bg-gray-300 border-0 py-2 px-6 rounded-full"># Lorem ipsum</div> -->
@@ -80,15 +80,13 @@
 
                     <div class="flex inline-block align-bottom">
                         <span class="title-font font-medium text-2xl text-black">$58.00</span>
-
-                        <router-link to='/Edit'>
-                        <button class="ml-auto text-white bg-yellow-400 py-2 px-6 hover:bg-yellow-500 rounded">Edit</button>
-                        </router-link>
-
-                        <button class="ml-4 text-white bg-red-500 px-4 py-2 hover:bg-red-600 rounded">Delete</button>
                         <!-- <button type="submit" class='sm:w-24 sm:ml-auto bg-red-600 hover:bg-red-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Create</button>
                         <button type="submit" class='sm:w-24 sm:ml-4 bg-red-600 hover:bg-red-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Create</button> -->
                     </div>
+                        <router-link to='/Edit'>
+                            <button class="mt-3 ml-auto text-white bg-yellow-400 py-2 px-6 hover:bg-yellow-500 rounded">Edit</button>
+                        </router-link>
+                        <button class="mt-3 ml-4 text-white bg-red-500 px-4 py-2 hover:bg-red-600 rounded">Delete</button>
                 </div>
             </div>
             
