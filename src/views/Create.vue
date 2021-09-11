@@ -70,7 +70,7 @@
 
             <div class="grid grid-cols-1 mt-5 mx-7">
             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Description</label>
-            <textarea v-model="description" class="py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-roseMadder focus:border-transparent" type="text" placeholder="Description"></textarea>
+            <textarea v-model="description" class="h-28 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-roseMadder focus:border-transparent" type="text" placeholder="Description"></textarea>
             <p v-if="invalidDescription" class="text-red-500 text-xs text-left italic">** Please enter your Description! **</p>
             </div>
 
