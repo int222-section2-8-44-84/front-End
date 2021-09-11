@@ -36,13 +36,13 @@
                     </div>
                 </div>
             </div> -->
-            <img src="../assets/header.png"> 
+            <img class="w-full" src="../assets/header.png"> 
         </div>
     </div>
 
     <!-- Category -->
     <!-- sm:grid-cols-1 sm:grid-cols-4 lg:grid-cols-4 -->
-    <div class="grid sm:grid-cols-3 sm:gap-6 gap-2 md:grid-cols-2 lg:grid-cols-4  grid-cols-2 px-4 sm:mx-40 gap-4">
+    <div class="grid sm:grid-cols-4 sm:gap-6 sm:mx-40 gap-2 md:grid-cols-4 md:gap-4 md:mx-10 lg:grid-cols-4 lg:mx-36 grid-cols-2 px-4 gap-2">
         <div class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
@@ -79,8 +79,8 @@
     
     <!-- Card -->
     <section class="text-black body-font">
-        <div class="container sm:pb-24 pb-16 sm:px-24 px-4 mx-auto">
-            <div class="grid sm:grid-cols-3 sm:gap-6 gap-2 grid-cols-2 sm:py-7 py-8 ">
+        <div class="container sm:pb-24 pb-16 sm:px-24 md:px-14 xl:px-32 px-4 mx-auto">
+            <div class="grid sm:grid-cols-3 sm:gap-6 gap-2 md:gap-4 grid-cols-2 sm:py-7 py-8 ">
                 
                 <div class="bg-white sm:rounded-lg rounded-md shadow-md cursor-pointer">
                     <router-link to='/Product'>
