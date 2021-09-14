@@ -8,6 +8,7 @@ module.exports = {
         redRYB: '#FF2626',
         roseMadder: '#D93F3C',
         cultured: '#F9FAFB',
+        romanSilver: '#838891'
         
       }
     },

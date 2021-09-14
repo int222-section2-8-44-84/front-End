@@ -1,4 +1,5 @@
 <template>
+<!-- Product -->
 <div class="Product">
     <!-- Navbar -->
     <div class="bg-white shadow-md w-full text-center py-4 px-3" v-if="mobileView">
@@ -24,7 +25,7 @@
     <base-nav v-if="!mobileView" />
 
     
-<!-- Component-->
+<!-- Body-->
 <div class="min-w-screen flex items-center p-5 lg:p-8 relative">
     <div class="w-full max-w-6xl rounded-md bg-white shadow-xl p-10 lg:p-10 mx-auto text-gray-800 relative md:text-left">
         <div class="md:flex items-center -mx-10">
@@ -86,7 +87,9 @@
                         <router-link to='/Edit'>
                             <button class="mt-3 ml-auto text-white bg-yellow-400 py-2 px-6 hover:bg-yellow-500 rounded">Edit</button>
                         </router-link>
-                        <button class="mt-3 ml-4 text-white bg-red-500 px-4 py-2 hover:bg-red-600 rounded">Delete</button>
+                        <router-link to='/ManageMember'>
+                            <button class="mt-3 ml-4 text-white bg-red-500 px-4 py-2 hover:bg-red-600 rounded">Delete</button>
+                        </router-link>
                 </div>
             </div>
             

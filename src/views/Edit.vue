@@ -42,7 +42,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Price</label>
-                <input v-model="price" class="py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="number" placeholder="฿" />
+                <div class="flex flex-row">
+                  <span class="flex items-center bg-grey-lighter rounded rounded-r-none mr-2 font-bold text-gray-500">฿</span>
+                  <input v-model="price" class="w-full py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="number"/>
+                </div>
                 <p v-if="invalidPrice" class="text-red-500 text-xs text-left italic">** Please enter your price! **</p>
             </div>
             <div class="grid grid-cols-1">
@@ -147,6 +150,15 @@ export default {
       reader.readAsDataURL(this.imageshow);
       console.log(this.image);
       console.log(this.image.name);
+    },
+    resetCreate(){
+      this.productName = null
+      this.price = null
+      this.tags = null
+      this.category = null
+      this.description = null
+      this.image = null
+      this.imageshow = null
     },
     submitForm() {
     this.invalidproductName = (this.productName === "") ? true : false;

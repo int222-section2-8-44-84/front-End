@@ -40,12 +40,16 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
-            <div class="grid grid-cols-1">
+              <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Price</label>
-                <input v-model="price" class="py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-roseMadder focus:border-transparent" type="number" placeholder="฿" />
+                <div class="flex flex-row">
+                  <span class="flex items-center bg-grey-lighter rounded rounded-r-none mr-2 font-bold text-gray-500">฿</span>
+                  <input v-model="price" class="w-full py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-roseMadder focus:border-transparent" type="number"/>
+                </div>
                 <p v-if="invalidPrice" class="text-red-500 text-xs text-left italic">** Please enter your price! **</p>
-            </div>
-            <div class="grid grid-cols-1">
+              </div>
+
+              <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Tag</label>
                 <select v-model="tags" class="py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-roseMadder focus:border-transparent" type="text">
                     <option class="hidden" value="Select">Select...</option>
@@ -54,7 +58,7 @@
                     <option>Option 3</option>
                 </select>
                 <p v-if="invalidTags" class="text-red-500 text-xs text-left italic">** Please enter your Tags! **</p>
-            </div>
+              </div>
             </div>
 
             <div class="grid grid-cols-1 mt-5 mx-7">

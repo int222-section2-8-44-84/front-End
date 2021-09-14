@@ -4,6 +4,9 @@ import Product from '../views/Product.vue'
 import Team from '../views/Team.vue'
 import Create from '../views/Create.vue'
 import Edit from '../views/Edit.vue'
+import Profile from '../views/Profile.vue'
+import PostsArchive from '../views/PostsArchive.vue'
+import ManageMember from '../views/ManageMember.vue'
 // import Login from '../views/Login.vue'
 
 const routes = [
@@ -31,6 +34,21 @@ const routes = [
     path: '/Edit',
     name: 'Edit',
     component: Edit
+  },
+  {
+    path: '/Profile',
+    name: 'Profile',
+    component: Profile
+  },
+  {
+    path: '/PostsArchive',
+    name: 'PostsArchive',
+    component: PostsArchive
+  },
+  {
+    path: '/ManageMember',
+    name: 'ManageMember',
+    component: ManageMember
   },
   // {
   //   path: '/Login',

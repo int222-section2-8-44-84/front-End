@@ -47,6 +47,19 @@
             </div>
           </div>
           <!-- </router-link> -->
+
+          <div>
+            <input 
+              type="search" 
+              name="query" 
+              placeholder="Search" 
+              class="w-full h-12 px-4 text-lg text-gray-700 bg-white border border-gray-300 
+              rounded-lg lg:w-56 xl:transition-all xl:duration-300 xl:w-56 xl:focus:w-44 lg:h-10 
+              dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-teal-500 
+              dark:focus:border-teal-500 focus:outline-none focus:ring focus:ring-primary 
+              dark:placeholder-gray-400 focus:ring-opacity-40">
+          </div> 
+          
         </div>
       </div>
     </div>
