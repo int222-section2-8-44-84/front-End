@@ -30,7 +30,7 @@
     </div>
 
     <!-- Category -->
-    <div class="grid sm:grid-cols-4 sm:gap-6 sm:mx-40 gap-2 md:grid-cols-4 md:gap-2 md:mx-10 lg:grid-cols-4 lg:mx-36 xl:mx-48 grid-cols-2 px-4 gap-2">
+    <div class="grid sm:grid-cols-4 sm:gap-6 sm:mx-40 gap-2 md:grid-cols-4 md:gap-2 md:mx-10 lg:grid-cols-4 lg:mx-44 2xl:mx-72 xl:gap-4 grid-cols-2 px-4 gap-2">
         <div v-on:click="categoryTabs(1)" v-bind:class="{'bg-white': openTab !== 1, 'bg-roseMadder': openTab === 1}" class="shadow-md transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
@@ -74,36 +74,34 @@
 
         <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
             <div class="grid sm:grid-cols-3 sm:gap-6 md:gap-2 xl:gap-4 grid-cols-2 gap-2 sm:py-7 py-8">
-            <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
-                <router-link to='/Product'>
+                <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
+                    <router-link to='/Post'>
+                        <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
+                        <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
+                        <div class="sm:my-3 sm:mx-4 my-2 mx-3">
+                            <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
+                            <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
+                        </div>
+                    </router-link>
+                </div>
+            
+                <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
                     <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
                     <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
                     <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                        <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">Product</h2>
+                        <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
                         <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
                     </div>
-                </router-link>
-            </div>
-                        <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
-                <router-link to='/Product'>
+                </div>
+            
+                <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
                     <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
                     <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
                     <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                        <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">Product</h2>
+                        <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
                         <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
                     </div>
-                </router-link>
-            </div>
-                        <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
-                <router-link to='/Product'>
-                    <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
-                    <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
-                    <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                        <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">Product</h2>
-                        <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
-                    </div>
-                </router-link>
-            </div>
+                </div>
             </div>
         </div>
 
@@ -113,7 +111,7 @@
                 <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
                 <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
                 <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">Product</h2>
+                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
                     <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
                 </div>
             </div>
@@ -122,7 +120,7 @@
                 <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
                 <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
                 <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">Product</h2>
+                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
                     <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
                 </div>
             </div>
@@ -135,7 +133,7 @@
                 <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
                 <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
                 <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">Product</h2>
+                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
                     <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
                 </div>
             </div>
@@ -148,7 +146,7 @@
                 <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
                 <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
                 <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">Product</h2>
+                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
                     <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
                 </div>
             </div>
@@ -157,7 +155,7 @@
                 <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
                 <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
                 <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">Product</h2>
+                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
                     <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
                 </div>
             </div>

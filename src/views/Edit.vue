@@ -29,14 +29,14 @@
             </div>
             <div class="flex justify-center">
             <div class="flex">
-                <h1 class="font-bold md:text-2xl text-xl text-yellow-400">Edit Product</h1>
+                <h1 class="font-bold md:text-2xl text-xl text-yellow-400">Edit Post</h1>
             </div>
             </div>
 
             <div class="grid grid-cols-1 mt-5 mx-7">
-            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Product Name</label>
-            <input v-model="productName" class="py-2 px-3 rounded-lg border-2  mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="text" placeholder="Product name" />
-            <p v-if="invalidproductName" class="text-red-500 text-xs text-left italic">** Please enter your Product Name! **</p>
+            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Post Name</label>
+            <input v-model="postName" class="py-2 px-3 rounded-lg border-2  mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="text" placeholder="PostName" />
+            <p v-if="invalidpostName" class="text-red-500 text-xs text-left italic">** Please enter your PostName! **</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
@@ -96,6 +96,17 @@
                 <p v-if="invalidImage" class="text-red-500 text-xs text-left italic">** Please enter your Photo! **</p>
             </div>
 
+            <div class="grid grid-cols-1 mt-5 mx-7 pb-3">
+              <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Rating</label>
+                <div class="flex justify-center">
+                    <button type="button" v-for="i in 5" :key="i" :class="{ 'mr-1': i < 5 }" @click="ratingStar(i)" class="focus:outline-none">
+                    <svg class="block h-8 w-8" :class="[value >= i ? 'text-yellow-400' : 'text-gray-200']" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path>
+                    </svg>
+                  </button>
+                </div>
+            </div>
+
             <div class='flex items-center justify-center md:gap-8 gap-4 pt-5 pb-5 xl:px-8 md:px-8'>
                 <button v-on:click="resetCreate()" class='sm:w-6/12 bg-blue-500 hover:bg-blue-600 rounded-lg shadow-xl font-medium text-white text-xl px-4 py-2'>Reset</button>
                 <button type="submit" class='sm:w-6/12 bg-yellow-500 hover:bg-yellow-600 rounded-lg shadow-xl font-medium text-white text-xl px-4 py-2'>Update</button>
@@ -117,12 +128,12 @@ export default {
     return {
         image: '',
         imageshow: '',
-        productName: '',
+        postName: '',
         price: '',
         tags: '',
         category: '',
         description: '',
-        invalidproductName: false,
+        invalidpostName: false,
         invalidPrice: false,
         invalidTags: false,
         invalidCategory: false,
@@ -134,6 +145,9 @@ export default {
   },
 
   methods: {
+    ratingStar(i){
+      console.log(i);
+    },
     showNavHam() {
       this.showNav = !this.showNav;
     },
@@ -152,7 +166,7 @@ export default {
       console.log(this.image.name);
     },
     resetCreate(){
-      this.productName = null
+      this.postName = null
       this.price = null
       this.tags = null
       this.category = null
@@ -161,7 +175,7 @@ export default {
       this.imageshow = null
     },
     submitForm() {
-    this.invalidproductName = (this.productName === "") ? true : false;
+    this.invalidpostName = (this.postName === "") ? true : false;
     this.invalidPrice = (this.price === "") ? true : false;
     this.invalidTags = (this.tags === "") ? true : false;
     this.invalidCategory = (this.category === "") ? true : false;
@@ -170,7 +184,7 @@ export default {
     //document.getElementById("tags").value == "" ? true : false;
 
       console.log(
-        "productName: " + this.invalidproductName,
+        "postName: " + this.invalidpostName,
         "price: " + this.invalidPrice,
         "tag:" + this.invalidTags,
         "category:" + this.invalidCategory,

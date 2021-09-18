@@ -1,5 +1,5 @@
 <template>
-    <div class="Team">
+<!-- Team -->
     <!-- Navbar -->
     <div class="bg-white shadow-md w-full text-center py-4 px-3" v-if="mobileView">
         <div class="flex justify-between items-center">
@@ -115,8 +115,7 @@
                     </div>
                 </div>
             </div>
-        </div>       
-	</div>
+        </div>
 </template>
 
 
