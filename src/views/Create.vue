@@ -109,8 +109,8 @@
             </div>
 
             <div class='flex items-center justify-center md:gap-8 gap-4 pt-5 pb-5 xl:px-8 md:px-8'>
-                <button v-on:click="resetCreate()" class='sm:w-6/12 bg-blue-500 hover:bg-blue-600 rounded-lg shadow-xl font-medium text-white text-xl px-4 py-2'>Reset</button>
-                <button type="submit" class='sm:w-6/12 bg-red-600 hover:bg-red-700 rounded-lg shadow-xl font-medium text-white text-xl px-4 py-2'>Create</button>
+                <base-button v-on:click="resetCreate()" class="bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2 " label="Reset"/>
+                <base-button type="submit" class="bg-red-600 hover:bg-red-700 rounded-lg px-4 py-2" label="Create"/>
             </div>
         </div>
         </div>       
