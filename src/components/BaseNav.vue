@@ -37,17 +37,20 @@
         </ul>
     </div>
 
-    <div>
-      <input 
-        type="search" 
+    <div v-if="click">
+      <input
+        v-model="input"
+        type="text" 
         name="query" 
         placeholder="Search" 
-        class="w-full h-12 px-4 text-lg text-gray-700 bg-white border border-gray-300 
-        rounded-lg lg:w-56 xl:transition-all xl:duration-300 xl:w-56 xl:focus:w-44 lg:h-10 
+        class="w-full h-12 px-4 text-xl text-gray-700 bg-white border border-gray-300 
+        rounded-lg lg:w-48 xl:transition-all xl:duration-300 xl:w-48 xl:focus:w-44 lg:h-10 
         dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-teal-500 
         dark:focus:border-teal-500 focus:outline-none focus:ring focus:ring-primary 
-        dark:placeholder-gray-400 focus:ring-opacity-40">
-    </div> 
+        dark:placeholder-gray-400 focus:ring-opacity-40"> 
+    </div>
+    <button style="font-size: 32px;" class="ml-2 ri-close-line" v-on:click="searchinput()" v-else></button>
+    <i style="font-size: 32px;" class="ml-2 ri-search-line"></i>
 
     <!-- Login / Register -->
       <div style="font-size: 32px;">
@@ -72,15 +75,21 @@ export default {
       userRegis: "",
       emailRegis: "",
       passRegis: "",
+      // input: '',
       showModal: false,
       invalidEmailLogin: false,
       invalidPassLogin: false,
       invalidUseRegis: false,
       invalidEmailRegis: false,
       invalidPassRegis: false,
+      // click: false,
     }
   },
   methods: {
+    searchinput(){
+        this.click = !this.click,
+        this.input = ''
+    },
     toggleModal: function(){
       this.showModal = !this.showModal;
       // console.log(this.invalidEmailInput);
@@ -108,6 +117,11 @@ export default {
       this.invalidEmailRegis = (this.emailRegis === "") ? true : false;
       this.invalidPassRegis = (this.passRegis === "") ? true : false;
     }
-  }
+  },
+  // computed: {
+  //   filterSearch(){
+
+  //   }
+  // }
 }
 </script>

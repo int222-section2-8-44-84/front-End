@@ -87,7 +87,7 @@
                             </svg>
                             <p class='lowercase text-sm text-gray-400 group-hover:text-yellow-600 pt-1 tracking-wider'>Select a photo</p>
                         </div>
-                        <div id="proview" v-else>
+                        <div id="preview" v-else>
                             <img :src="imageshow" class="object-cover object-top w-auto max-h-96"/>
                             </div>
                             <input id="file-input" type="file" class="hidden" @change="uploadPhoto($event)" />
