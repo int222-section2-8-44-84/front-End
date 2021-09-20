@@ -52,9 +52,9 @@
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Tag</label>
                 <select v-model="tags" class="py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="text">
                     <option class="hidden" value="Select">Select...</option>
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    <option>Option 3</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
                 </select>
                 <p v-if="invalidTags" class="text-red-500 text-xs text-left italic">** Please enter your Tags! **</p>
             </div>

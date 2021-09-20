@@ -53,9 +53,10 @@
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Tag</label>
                 <select v-model="tags" class="py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-roseMadder focus:border-transparent" type="text">
                     <option class="hidden" value="Select">Select...</option>
-                    <option>Option 1</option>
+                    <option v-for="tags in tag" :key="tags.tagId" :value="tags.tagId">{{ tags.tag }}</option>
+                    <!-- <option>Option 1</option>
                     <option>Option 2</option>
-                    <option>Option 3</option>
+                    <option>Option 3</option> -->
                 </select>
                 <p v-if="invalidTags" class="text-red-500 text-xs text-left italic">** Please enter your Tags! **</p>
               </div>
@@ -65,9 +66,10 @@
             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Category</label>
             <select v-model="category" class="py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-roseMadder focus:border-transparent">
                 <option class="hidden" value="Select">Select...</option>
-                <option>Main</option>
+                <option v-for="category in categories" :key="category.categoryId" :value="category.categoryId">{{ category.category }}</option>
+                <!-- <option>Main</option>
                 <option>Dessert</option>
-                <option>Drink</option>
+                <option>Drink</option> -->
             </select>
             <p v-if="invalidCategory" class="text-red-500 text-xs text-left italic">** Please enter your Category! **</p>
             </div>
@@ -141,7 +143,15 @@ export default {
         invalidDescription: false,
         invalidImage: false,
         mobileView: true,
-        showNav: false, 
+        showNav: false,
+        urlcategory: "http://localhost:3000/showAllCategories",
+        urlpost: "http://localhost:3000/posts",
+        urltag: "http://localhost:3000/showAllTags",
+        urlposthastag: "http://localhost:3000/showPostsHasTags",
+        urladdpost: "http://localhost:3000/createPost",
+        urladdupload: "http://localhost:3000/uploadimage",
+        categories: [],
+        tag: [],
     };
   },
 
@@ -185,20 +195,58 @@ export default {
     //document.getElementById("tags").value == "" ? true : false;
 
       console.log(
-        "postName: " + this.invalidpostName,
-        "price: " + this.invalidPrice,
-        "tag:" + this.invalidTags,
-        "category:" + this.invalidCategory,
-        "description:" + this.invalidDescription,
-        "image:" + this.invalidImage,
+        "postName: " + this.postName,
+        "price: " + this.price,
+        "tag:" + this.tags,
+        "category:" + this.category,
+        "description:" + this.description,
+        "image:" + this.image.postName,
       );
 
+      this.addPostsData();
+      this.addUploadPhoto(this.image);
+      this.$router.push("/");
+    },
+    async addPostsData(){
+      await fetch(this.urladdpost, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          postName: this.name,
+          price: this.price,
+          tag: this.tags,
+          category: this.category,
+          description: this.description,
+          image: this.image.postName,
+        }),
+      });
+    },
+    async addUploadPhoto(p){
+      var formData = new FormData();
+      formData.append("file",p,p.name);
+      await fetch(this.image, {
+        method: "POST",
+        body: formData,
+      });
+    },
+    async getBackEndData(url) {
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        return data;
+      } catch (error) {
+        console.log(`Could not get ${error}`);
+      }
     },
 
   },
-  created() {
+  async created() {
     this.handleView();
     window.addEventListener("resize", this.handleView);
+    this.categories = await this.getBackEndData(this.urlcategory);
+    this.tag = await this.getBackEndData(this.urltag);
   },
 };
 </script>
