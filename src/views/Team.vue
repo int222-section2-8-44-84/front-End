@@ -37,7 +37,7 @@
         <div class="m-auto max-w-6xl p-12 sm:mt-12 lg:mt-2">
             <div class="flex flex-col md:flex-row justify-center">
                 <div class="md:w-1/3 max-w-md flex flex-col justify-center">
-                    <div class="md:text-5xl text-2xl text-left uppercase font-black">
+                    <div class="md:text-5xl text-2xl text-left uppercase font-extrabold">
                         KRITSANAPON RAKKIATNGAM
                     </div>
                     <div class="text-xl sm:mt-4 text-left">
@@ -67,7 +67,7 @@
         <div class="m-auto max-w-6xl p-12 sm:mt-12 lg:mt-2">
             <div class="flex flex-col md:flex-row justify-center">
                 <div class="md:w-1/3 max-w-md flex flex-col justify-center">
-                    <div class="md:text-5xl text-2xl text-left uppercase font-black">
+                    <div class="md:text-5xl text-2xl text-left uppercase font-extrabold">
                         NIPPIT CHOTIGO
                     </div>
                     <div class="text-xl sm:mt-4 text-left">
@@ -95,7 +95,7 @@
         <div class="m-auto max-w-6xl p-12 sm:mt-12 lg:mt-2">
             <div class="flex flex-col md:flex-row justify-center">
                 <div class="md:w-1/3 max-w-md flex flex-col justify-center">
-                    <div class="md:text-5xl text-2xl text-left uppercase font-black">
+                    <div class="md:text-5xl text-2xl text-left uppercase font-extrabold">
                         WARISARA KHRUAJINLI
                     </div>
                     <div class="text-xl sm:mt-4 text-left">
