@@ -31,7 +31,7 @@
 
     <!-- Category -->
     <div class="grid sm:grid-cols-4 sm:gap-6 sm:mx-40 gap-2 md:grid-cols-4 md:gap-2 md:mx-10 lg:grid-cols-4 lg:mx-44 2xl:mx-72 xl:gap-4 grid-cols-2 px-4 gap-2">
-        <div v-on:click="categoryTabs(1)" v-bind:class="{'bg-white': openTab !== 1, 'bg-roseMadder': openTab === 1}" class="shadow-md transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div @click="categoryTabs(1)" v-bind:class="{'bg-white': openTab !== 1, 'bg-roseMadder': openTab === 1}" class="shadow-md transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
                     <img class="w-24" src="../assets/allblack.png">
@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div v-on:click="categoryTabs(2)" v-bind:class="{'bg-white': openTab !== 2, 'bg-roseMadder': openTab === 2}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div @click="categoryTabs(2)" v-bind:class="{'bg-white': openTab !== 2, 'bg-roseMadder': openTab === 2}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
                     <img class="w-24" src="../assets/mainblack.png">
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div v-on:click="categoryTabs(3)" v-bind:class="{'bg-white': openTab !== 3, 'bg-roseMadder': openTab === 3}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div @click="categoryTabs(3)" v-bind:class="{'bg-white': openTab !== 3, 'bg-roseMadder': openTab === 3}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
                     <img class="w-24" src="../assets/dessertblack.png">
@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <div v-on:click="categoryTabs(4)" v-bind:class="{'bg-white': openTab !== 4, 'bg-roseMadder': openTab === 4}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div @click="categoryTabs(4)" v-bind:class="{'bg-white': openTab !== 4, 'bg-roseMadder': openTab === 4}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
                      <img class="w-24" src="../assets/drinkblack.png">
@@ -71,7 +71,6 @@
     <!-- Card -->
     <div class="container sm:pb-24 pb-16 sm:px-24 md:px-14 xl:px-32 px-4 mx-auto">
       <!-- <div class="grid sm:grid-cols-3 sm:gap-6 md:gap-2 xl:gap-4 grid-cols-2 gap-2 sm:py-7 py-8"> -->
-
         <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
             <div class="grid sm:grid-cols-3 sm:gap-6 md:gap-2 xl:gap-4 grid-cols-2 gap-2 sm:py-7 py-8">
                 <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
