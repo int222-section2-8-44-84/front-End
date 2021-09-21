@@ -49,26 +49,29 @@
                 <p v-if="invalidPrice" class="text-red-500 text-xs text-left italic">** Please enter your price! **</p>
             </div>
             <div class="grid grid-cols-1">
-                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Tag</label>
-                <select v-model="tags" class="py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="text">
-                    <option class="hidden" value="Select">Select...</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </select>
-                <p v-if="invalidTags" class="text-red-500 text-xs text-left italic">** Please enter your Tags! **</p>
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Category</label>
+                <select v-model="category" class="py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent">
+                  <option class="hidden" value="Select">Select...</option>
+                  <option>Main</option>
+                  <option>Dessert</option>
+                  <option>Drink</option>
+                  </select>
+                <p v-if="invalidCategory" class="text-red-500 text-xs text-left italic">** Please enter your Category! **</p>
             </div>
             </div>
 
             <div class="grid grid-cols-1 mt-5 mx-7">
-            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Category</label>
-            <select v-model="category" class="py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent">
-                <option class="hidden" value="Select">Select...</option>
-                <option>Main</option>
-                <option>Dessert</option>
-                <option>Drink</option>
-            </select>
-            <p v-if="invalidCategory" class="text-red-500 text-xs text-left italic">** Please enter your Category! **</p>
+              <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Tags</label>
+              <div class="border border-4 border-gray-300 border-opacity-75 rounded-lg overflow-y-scroll" style="height: 15vh;">
+                <label class="my-2 custom-label flex ml-3">
+                  <div class="bg-white rounded-md shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                    <input v-model="tags" type="checkbox" class="hidden">
+                    <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
+                  </div>
+                  <span class="select-none">op</span>
+                </label>
+              </div>
+              <p v-if="invalidTags" class="text-red-500 text-xs text-left italic">** Please enter your Tags! **</p>
             </div>
 
             <div class="grid grid-cols-1 mt-5 mx-7">
