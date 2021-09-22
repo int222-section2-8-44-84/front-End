@@ -103,25 +103,25 @@ export default {
     toggleTabs: function(tabNumber){
       this.openTab = tabNumber
     },
-    submitLoginForm() {
-      // if(this.email === ""){
-      //   this.invalidEmailInput = true
-      // }
-      this.invalidEmailLogin = (this.emailLogin === "") ? true : false;
-      this.invalidPassLogin = (this.passLogin === "") ? true : false;
-      // console.log(
-      //   // "Email: " + this.email
+    // submitLoginForm() {
+    //   // if(this.email === ""){
+    //   //   this.invalidEmailInput = true
+    //   // }
+    //   this.invalidEmailLogin = (this.emailLogin === "") ? true : false;
+    //   this.invalidPassLogin = (this.passLogin === "") ? true : false;
+    //   // console.log(
+    //   //   // "Email: " + this.email
 
-      // );
-      console.log(this.invalidEmailInput);
-      console.log(this.invalidPassInput);
-      // this.$router.push("/");
-    },
-    submitRegisForm(){
-      this.invalidUseRegis = (this.userRegis === "") ?  true : false;
-      this.invalidEmailRegis = (this.emailRegis === "") ? true : false;
-      this.invalidPassRegis = (this.passRegis === "") ? true : false;
-    }
+    //   // );
+    //   console.log(this.invalidEmailInput);
+    //   console.log(this.invalidPassInput);
+    //   // this.$router.push("/");
+    // },
+    // submitRegisForm(){
+    //   this.invalidUseRegis = (this.userRegis === "") ?  true : false;
+    //   this.invalidEmailRegis = (this.emailRegis === "") ? true : false;
+    //   this.invalidPassRegis = (this.passRegis === "") ? true : false;
+    // }
   },
   // computed: {
   //   filterSearch(){

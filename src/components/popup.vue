@@ -118,11 +118,11 @@ export default {
     }
   },
   methods: {
-    toggleModal: function(){
-      this.showModal = !this.showModal;
-      // console.log(this.invalidEmailInput);
-      // console.log(this.invalidPassInput);
-    },
+    // toggleModal: function(){
+    //   this.showModal = !this.showModal;
+    //   //console.log(this.invalidEmailInput);
+    //   //console.log(this.invalidPassInput);
+    // },
     toggleTabs: function(tabNumber){
       this.openTab = tabNumber
     },
@@ -139,11 +139,19 @@ export default {
       console.log(this.invalidEmailInput);
       console.log(this.invalidPassInput);
       // this.$router.push("/");
+      if(this.invalidEmailLogin==false&&this.invalidPassLogin==false){
+        this.closeForm();
+      }
+      
     },
     submitRegisForm(){
       this.invalidUseRegis = (this.userRegis === "") ?  true : false;
       this.invalidEmailRegis = (this.emailRegis === "") ? true : false;
       this.invalidPassRegis = (this.passRegis === "") ? true : false;
+      if(this.invalidUseRegis==false&&this.invalidEmailRegis==false&&this.invalidPassRegis==false){
+        this.closeForm();
+      }
+      
     },
     closeForm(){
         // this.clearData()
