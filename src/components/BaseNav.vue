@@ -56,7 +56,12 @@
       <div style="font-size: 32px;">
         <button v-on:click="toggleModal()" class="items-center justify-center w-12 h-12 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-red-200 ml-5 ri-user-3-line"></button>
           <div v-if="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
-            <pop-up></pop-up>
+            <pop-up
+            :showModal="showModal"
+            @adding-showModal='toggleModal'
+            >
+
+            </pop-up>
           </div>
           <div v-if="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </div>

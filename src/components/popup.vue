@@ -7,7 +7,7 @@
                     <!--header-->
                     <div class="flex items-start justify-between p-3 rounded-t">
                       <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-medium outline-none focus:outline-none" 
-                        v-on:click="toggleModal()">
+                        v-on:click="closeForm()">
                           <i class="ri-close-fill"></i>
                       </button>
                     </div>         
@@ -55,7 +55,7 @@
                     <!--header-->
                     <div class="flex items-start justify-between p-3 rounded-t">
                       <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-medium outline-none focus:outline-none" 
-                        v-on:click="toggleModal()">
+                        v-on:click="closeForm()">
                           <i class="ri-close-fill"></i>
                       </button>
                     </div>          
@@ -144,7 +144,12 @@ export default {
       this.invalidUseRegis = (this.userRegis === "") ?  true : false;
       this.invalidEmailRegis = (this.emailRegis === "") ? true : false;
       this.invalidPassRegis = (this.passRegis === "") ? true : false;
-    }
+    },
+    closeForm(){
+        // this.clearData()
+        this.$emit('adding-showModal', false);
+        // this.$emit('editing-state',(false,null));
+    },
   }
 }
 </script>
