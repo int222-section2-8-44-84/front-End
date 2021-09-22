@@ -63,6 +63,13 @@
             <div class="grid grid-cols-1 mt-5 mx-7">
               <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Tags</label>
               <div class="border border-4 border-gray-300 border-opacity-75 rounded-lg overflow-y-scroll" style="height: 15vh;">
+                  <div v-for="(tag, key) in tag" :key="tag.tagId">
+                    <input type="checkbox" :id="key" v-model="tags[key]" >
+                    <label :for="key">{{ tag.tag }}</label>
+                  </div>
+              </div>
+
+              <!-- <div class="border border-4 border-gray-300 border-opacity-75 rounded-lg overflow-y-scroll" style="height: 15vh;">
                 <label class="my-2 custom-label flex ml-3">
                   <div class="bg-white rounded-md shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
                     <input v-model="tags" type="checkbox" class="hidden">
@@ -70,7 +77,7 @@
                   </div>
                   <span class="select-none">op</span>
                 </label>
-              </div>
+              </div> -->
               <p v-if="invalidTags" class="text-red-500 text-xs text-left italic">** Please enter your Tags! **</p>
             </div>
 
