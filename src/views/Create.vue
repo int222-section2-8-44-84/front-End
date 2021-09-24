@@ -34,9 +34,21 @@
             </div>
 
             <div class="grid grid-cols-1 mt-5 mx-7">
-            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Product Name</label>
-            <input v-model="postName" class="py-2 px-3 rounded-lg border-2  mt-1 focus:outline-none focus:ring-2 focus:ring-roseMadder focus:border-transparent" type="text" placeholder="PostName" />
-            <p v-if="invalidpostName" class="text-red-500 text-xs text-left italic">** Please enter your PostName! **</p>
+            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Post Title</label>
+            <input v-model="postTitle" class="py-2 px-3 rounded-lg border-2  mt-1 focus:outline-none focus:ring-2 focus:ring-roseMadder focus:border-transparent" type="text" placeholder="PostTitle" />
+            <p v-if="invalidPostTitle" class="text-red-500 text-xs text-left italic">** Please enter your PostTitle! **</p>
+            </div>
+
+            <div class="grid grid-cols-1 mt-5 mx-7">
+            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Food Name</label>
+            <input v-model="foodName" class="py-2 px-3 rounded-lg border-2  mt-1 focus:outline-none focus:ring-2 focus:ring-roseMadder focus:border-transparent" type="text" placeholder="FoodName" />
+            <p v-if="invalidFoodName" class="text-red-500 text-xs text-left italic">** Please enter your FoodName! **</p>
+            </div>
+
+            <div class="grid grid-cols-1 mt-5 mx-7">
+            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Restaurant</label>
+            <input v-model="restaurant" class="py-2 px-3 rounded-lg border-2  mt-1 focus:outline-none focus:ring-2 focus:ring-roseMadder focus:border-transparent" type="text" placeholder="Restaurant" />
+            <p v-if="invalidRestaurant" class="text-red-500 text-xs text-left italic">** Please enter your Restaurant! **</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
@@ -52,9 +64,7 @@
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Category</label>
                 <select v-model="category" class="py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent">
                   <option class="hidden" value="Select">Select...</option>
-                  <option>Main</option>
-                  <option>Dessert</option>
-                  <option>Drink</option>
+                  <option v-for="category in categories" :key="category.categoryId" :value="category.categoryId" class="select-none">{{ category.category }}</option>
                   </select>
                 <p v-if="invalidCategory" class="text-red-500 text-xs text-left italic">** Please enter your Category! **</p>
             </div>
@@ -63,21 +73,11 @@
             <div class="grid grid-cols-1 mt-5 mx-7">
               <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Tags</label>
               <div class="border border-4 border-gray-300 border-opacity-75 rounded-lg overflow-y-scroll" style="height: 15vh;">
-                  <div v-for="(tag, key) in tag" :key="tag.tagId">
+                  <div v-for="(tag, key) in tag" :key="tag.tagId" class="text-left ml-3 my-2 text-lg">
                     <input type="checkbox" :id="key" v-model="tags[key]" >
-                    <label :for="key">{{ tag.tag }}</label>
+                    <label :for="key" class="ml-2">{{ tag.tag }}</label>
                   </div>
               </div>
-
-              <!-- <div class="border border-4 border-gray-300 border-opacity-75 rounded-lg overflow-y-scroll" style="height: 15vh;">
-                <label class="my-2 custom-label flex ml-3">
-                  <div class="bg-white rounded-md shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                    <input v-model="tags" type="checkbox" class="hidden">
-                    <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
-                  </div>
-                  <span class="select-none">op</span>
-                </label>
-              </div> -->
               <p v-if="invalidTags" class="text-red-500 text-xs text-left italic">** Please enter your Tags! **</p>
             </div>
 
@@ -138,12 +138,19 @@ export default {
     return {
         image: '',
         imageshow: '',
-        postName: '',
+        postTitle: '',
+        foodName: '',
+        restaurant: '',
         price: '',
-        tags: '',
+        // postTime: '',
+        user: 1,
+        rating: 0,
+        tags: [],
         category: '',
         description: '',
-        invalidpostName: false,
+        invalidPostTitle: false,
+        invalidFoodName: false,
+        invalidRestaurant: false,
         invalidPrice: false,
         invalidTags: false,
         invalidCategory: false,
@@ -157,8 +164,10 @@ export default {
         urlposthastag: "http://localhost:3000/showPostsHasTags",
         urladdpost: "http://localhost:3000/createPost",
         urladdupload: "http://localhost:3000/uploadimage",
+        
         categories: [],
         tag: [],
+        posts: [],
     };
   },
 
@@ -184,7 +193,7 @@ export default {
       console.log(this.image.name);
     },
     resetCreate(){
-      this.postName = null
+      this.postTitle = null
       this.price = null
       this.tags = null
       this.category = null
@@ -193,51 +202,106 @@ export default {
       this.imageshow = null
     },
     submitForm() {
-    this.invalidpostName = (this.postName === "") ? true : false;
+    this.invalidPostTitle = (this.postTitle === "") ? true : false;
+    this.invalidFoodName = (this.foodName === "") ? true : false;
+    this.invalidRestaurant = (this.restaurant === "") ? true : false;
     this.invalidPrice = (this.price === "") ? true : false;
-    this.invalidTags = (this.tags === "") ? true : false;
+    this.invalidTags = (this.tags.length === 0 ) ? true : false;
     this.invalidCategory = (this.category === "") ? true : false;
     this.invalidDescription = (this.description === "") ? true : false;
     this.invalidImage = (this.image === "") ? true : false;
     //document.getElementById("tags").value == "" ? true : false;
 
+      if (
+        this.postTitle !== "" &&
+        this.foodName !== "" &&
+        this.restaurant != "" &&
+        this.price !== "" &&
+        this.description !== "" &&
+        this.category !== "" &&
+        this.image !== null &&
+        this.tags.length !== 0
+      ) {
+        this.addPostsData({
+          postTitle: this.postTitle,
+          food: this.foodName,
+          restaurant: this.restaurant,
+          foodPrice: this.price,
+          description: this.description,
+          reviewRate: this.rating,
+          postTime: Date.now(),
+          imageName: this.image,
+          userNumber: this.user,
+          // tag: this.tags,
+          categoryId: this.category,
+        });
+      }
+
       console.log(
-        "postName: " + this.postName,
+        "postTitle: " + this.postTitle,
+        "food: " + this.foodName,
         "price: " + this.price,
         "tag:" + this.tags,
         "category:" + this.category,
         "description:" + this.description,
-        "image:" + this.image.postName,
+        // "postTime" + 
+        "image:" + this.image,
       );
 
-      // this.addPostsData();
-      // this.addUploadPhoto(this.image);
-      // this.$router.push("/");
     },
     async addPostsData(){
-      await fetch(this.urladdpost, {
+      let formData = new FormData();
+      formData.append("post", JSON.stringify({
+        postTitle: this.postTitle,
+        food: this.foodName,
+        restaurant: this.restaurant,
+        foodPrice: this.price,
+        description: this.description,
+        reviewRate: this.rating,
+        postTime: Date.now(),
+        userNumber: this.user, 
+        // tag: this.tags,
+        category: this.category,
+      }));
+      // await fetch(`${this.urlpost}`, {
+      //   method: "POST",
+      //   body: formData,
+      // });
+      let postsJson = JSON.stringify();
+      fetch(`${this.urladdpost}`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({
-          postName: this.name,
-          price: this.price,
-          tag: this.tags,
-          category: this.category,
-          description: this.description,
-          image: this.image.postName,
-        }),
+        body: postsJson,
+      });
+      // formData.append("file",p,p.name);
+      // fetch(`${this.addUploadPhoto}`, {
+      //   method: "POST",
+      //   body: formData,
+      // });
+      this.$router.push("/");
+    },
+    async addTags(tag){
+      await fetch(this.urltag, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(
+          tag
+        ),
       });
     },
     async addUploadPhoto(p){
       var formData = new FormData();
       formData.append("file",p,p.name);
-      await fetch(this.image, {
+      await fetch(this.urladdupload, {
         method: "POST",
         body: formData,
       });
     },
+
     async getBackEndData(url) {
       try {
         const res = await fetch(url);
@@ -252,14 +316,10 @@ export default {
   async created() {
     this.handleView();
     window.addEventListener("resize", this.handleView);
+    this.posts = await this.getBackEndData(this.urlpost);
     this.categories = await this.getBackEndData(this.urlcategory);
     this.tag = await this.getBackEndData(this.urltag);
+    
   },
 };
 </script>
-<style>
-    .custom-label input:checked + svg {
-        display: block !important;
-    }
-
-</style>

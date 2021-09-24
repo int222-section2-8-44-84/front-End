@@ -63,13 +63,10 @@
             <div class="grid grid-cols-1 mt-5 mx-7">
               <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Tags</label>
               <div class="border border-4 border-gray-300 border-opacity-75 rounded-lg overflow-y-scroll" style="height: 15vh;">
-                <label class="my-2 custom-label flex ml-3">
-                  <div class="bg-white rounded-md shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
-                    <input v-model="tags" type="checkbox" class="hidden">
-                    <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
+                  <div v-for="(tag, key) in tag" :key="tag.tagId" class="text-left ml-3 my-2 text-lg">
+                    <input type="checkbox" :id="key" v-model="tags[key]" >
+                    <label :for="key" class="ml-2">{{ tag.tag }}</label>
                   </div>
-                  <span class="select-none">op</span>
-                </label>
               </div>
               <p v-if="invalidTags" class="text-red-500 text-xs text-left italic">** Please enter your Tags! **</p>
             </div>
@@ -99,7 +96,7 @@
                 <p v-if="invalidImage" class="text-red-500 text-xs text-left italic">** Please enter your Photo! **</p>
             </div>
 
-            <div class="grid grid-cols-1 mt-5 mx-7 pb-3">
+            <!-- <div class="grid grid-cols-1 mt-5 mx-7 pb-3">
               <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Rating</label>
                 <div class="flex justify-center">
                     <button type="button" v-for="i in 5" :key="i" :class="{ 'mr-1': i < 5 }" @click="ratingStar(i)" class="focus:outline-none">
@@ -108,7 +105,7 @@
                     </svg>
                   </button>
                 </div>
-            </div>
+            </div> -->
 
             <!-- <div class='flex items-center justify-center md:gap-8 gap-4 pt-5 pb-5 xl:px-8 md:px-8'>
                 <button v-on:click="resetCreate()" class='sm:w-6/12 bg-blue-500 hover:bg-blue-600 rounded-lg shadow-xl font-medium text-white text-xl px-4 py-2'>Reset</button>
@@ -149,14 +146,22 @@ export default {
         invalidDescription: false,
         invalidImage: false,
         mobileView: true,
-        showNav: false, 
+        showNav: false,
+        urlcategory: "http://localhost:3000/showAllCategories",
+        urlpost: "http://localhost:3000/posts",
+        urltag: "http://localhost:3000/showAllTags",
+        urlposthastag: "http://localhost:3000/showPostsHasTags",
+        urladdpost: "http://localhost:3000/createPost",
+        urladdupload: "http://localhost:3000/uploadimage",
+        categories: [],
+        tag: [],
     };
   },
 
   methods: {
-    ratingStar(i){
-      console.log(i);
-    },
+    // ratingStar(i){
+    //   console.log(i);
+    // },
     showNavHam() {
       this.showNav = !this.showNav;
     },
@@ -190,7 +195,6 @@ export default {
     this.invalidCategory = (this.category === "") ? true : false;
     this.invalidDescription = (this.description === "") ? true : false;
     this.invalidImage = (this.image === "") ? true : false;
-    //document.getElementById("tags").value == "" ? true : false;
 
       console.log(
         "postName: " + this.invalidpostName,
@@ -202,11 +206,47 @@ export default {
       );
 
     },
+    // async addPostsData(){
+    //   await fetch(this.urladdpost, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       postName: this.name,
+    //       price: this.price,
+    //       tag: this.tags,
+    //       category: this.category,
+    //       description: this.description,
+    //       image: this.image.postName,
+    //     }),
+    //   });
+    // },
+
+    // async addUploadPhoto(p){
+    //   var formData = new FormData();
+    //   formData.append("file",p,p.name);
+    //   await fetch(this.image, {
+    //     method: "POST",
+    //     body: formData,
+    //   });
+    // },
+    async getBackEndData(url) {
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        return data;
+      } catch (error) {
+        console.log(`Could not get ${error}`);
+      }
+    },
 
   },
-  created() {
+  async created() {
     this.handleView();
     window.addEventListener("resize", this.handleView);
+    // this.categories = await this.getBackEndData(this.urlcategory);
+    // this.tag = await this.getBackEndData(this.urltag);
   },
 };
 </script>

@@ -84,7 +84,7 @@
                     <router-link to='/Edit'>
                         <button class="text-white mr-2 bg-yellow-400 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded shadow-lg">Edit</button>
                     </router-link>
-                    <router-link to='/ManageMember'>
+                    <router-link to=''>
                         <button class="text-white bg-red-500 border-0 py-2 px-4 focus:outline-none hover:bg-red-600 rounded shadow-lg">Delete</button>
                     </router-link>
                     <button class="flex ml-auto ri-thumb-up-fill rounded-full w-10 h-10 bg-white shadow-lg p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 hover:bg-blue-500 hover:text-white"></button>
@@ -111,6 +111,8 @@ export default {
     return {
     mobileView: true,
     showNav: false,
+        urlpost: "http://localhost:3000/posts",
+        posts: [],
     };
   },
 
@@ -121,11 +123,24 @@ export default {
     handleView() {
       this.mobileView = window.innerWidth <= 990;
     },
+    async getPostsData(url){
+        try {
+            const res = await fetch(url)
+            const data = await res.json()
+            return data
+        }
+        catch(error){
+            console.log(`Could not get ${error}`)
+        }
+    },
+
   },
 
-  created() {
+  async created() {
     this.handleView();
     window.addEventListener("resize", this.handleView);
+    this.posts = await this.getPostsData(this.urlpost);
+
   },
 };
 </script>

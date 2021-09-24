@@ -37,9 +37,9 @@
         </ul>
     </div>
 
-    <div v-if="click">
+    <div>
       <input
-        v-model="input"
+        
         type="text" 
         name="query" 
         placeholder="Search" 
@@ -49,22 +49,21 @@
         dark:focus:border-teal-500 focus:outline-none focus:ring focus:ring-primary 
         dark:placeholder-gray-400 focus:ring-opacity-40"> 
     </div>
-    <button style="font-size: 32px;" class="ml-2 ri-close-line" v-on:click="searchinput()" v-else></button>
-    <i style="font-size: 32px;" class="ml-2 ri-search-line"></i>
+    <!-- <button style="font-size: 32px;" class="ml-2 ri-close-line" v-on:click="searchinput()" v-else></button>
+    <i style="font-size: 32px;" class="ml-2 ri-search-line"></i> -->
 
     <!-- Login / Register -->
       <div style="font-size: 32px;">
-        <button v-on:click="toggleModal()" class="items-center justify-center w-12 h-12 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-red-200 ml-5 ri-user-3-line"></button>
+        <button v-on:click="toggleModal()" class="items-center justify-center w-12 h-12 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-red-200 ml-2 ri-user-3-line"></button>
           <div v-if="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
             <pop-up
             :showModal="showModal"
             @adding-showModal='toggleModal'
             >
-
             </pop-up>
           </div>
           <div v-if="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
-        </div>
+      </div>
     </div>
   </nav>
 </template>

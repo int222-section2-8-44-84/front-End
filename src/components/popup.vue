@@ -17,7 +17,7 @@
                     <div class="relative px-12 flex-auto">
                       <div class="space-y-3">
                         <div>
-                          <input type="email" v-model="emailLogin" placeholder="Username or Email address" class="placeholder-gray block text-lg py-2 px-4 rounded-lg w-full  border-2 border-gray-100 shadow-sm outline-none" />
+                          <input type="text" v-model="emailLogin" placeholder="Username or Email address" class="placeholder-gray block text-lg py-2 px-4 rounded-lg w-full  border-2 border-gray-100 shadow-sm outline-none" />
                           <p v-if="invalidEmailLogin" class="text-red-500 text-xs text-left italic">** Please enter your Username or Email! **</p>
                         </div>
                   

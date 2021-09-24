@@ -31,7 +31,7 @@
 
     <!-- Category -->
     <div class="grid sm:grid-cols-4 sm:gap-6 sm:mx-40 gap-2 md:grid-cols-4 md:gap-2 md:mx-10 lg:grid-cols-4 lg:mx-44 2xl:mx-72 xl:gap-4 grid-cols-2 px-4 gap-2">
-        <div @click="categoryTabs(1)" v-bind:class="{'bg-white': openTab !== 1, 'bg-roseMadder': openTab === 1}" class="shadow-md transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div @click="categoryTabs(1)" v-bind:class="{'bg-white': openTab !== 1, 'bg-roseMadder': openTab === 1}" class="shadow-md transform hover:-translate-y-1 hover:bg-roseMadder cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
                     <img class="w-24" src="../assets/allblack.png">
@@ -73,39 +73,24 @@
       <!-- <div class="grid sm:grid-cols-3 sm:gap-6 md:gap-2 xl:gap-4 grid-cols-2 gap-2 sm:py-7 py-8"> -->
         <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
             <div class="grid sm:grid-cols-3 sm:gap-6 md:gap-2 xl:gap-4 grid-cols-2 gap-2 sm:py-7 py-8">
+                <div v-for="post in posts" :key="post.postNumber">
                 <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
                     <router-link to='/Post'>
-                        <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
+                        <a class="block relative sm:h-80 h-36 md:h-56 xl:h-80 2xl:h-80 sm:rounded-t-lg rounded-t-md overflow-hidden"></a>
                         <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
                         <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                            <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
-                            <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
+                            <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.postTitle }}</h2>
+                            <p class="mt-1 pb-4 sm:text-base text-xs">THB {{post.foodPrice}}</p>
                         </div>
                     </router-link>
                 </div>
-            
-                <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
-                    <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
-                    <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
-                    <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                        <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
-                        <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
-                    </div>
-                </div>
-            
-                <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
-                    <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
-                    <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
-                    <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                        <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
-                        <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
-                    </div>
-                </div>
+            </div>
             </div>
         </div>
 
         <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">
             <div class="grid sm:grid-cols-3 sm:gap-6 md:gap-2 xl:gap-4 grid-cols-2 gap-2 sm:py-7 py-8">
+            <!-- <div v-for="post in posts" :key="post.postNumber"> -->
             <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
                 <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
                 <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
@@ -114,15 +99,7 @@
                     <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
                 </div>
             </div>
-
-            <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
-                <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
-                <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
-                <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
-                    <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
-                </div>
-            </div>
+            <!-- </div> -->
             </div>
         </div>
 
@@ -141,15 +118,6 @@
 
         <div v-bind:class="{'hidden': openTab !== 4, 'block': openTab === 4}">
             <div class="grid sm:grid-cols-3 sm:gap-6 md:gap-2 xl:gap-4 grid-cols-2 gap-2 sm:py-7 py-8">
-            <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
-                <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
-                <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
-                <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
-                    <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
-                </div>
-            </div>
-
             <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
                 <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
                 <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
@@ -178,7 +146,9 @@ export default {
     return {
         openTab: 1,
     mobileView: true,
-    showNav: false, 
+    showNav: false,
+        urlpost: "http://localhost:3000/posts",
+        posts: [],
     };
   },
 
@@ -192,12 +162,40 @@ export default {
     handleView() {
       this.mobileView = window.innerWidth <= 990;
     },
+    async getPostsData(url){
+        try {
+            const res = await fetch(url)
+            const data = await res.json()
+            return data
+        }
+        catch(error){
+            console.log(`Could not get ${error}`)
+        }
+    },
 
-  },
-  created() {
+},
+  async created() {
     this.handleView();
     window.addEventListener("resize", this.handleView);
+    this.posts = await this.getPostsData(this.urlpost);
   },
+  
+// computed: {
+//   filterByCategoryId(){
+//     if(categoryId == '1'){
+//         let f = this.posts.filter(item => item.categoryId.includes(f))
+//       return f;
+//     }
+//     if(categoryId == '2'){
+//         return f;
+//     }
+//     if(categoryId == '3'){
+//         return f;
+//     }else{
+//         return this.posts;
+//     }
+//   },
+// },
 };
 </script>
 
