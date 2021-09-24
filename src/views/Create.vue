@@ -222,19 +222,7 @@ export default {
         this.image !== null &&
         this.tags.length !== 0
       ) {
-        this.addPostsData({
-          postTitle: this.postTitle,
-          food: this.foodName,
-          restaurant: this.restaurant,
-          foodPrice: this.price,
-          description: this.description,
-          reviewRate: this.rating,
-          postTime: Date.now(),
-          imageName: this.image,
-          userNumber: this.user,
-          // tag: this.tags,
-          categoryId: this.category,
-        });
+        this.addPostsData();
       }
 
       console.log(
@@ -249,39 +237,7 @@ export default {
       );
 
     },
-    // async addPostsData(){
-    //   let formData = new FormData();
-    //   formData.append("post", JSON.stringify({
-    //     postTitle: this.postTitle,
-    //     food: this.foodName,
-    //     restaurant: this.restaurant,
-    //     foodPrice: this.price,
-    //     description: this.description,
-    //     reviewRate: this.rating,
-    //     postTime: Date.now(),
-    //     userNumber: this.user, 
-    //     // tag: this.tags,
-    //     category: this.category,
-    //   }));
-    //   // await fetch(`${this.urlpost}`, {
-    //   //   method: "POST",
-    //   //   body: formData,
-    //   // });
-    //   let postsJson = JSON.stringify();
-    //   fetch(`${this.urladdpost}`, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-type": "application/json",
-    //     },
-    //     body: postsJson,
-    //   });
-    //   // formData.append("file",p,p.name);
-    //   // fetch(`${this.addUploadPhoto}`, {
-    //   //   method: "POST",
-    //   //   body: formData,
-    //   // });
-    //   this.$router.push("/");
-    // },
+    
      async addPostsData(){ 
        console.log("postTitle: " + this.postTitle,
           "food: " + this.foodName,
@@ -313,6 +269,12 @@ export default {
           categoryId: this.category,
         }),
       });
+      var formData = new FormData();
+      formData.append("file",this.image,this.image.name);
+      await fetch(this.urladdupload, {
+        method: "POST",
+        body: formData,
+      });
     },
     async addTags(tag){
       await fetch(this.urltag, {
@@ -325,14 +287,14 @@ export default {
         ),
       });
     },
-    async addUploadPhoto(p){
-      var formData = new FormData();
-      formData.append("file",p,p.name);
-      await fetch(this.urladdupload, {
-        method: "POST",
-        body: formData,
-      });
-    },
+    // async addUploadPhoto(p){
+    //   var formData = new FormData();
+    //   formData.append("file",p,p.name);
+    //   await fetch(this.urladdupload, {
+    //     method: "POST",
+    //     body: formData,
+    //   });
+    // },
 
     async getBackEndData(url) {
       try {
