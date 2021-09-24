@@ -146,6 +146,7 @@ export default {
         user: 1,
         rating: 0,
         tags: [],
+        tagsData: [],
         category: '',
         description: '',
         invalidPostTitle: false,
@@ -200,6 +201,8 @@ export default {
       this.description = null
       this.image = null
       this.imageshow = null
+      this.tags = []
+      this.tagsData = []
     },
     submitForm() {
     this.invalidPostTitle = (this.postTitle === "") ? true : false;
@@ -222,19 +225,20 @@ export default {
         this.image !== null &&
         this.tags.length !== 0
       ) {
-        this.addPostsData();
+        // this.addPostsData();
+        this.addAllPostsData();
       }
 
-      console.log(
-        "postTitle: " + this.postTitle,
-        "food: " + this.foodName,
-        "price: " + this.price,
-        "tag:" + this.tags,
-        "category:" + this.category,
-        "description:" + this.description,
-        // "postTime" + 
-        "image:" + this.image,
-      );
+      // console.log(
+      //   "postTitle: " + this.postTitle,
+      //   "food: " + this.foodName,
+      //   "price: " + this.price,
+      //   "tag:" + this.tags,
+      //   "category:" + this.category,
+      //   "description:" + this.description,
+      //   // "postTime" + 
+      //   "image:" + this.image,
+      // );
 
     },
     
@@ -248,7 +252,7 @@ export default {
           "postTime: "+ Date.now(),
           "imageName: "+ this.image.name,
           "userNumber: " +this.user, 
-          // tag: this.tags,
+          "tag: " +this.tags,
           "categoryId: "+ this.category),
       await fetch(this.urladdpost, {
         method: "POST",
@@ -304,6 +308,64 @@ export default {
       } catch (error) {
         console.log(`Could not get ${error}`);
       }
+    },
+
+     async addAllPostsData(){ 
+       this.tagsData = [];
+       for(let i=0;i < this.tags.length;i++){
+        if(this.tags[i] == true){
+          this.tagsData.push(this.tag[i]);
+        }
+      }
+      
+       let timeElapsed = Date.now();
+        var today = new Date(timeElapsed);
+        today.toUTCString();
+        console.log(today);
+      var formData = new FormData();
+      let post = JSON.stringify({
+          postTitle: this.postTitle,
+          food: this.foodName,
+          restaurant: this.restaurant,
+          foodPrice: this.price,
+          description: this.description,
+          reviewRate: this.rating,
+          postTime: today,
+          imageName: this.image.name,
+          userNumber: this.user,
+          categoryId: this.category,
+        })
+      formData.append("post", post);
+      
+      formData.append("tags",JSON.stringify(this.tagsData));
+      formData.append("file",this.image,this.image.name);
+
+     
+
+      console.log(
+        
+          "postTitle: " + this.postTitle,
+          "food: " + this.foodName,
+          "restaurant: "+ this.restaurant,
+          "foodPrice:" + this.price,
+          "description: " + this.description,
+          "reviewRate: "+ this.rating,
+          "postTime: "+ today,
+          "imageName: "+ this.image.name,
+          "userNumber: " +this.user, 
+          "tag: " +this.tagsData,
+          "categoryId: "+ this.category
+          )
+      // console.log(formData);
+      
+      await fetch("http://localhost:3000/createPostWithImage", {
+        method: "POST",
+        // headers: {
+        //   "Content-type": "application/json",
+        // },
+        body: formData
+      });
+      
     },
 
   },
