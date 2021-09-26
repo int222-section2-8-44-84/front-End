@@ -115,6 +115,7 @@
                     </svg>
                   </button>
                 </div>
+                 <p v-if="invaildRating" class="text-red-500 text-xs text-left italic">** Please select your Ratings! **</p>
             </div>
 
             <div class='flex items-center justify-center md:gap-8 gap-4 pt-5 pb-5 xl:px-8 md:px-8'>
@@ -156,6 +157,7 @@ export default {
         invalidTags: false,
         invalidCategory: false,
         invalidDescription: false,
+        invaildRating: false,
         invalidImage: false,
         mobileView: true,
         showNav: false,
@@ -212,6 +214,7 @@ export default {
     this.invalidTags = (this.tags.length === 0 ) ? true : false;
     this.invalidCategory = (this.category === "") ? true : false;
     this.invalidDescription = (this.description === "") ? true : false;
+    this.invaildRating = (this.rating === "") ? true : false;
     this.invalidImage = (this.image === "") ? true : false;
     //document.getElementById("tags").value == "" ? true : false;
 
@@ -221,6 +224,7 @@ export default {
         this.restaurant != "" &&
         this.price !== "" &&
         this.description !== "" &&
+        this.rating !== "" &&
         this.category !== "" &&
         this.image !== null &&
         this.tags.length !== 0
@@ -241,44 +245,59 @@ export default {
       // );
 
     },
-    
-     async addPostsData(){ 
-       console.log("postTitle: " + this.postTitle,
-          "food: " + this.foodName,
-          "restaurant: "+ this.restaurant,
-          "foodPrice:" + this.price,
-          "description: " + this.description,
-          "reviewRate: "+ this.rating,
-          "postTime: "+ Date.now(),
-          "imageName: "+ this.image.name,
-          "userNumber: " +this.user, 
-          "tag: " +this.tags,
-          "categoryId: "+ this.category),
-      await fetch(this.urladdpost, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
+    async addAllPostsData(){ 
+      this.tagsData = [];
+      for(let i=0;i < this.tags.length;i++){
+        if(this.tags[i] == true){
+          this.tagsData.push(this.tag[i]);
+        }
+      }
+      
+      let timeElapsed = Date.now();
+      var today = new Date(timeElapsed);
+      today.toUTCString();
+      // console.log(today);
+      var formData = new FormData();
+      let post = JSON.stringify({
           postTitle: this.postTitle,
           food: this.foodName,
           restaurant: this.restaurant,
           foodPrice: this.price,
           description: this.description,
           reviewRate: this.rating,
-          postTime: Date.now(),
+          postTime: today,
           imageName: this.image.name,
-          userNumber: this.user, 
-          // tag: this.tags,
+          userNumber: this.user,
           categoryId: this.category,
-        }),
-      });
-      var formData = new FormData();
+        })
+      formData.append("post", post);
+      
+      formData.append("tags",JSON.stringify(this.tagsData));
       formData.append("file",this.image,this.image.name);
-      await fetch(this.urladdupload, {
+
+      console.log(
+          "postTitle: " + this.postTitle,
+          "food: " + this.foodName,
+          "restaurant: "+ this.restaurant,
+          "foodPrice:" + this.price,
+          "description: " + this.description,
+          "reviewRate: "+ this.rating,
+          "postTime: "+ today,
+          "imageName: "+ this.image.name,
+          "userNumber: " +this.user, 
+          "tag: " +this.tagsData,
+          "categoryId: "+ this.category
+          )
+      // console.log(formData);
+      
+      await fetch("http://localhost:3000/createPostWithImage", {
         method: "POST",
-        body: formData,
+        // headers: {
+        //   "Content-type": "application/json",
+        // },
+        body: formData
       });
+      
     },
     async addTags(tag){
       await fetch(this.urltag, {
@@ -308,64 +327,6 @@ export default {
       } catch (error) {
         console.log(`Could not get ${error}`);
       }
-    },
-
-     async addAllPostsData(){ 
-       this.tagsData = [];
-       for(let i=0;i < this.tags.length;i++){
-        if(this.tags[i] == true){
-          this.tagsData.push(this.tag[i]);
-        }
-      }
-      
-       let timeElapsed = Date.now();
-        var today = new Date(timeElapsed);
-        today.toUTCString();
-        console.log(today);
-      var formData = new FormData();
-      let post = JSON.stringify({
-          postTitle: this.postTitle,
-          food: this.foodName,
-          restaurant: this.restaurant,
-          foodPrice: this.price,
-          description: this.description,
-          reviewRate: this.rating,
-          postTime: today,
-          imageName: this.image.name,
-          userNumber: this.user,
-          categoryId: this.category,
-        })
-      formData.append("post", post);
-      
-      formData.append("tags",JSON.stringify(this.tagsData));
-      formData.append("file",this.image,this.image.name);
-
-     
-
-      console.log(
-        
-          "postTitle: " + this.postTitle,
-          "food: " + this.foodName,
-          "restaurant: "+ this.restaurant,
-          "foodPrice:" + this.price,
-          "description: " + this.description,
-          "reviewRate: "+ this.rating,
-          "postTime: "+ today,
-          "imageName: "+ this.image.name,
-          "userNumber: " +this.user, 
-          "tag: " +this.tagsData,
-          "categoryId: "+ this.category
-          )
-      // console.log(formData);
-      
-      await fetch("http://localhost:3000/createPostWithImage", {
-        method: "POST",
-        // headers: {
-        //   "Content-type": "application/json",
-        // },
-        body: formData
-      });
-      
     },
 
   },

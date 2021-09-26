@@ -37,8 +37,9 @@
             <div class="w-full lg:w-1/2 md:w-1/2 px-5 md:pr-12 xl:pr-24">
                 <div class="mb-3">
                     <h2 class="text-sm title-font text-gray-500 tracking-widest">CATEGORY</h2>
+                    <h1 class="font-bold uppercase text-2xl">Post Title</h1>
                     <h1 class="font-bold uppercase text-2xl">Mens's Ragged Waterproof Jacket</h1>
-                    <h1 class="mb-5">@Username</h1>
+                    <h1 class="text-base mb-5">@Username</h1>
                     <div class="flex mb-4">
                         <span class="flex items-center">
                             <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-black" viewBox="0 0 24 24">
@@ -61,12 +62,12 @@
                             <p class="text-gray-600">dd-mm-yyyy</p>
                         </span>
                     </div>
-                
-                    <p class="text-base text-justify">
+
+                    <p class="text-lg font-medium text-justify">Restaurant : Noodle Dragon</p>
+                    <p class="text-lg text-justify">
                         Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia
                         microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn.
-                        Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over,
-                        neutra jean shorts keytar banjo tattooed umami cardigan.
+                        Everyday carry +1 seitan poutine tumeric.
                     </p>
                 </div>
 
