@@ -160,7 +160,6 @@ export default {
   methods: {
     categoryTabs: function(tabNumber){
       this.openTab = tabNumber
-    //   this.filterByCategoryId(1)
     },
     showNavHam() {
       this.showNav = !this.showNav;
@@ -179,7 +178,6 @@ export default {
         }
     },
     filterByCategoryId(cId){
-    //let f = this.posts.filter(item => item.categoryId.includes("1"))
         console.log(this.posts)
         this.postViews = [];
         console.log(this.postViews)
@@ -195,25 +193,6 @@ export default {
     this.posts = await this.getPostsData(this.urlpost);
   },
   
-computed: {
-//   filterByCategoryId(categoryId){
-//     if(categoryId == '1'){
-//         //let f = this.posts.filter(item => item.categoryId.includes("1"))
-//         this.postViews = [];
-//         this.postViews = this.posts.filter(item => item.categoryId = 1);
-//       return this.postViews;
-//     }
-//     // if(categoryId == '2'){
-//     //     return f;
-//     // }
-//     // if(categoryId == '3'){
-//     //     return f;
-//     //}
-//     else{
-//         return this.posts;
-//     }
-//   },
-},
 };
 </script>
 
