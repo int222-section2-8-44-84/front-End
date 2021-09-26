@@ -24,6 +24,7 @@
     
     
 <!-- Body-->
+<div v-for="post in posts" :key="post.postNumber">
 <div class="min-w-screen flex items-center p-5 lg:p-8 relative">
     <div class="w-full max-w-6xl rounded-md bg-white shadow-xl p-10 lg:p-10 mx-auto text-gray-800 relative md:text-left">
         <div class="md:flex items-center -mx-10">
@@ -37,8 +38,8 @@
             <div class="w-full lg:w-1/2 md:w-1/2 px-5 md:pr-12 xl:pr-24">
                 <div class="mb-3">
                     <h2 class="text-sm title-font text-gray-500 tracking-widest">CATEGORY</h2>
-                    <h1 class="font-bold uppercase text-2xl">Post Title</h1>
-                    <h1 class="font-bold uppercase text-2xl">Mens's Ragged Waterproof Jacket</h1>
+                    <h1 class="font-bold uppercase text-2xl">Title : {{ post.postTitle }}</h1>
+                    <h1 class="font-bold uppercase text-2xl">{{ post.food }}</h1>
                     <h1 class="text-base mb-5">@Username</h1>
                     <div class="flex mb-4">
                         <span class="flex items-center">
@@ -59,15 +60,13 @@
                             </svg>
                             <p class="text-gray-600 ml-2">Reviews</p>
                             <div class="flex ml-3 pl-3 py-2 border-l-2 border-gray-300 space-x-2"></div>
-                            <p class="text-gray-600">dd-mm-yyyy</p>
+                            <p class="text-gray-600">{{ post.postTime }}</p>
                         </span>
                     </div>
 
-                    <p class="text-lg font-medium text-justify">Restaurant : Noodle Dragon</p>
+                    <p class="text-lg font-medium text-justify">Restaurant : {{ post.restaurant }}</p>
                     <p class="text-lg text-justify">
-                        Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia
-                        microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn.
-                        Everyday carry +1 seitan poutine tumeric.
+                        {{ post.description }}
                     </p>
                 </div>
 
@@ -78,7 +77,7 @@
                 </div>
 
                 <div class="flex inline-block mb-3">
-                    <span class="title-font font-medium text-2xl text-black">฿58.00</span>
+                    <span class="title-font font-medium text-2xl text-black">THB {{ post.foodPrice }}</span>
                 </div>
 
                 <div class="flex">
@@ -97,6 +96,7 @@
         </div>
     </div>
 </div>
+ </div>
 </div>
 </template>
 
@@ -112,8 +112,11 @@ export default {
     return {
     mobileView: true,
     showNav: false,
-        urlpost: "http://localhost:3000/posts",
+        urlpost: "http://localhost:3000/posts/",
+        urlcategory: "http://localhost:3000/showAllCategories",
         posts: [],
+        categories: [],
+        // postNumber: this.$route.params.postNumber,
     };
   },
 
@@ -134,14 +137,13 @@ export default {
             console.log(`Could not get ${error}`)
         }
     },
-
   },
 
   async created() {
     this.handleView();
     window.addEventListener("resize", this.handleView);
     this.posts = await this.getPostsData(this.urlpost);
-
+    // this.posts = await this.getOnePost(this.urlpost);
   },
 };
 </script>
