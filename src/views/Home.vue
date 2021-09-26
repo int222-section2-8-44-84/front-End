@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div @click="categoryTabs(2)" v-bind:class="{'bg-white': openTab !== 2, 'bg-roseMadder': openTab === 2}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div @click="categoryTabs(2),filterByCategoryId(1)" v-bind:class="{'bg-white': openTab !== 2, 'bg-roseMadder': openTab === 2}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
                     <img class="w-24" src="../assets/mainblack.png">
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div @click="categoryTabs(3)" v-bind:class="{'bg-white': openTab !== 3, 'bg-roseMadder': openTab === 3}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div @click="categoryTabs(3),filterByCategoryId(2)" v-bind:class="{'bg-white': openTab !== 3, 'bg-roseMadder': openTab === 3}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
                     <img class="w-24" src="../assets/dessertblack.png">
@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <div @click="categoryTabs(4)" v-bind:class="{'bg-white': openTab !== 4, 'bg-roseMadder': openTab === 4}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div @click="categoryTabs(4),filterByCategoryId(3)" v-bind:class="{'bg-white': openTab !== 4, 'bg-roseMadder': openTab === 4}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
                      <img class="w-24" src="../assets/drinkblack.png">
@@ -90,43 +90,47 @@
 
         <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">
             <div class="grid sm:grid-cols-3 sm:gap-6 md:gap-2 xl:gap-4 grid-cols-2 gap-2 sm:py-7 py-8">
-            <!-- <div v-for="post in posts" :key="post.postNumber"> -->
+            <div v-for="post in postViews" :key="post.postNumber">
             <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
                 <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
                 <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
                 <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
-                    <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
+                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.postTitle }}</h2>
+                    <p class="mt-1 pb-4 sm:text-base text-xs">THB {{post.foodPrice}}</p>
                 </div>
             </div>
-            <!-- </div> -->
+            </div>
             </div>
         </div>
 
         <div v-bind:class="{'hidden': openTab !== 3, 'block': openTab === 3}">
             <div class="grid sm:grid-cols-3 sm:gap-6 md:gap-2 xl:gap-4 grid-cols-2 gap-2 sm:py-7 py-8">
+            <div v-for="post in postViews" :key="post.postNumber">
             <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
                 <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
                 <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
                 <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
-                    <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
+                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.postTitle }}</h2>
+                    <p class="mt-1 pb-4 sm:text-base text-xs">THB {{post.foodPrice}}</p>
                 </div>
             </div>
         </div>
+            </div>
         </div>
 
         <div v-bind:class="{'hidden': openTab !== 4, 'block': openTab === 4}">
             <div class="grid sm:grid-cols-3 sm:gap-6 md:gap-2 xl:gap-4 grid-cols-2 gap-2 sm:py-7 py-8">
+                <div v-for="post in postViews" :key="post.postNumber">
             <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
                 <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
                 <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
                 <div class="sm:my-3 sm:mx-4 my-2 mx-3">
-                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">PostName</h2>
-                    <p class="mt-1 pb-4 sm:text-base text-xs">Description</p>
+                    <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.postTitle }}</h2>
+                    <p class="mt-1 pb-4 sm:text-base text-xs">THB {{post.foodPrice}}</p>
                 </div>
             </div>
         </div>
+            </div>
         </div>
     </div>
 
@@ -149,12 +153,14 @@ export default {
     showNav: false,
         urlpost: "http://localhost:3000/posts",
         posts: [],
+        postViews: [],
     };
   },
 
   methods: {
     categoryTabs: function(tabNumber){
       this.openTab = tabNumber
+    //   this.filterByCategoryId(1)
     },
     showNavHam() {
       this.showNav = !this.showNav;
@@ -172,6 +178,15 @@ export default {
             console.log(`Could not get ${error}`)
         }
     },
+    filterByCategoryId(cId){
+    //let f = this.posts.filter(item => item.categoryId.includes("1"))
+        console.log(this.posts)
+        this.postViews = [];
+        console.log(this.postViews)
+        this.postViews = this.posts.filter(item => item.categoryId == cId);
+        console.log(this.postViews)
+    }
+    
 
 },
   async created() {
@@ -180,22 +195,25 @@ export default {
     this.posts = await this.getPostsData(this.urlpost);
   },
   
-// computed: {
-//   filterByCategoryId(){
+computed: {
+//   filterByCategoryId(categoryId){
 //     if(categoryId == '1'){
-//         let f = this.posts.filter(item => item.categoryId.includes(f))
-//       return f;
+//         //let f = this.posts.filter(item => item.categoryId.includes("1"))
+//         this.postViews = [];
+//         this.postViews = this.posts.filter(item => item.categoryId = 1);
+//       return this.postViews;
 //     }
-//     if(categoryId == '2'){
-//         return f;
-//     }
-//     if(categoryId == '3'){
-//         return f;
-//     }else{
+//     // if(categoryId == '2'){
+//     //     return f;
+//     // }
+//     // if(categoryId == '3'){
+//     //     return f;
+//     //}
+//     else{
 //         return this.posts;
 //     }
 //   },
-// },
+},
 };
 </script>
 
