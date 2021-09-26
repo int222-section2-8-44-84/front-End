@@ -24,7 +24,7 @@
     
     
 <!-- Body-->
-<div v-for="post in posts" :key="post.postNumber">
+<!-- <div v-for="post in posts" :key="post.postNumber"> -->
 <div class="min-w-screen flex items-center p-5 lg:p-8 relative">
     <div class="w-full max-w-6xl rounded-md bg-white shadow-xl p-10 lg:p-10 mx-auto text-gray-800 relative md:text-left">
         <div class="md:flex items-center -mx-10">
@@ -38,8 +38,8 @@
             <div class="w-full lg:w-1/2 md:w-1/2 px-5 md:pr-12 xl:pr-24">
                 <div class="mb-3">
                     <h2 class="text-sm title-font text-gray-500 tracking-widest">CATEGORY</h2>
-                    <h1 class="font-bold uppercase text-2xl">Title : {{ post.postTitle }}</h1>
-                    <h1 class="font-bold uppercase text-2xl">{{ post.food }}</h1>
+                    <h1 class="font-bold uppercase text-2xl">Title : {{this.post.postTitle}}</h1>
+                    <h1 class="font-bold uppercase text-2xl">{{ this.post.food }}</h1>
                     <h1 class="text-base mb-5">@Username</h1>
                     <div class="flex mb-4">
                         <span class="flex items-center">
@@ -64,7 +64,7 @@
                         </span>
                     </div>
 
-                    <p class="text-lg font-medium text-justify">Restaurant : {{ post.restaurant }}</p>
+                    <p class="text-lg font-medium text-justify">Restaurant : {{ this.post.restaurant }}</p>
                     <p class="text-lg text-justify">
                         {{ post.description }}
                     </p>
@@ -72,12 +72,12 @@
 
                 <div class="flex items-center pb-5 border-b-2 border-gray-200 mb-5">
                     <div class="flex items-center">
-                        <span class="text-gray-400 mr-3">Tag : </span>
+                        <span v-for="tag in post.postTags" :key="tag.tagId" class="text-gray-400 mr-3">Tag : {{tag.tags.tag}}</span>
                     </div>
                 </div>
 
                 <div class="flex inline-block mb-3">
-                    <span class="title-font font-medium text-2xl text-black">THB {{ post.foodPrice }}</span>
+                    <span class="title-font font-medium text-2xl text-black">THB {{ this.post.foodPrice }}</span>
                 </div>
 
                 <div class="flex">
@@ -96,7 +96,7 @@
         </div>
     </div>
 </div>
- </div>
+ <!-- </div> -->
 </div>
 </template>
 
@@ -108,13 +108,16 @@ export default {
   components: {
     BaseNavMobile,
   },
+  props:{
+      postNumber: Number
+  },
   data() {
     return {
     mobileView: true,
     showNav: false,
         urlpost: "http://localhost:3000/posts/",
         urlcategory: "http://localhost:3000/showAllCategories",
-        posts: [],
+        post: null,
         categories: [],
         // postNumber: this.$route.params.postNumber,
     };
@@ -142,7 +145,9 @@ export default {
   async created() {
     this.handleView();
     window.addEventListener("resize", this.handleView);
-    this.posts = await this.getPostsData(this.urlpost);
+    this.post = await this.getPostsData(this.urlpost+"/"+this.postNumber);
+    console.log(this.postNumber)
+    console.log(this.posts)
     // this.posts = await this.getOnePost(this.urlpost);
   },
 };

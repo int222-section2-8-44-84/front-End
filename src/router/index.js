@@ -19,7 +19,7 @@ const routes = [
     path: '/Post',
     name: 'Post',
     component: Post,
-    // props:true
+    props: true
   },
   {
     path: '/Team',

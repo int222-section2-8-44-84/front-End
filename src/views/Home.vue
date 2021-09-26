@@ -75,11 +75,10 @@
             <div class="grid sm:grid-cols-3 sm:gap-6 md:gap-2 xl:gap-4 grid-cols-2 gap-2 sm:py-7 py-8">
                 <div v-for="post in posts" :key="post.postNumber">
                 <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
-                    <!-- Router-Link -->
-                    <router-link to="/Post">
-                        <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
+                    <router-link :to="{ name: 'Post', params: {postNumber: post.postNumber} }">
+                        <a class="block relative sm:h-80 h-36 md:h-56 xl:h-80 2xl:h-80 sm:rounded-t-lg rounded-t-md overflow-hidden"></a>
                         <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
-                        <div class="sm:my-3 sm:mx-4 md:my-2 md:mx-2 my-2 mx-3">
+                        <div class="sm:my-3 sm:mx-4 my-2 mx-3">
                             <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.postTitle }}</h2>
                             <p class="mt-1 pb-4 sm:text-base text-xs">THB {{post.foodPrice}}</p>
                         </div>
@@ -95,7 +94,7 @@
             <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
                 <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
                 <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
-                <div class="sm:my-3 sm:mx-4 md:my-2 md:mx-2 my-2 mx-3">
+                <div class="sm:my-3 sm:mx-4 my-2 mx-3">
                     <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.postTitle }}</h2>
                     <p class="mt-1 pb-4 sm:text-base text-xs">THB {{post.foodPrice}}</p>
                 </div>
@@ -110,7 +109,7 @@
             <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
                 <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
                 <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
-                <div class="sm:my-3 sm:mx-4 md:my-2 md:mx-2 my-2 mx-3">
+                <div class="sm:my-3 sm:mx-4 my-2 mx-3">
                     <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.postTitle }}</h2>
                     <p class="mt-1 pb-4 sm:text-base text-xs">THB {{post.foodPrice}}</p>
                 </div>
@@ -125,7 +124,7 @@
             <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
                 <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
                 <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
-                <div class="sm:my-3 sm:mx-4 md:my-2 md:mx-2 my-2 mx-3">
+                <div class="sm:my-3 sm:mx-4 my-2 mx-3">
                     <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.postTitle }}</h2>
                     <p class="mt-1 pb-4 sm:text-base text-xs">THB {{post.foodPrice}}</p>
                 </div>
