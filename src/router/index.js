@@ -18,7 +18,8 @@ const routes = [
   {
     path: '/Post',
     name: 'Post',
-    component: Post
+    component: Post,
+    // props:true
   },
   {
     path: '/Team',
