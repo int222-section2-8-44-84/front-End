@@ -178,11 +178,11 @@ export default {
         }
     },
     filterByCategoryId(cId){
-        console.log(this.posts)
+        //console.log(this.posts)
         this.postViews = [];
-        console.log(this.postViews)
+        //console.log(this.postViews)
         this.postViews = this.posts.filter(item => item.categoryId == cId);
-        console.log(this.postViews)
+        //console.log(this.postViews)
     }
     
 
