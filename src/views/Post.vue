@@ -43,20 +43,8 @@
                     <h1 class="text-base mb-5">@Username</h1>
                     <div class="flex mb-4">
                         <span class="flex items-center">
-                            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-black" viewBox="0 0 24 24">
+                            <svg v-for="starColor in this.reviewRateStarColors" :key="starColor" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24" :style="{'color': starColor}">
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-black" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-black" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-black" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-gray-400" viewBox="0 0 24 24">
-                               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                             </svg>
                             <p class="text-gray-600 ml-2">Reviews</p>
                             <div class="flex ml-3 pl-3 py-2 border-l-2 border-gray-300 space-x-2"></div>
@@ -119,7 +107,7 @@ export default {
         urlcategory: "http://localhost:3000/showAllCategories",
         post: null,
         categories: [],
-        // postNumber: this.$route.params.postNumber,
+        reviewRateStarColors: ["9DA3AE","9DA3AE","9DA3AE","9DA3AE","9DA3AE"]
     };
   },
 
@@ -146,10 +134,18 @@ export default {
     this.handleView();
     window.addEventListener("resize", this.handleView);
     this.post = await this.getPostsData(this.urlpost+"/"+this.postNumber);
-    console.log(this.postNumber)
-    console.log(this.posts)
-    // this.posts = await this.getOnePost(this.urlpost);
-  },
+    //console.log(this.postNumber)
+    //console.log(this.post)
+    if (this.post.reviewRate > 5){
+        this.post.reviewRate = 5;
+        alert("I see youuuuuuuuuuu~~~")
+    }
+    for (let i=0; i<this.post.reviewRate; i++){
+        this.reviewRateStarColors[i] = "000000"
+    }
+    //console.log(this.reviewRateStarColors)
+    
+  }
 };
 </script>
 
