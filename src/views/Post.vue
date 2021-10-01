@@ -75,7 +75,7 @@
                         <button class="text-white mr-2 bg-yellow-400 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded shadow-lg">Edit</button>
                     </router-link>
                     <router-link to=''>
-                        <button class="text-white bg-red-500 border-0 py-2 px-4 focus:outline-none hover:bg-red-600 rounded shadow-lg">Delete</button>
+                        <button class="text-white bg-red-500 border-0 py-2 px-4 focus:outline-none hover:bg-red-600 rounded shadow-lg" @click="deletePost(post.postNumber)">Delete</button>
                     </router-link>
                     <button class="flex ml-auto ri-thumb-up-fill rounded-full w-10 h-10 bg-white shadow-lg p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 hover:bg-blue-500 hover:text-white"></button>
                     <!-- <span class="ml-2">15</span> -->
@@ -107,6 +107,7 @@ export default {
     showNav: false,
         urlpost: "http://localhost:3000/posts/",
         urlImage: "http://localhost:3000/files/",
+        urlDelete: "http://localhost:3000/deletePost/",
         // urlcategory: "http://localhost:3000/showAllCategories",
         post: null,
         // categories: [],
@@ -133,7 +134,15 @@ export default {
     },
     createImageUrl(postimage){
         return this.urlImage + postimage
-    }
+    },
+    
+    async deletePost(postNumber){
+        await fetch(`${this.urlDelete}/${postNumber}`, {
+        method: "DELETE",
+      });
+    alert("Delete: "+postNumber+" complete.")
+    this.$router.push("/");
+},
   },
 
   async created() {
@@ -152,6 +161,8 @@ export default {
     //console.log(this.reviewRateStarColors)
     
   }
+
+  
 };
 </script>
 
