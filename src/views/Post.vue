@@ -105,9 +105,9 @@ export default {
     return {
     mobileView: true,
     showNav: false,
-        urlpost: "http://localhost:3000/posts/",
-        urlImage: "http://localhost:3000/files/",
-        urlDelete: "http://localhost:3000/deletePost/",
+        urlpost: "http://13.76.247.191:3000/posts/",
+        urlImage: "http://13.76.247.191:3000/files/",
+        urlDelete: "http://13.76.247.191:3000/deletePost/",
         // urlcategory: "http://localhost:3000/showAllCategories",
         post: null,
         // categories: [],
@@ -135,7 +135,7 @@ export default {
     createImageUrl(postimage){
         return this.urlImage + postimage
     },
-    
+
     async deletePost(postNumber){
         await fetch(`${this.urlDelete}/${postNumber}`, {
         method: "DELETE",
