@@ -55,7 +55,7 @@
             <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Price</label>
                 <div class="flex flex-row">
-                  <span class="flex items-center bg-grey-lighter rounded rounded-r-none mr-2 font-bold text-gray-500">฿</span>
+                  <span class="flex items-center bg-grey-lighter rounded rounded-r-none mr-2 font-bold text-gray-500">THB</span>
                   <input v-model="price" class="w-full py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="number"/>
                 </div>
                 <p v-if="invalidPrice" class="text-red-500 text-xs text-left italic">** Please enter your price! **</p>

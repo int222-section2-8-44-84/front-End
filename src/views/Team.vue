@@ -23,16 +23,6 @@
     <base-nav-mobile v-if="showNav" />
     <base-nav v-if="!mobileView" />
 
-
-        <!-- component -->
-        <!-- <style>
-            .bg-dots{
-            background-image: url(https://assets-global.website-files.com/5b5a66e9f3166b36708705fa/5dea7a12bb83ab1f13040de5_cx-dots.svg);
-            background-repeat: no-repeat
-            }
-        </style> -->
-        
-
         <!-- component -->
         <div class="m-auto max-w-6xl p-12 sm:mt-12 lg:mt-2">
             <div class="flex flex-col md:flex-row justify-center">
@@ -43,9 +33,9 @@
                     <div class="text-xl sm:mt-4 text-left">
                         <div class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
                         do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                        <button class="shadow-md font-medium py-2 px-4 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
+                        <a href="https://www.facebook.com/kritsanapon.melolonjino" class="shadow-md font-medium py-2 px-16 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
                             Contact
-                        </button>
+                        </a>
                     </div>
                     
                 </div>
@@ -73,12 +63,10 @@
                     <div class="text-xl sm:mt-4 text-left">
                         <div class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
                         do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                        <button class="shadow-md font-medium py-2 px-4 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
+                        <a href="https://www.facebook.com/nippit.kin" class="shadow-md font-medium py-2 px-16 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
                             Contact
-                        </button>
-                    </div>
-                    
-                    
+                        </a>
+                    </div>   
                 </div>
                 
                 <div class="flex md:justify-end w-full md:w-1/2 sm:-mt-5">
@@ -101,9 +89,9 @@
                     <div class="text-xl sm:mt-4 text-left">
                         <div class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
                         do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                        <button class="shadow-md font-medium py-2 px-4 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
+                        <a href="https://www.facebook.com/warisarakhrua/" class="shadow-md font-medium py-2 px-16 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
                             Contact
-                        </button>
+                        </a>
                     </div>
                 </div>
                 

@@ -30,25 +30,25 @@
         <div class="md:flex items-center -mx-10">
             <div class="w-full md:w-1/2 px-10 mb-10 md:mb-0">
                 <div class="relative">
-                    <img src="https://pngimg.com/uploads/raincoat/raincoat_PNG53.png" class="w-full relative z-10" alt="">
-                    <div class="border-4 border-yellow-200 absolute top-10 bottom-10 left-10 right-10 z-0"></div>
+                    <img :src="createImageUrl(post.imageName)" class="w-full relative z-10" alt="">
+                    <!-- <div class="border-4 border-yellow-200 absolute top-10 bottom-10 left-10 right-10 z-0"></div> -->
                 </div>
             </div>
 
             <div class="w-full lg:w-1/2 md:w-1/2 px-5 md:pr-12 xl:pr-24">
                 <div class="mb-3">
-                    <h2 class="text-sm title-font text-gray-500 tracking-widest">CATEGORY</h2>
+                    <h2 class="text-base font-semibold title-font text-gray-400 uppercase tracking-widest">{{ this.post.categories.category }}</h2>
                     <h1 class="font-bold uppercase text-2xl">Title : {{this.post.postTitle}}</h1>
-                    <h1 class="font-bold uppercase text-2xl">{{ this.post.food }}</h1>
-                    <h1 class="text-base mb-5">@Username</h1>
+                    <h1 class="font-medium text-2xl">Food : {{ this.post.food }}</h1>
+                    <h1 class="text-base">@Username</h1>
                     <div class="flex mb-4">
                         <span class="flex items-center">
                             <svg v-for="starColor in this.reviewRateStarColors" :key="starColor" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24" :style="{'color': starColor}">
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                             </svg>
-                            <p class="text-gray-600 ml-2">Reviews</p>
+                            <p class="sm:text-lg md:text-base text-sm text-gray-600 ml-2">Reviews</p>
                             <div class="flex ml-3 pl-3 py-2 border-l-2 border-gray-300 space-x-2"></div>
-                            <p class="text-gray-600">{{ post.postTime }}</p>
+                            <p class="text-xs sm:text-lg md:text-sm text-gray-600">{{ post.postTime }}</p>
                         </span>
                     </div>
 
@@ -60,7 +60,9 @@
 
                 <div class="flex items-center pb-5 border-b-2 border-gray-200 mb-5">
                     <div class="flex items-center">
-                        <span v-for="tag in post.postTags" :key="tag.tagId" class="text-gray-400 mr-3">Tag : {{tag.tags.tag}}</span>
+                        <div class="relative flex text-gray-500">Tag : 
+                            <div v-for="tag in post.postTags" :key="tag.tagId" class="ml-3">{{tag.tags.tag}}</div>
+                        </div>
                     </div>
                 </div>
 
@@ -104,10 +106,11 @@ export default {
     mobileView: true,
     showNav: false,
         urlpost: "http://localhost:3000/posts/",
-        urlcategory: "http://localhost:3000/showAllCategories",
+        urlImage: "http://localhost:3000/files/",
+        // urlcategory: "http://localhost:3000/showAllCategories",
         post: null,
-        categories: [],
-        reviewRateStarColors: ["9DA3AE","9DA3AE","9DA3AE","9DA3AE","9DA3AE"]
+        // categories: [],
+        reviewRateStarColors: ["DEDEDE","DEDEDE","DEDEDE","DEDEDE","DEDEDE"]
     };
   },
 
@@ -128,6 +131,9 @@ export default {
             console.log(`Could not get ${error}`)
         }
     },
+    createImageUrl(postimage){
+        return this.urlImage + postimage
+    }
   },
 
   async created() {
@@ -141,7 +147,7 @@ export default {
         alert("I see youuuuuuuuuuu~~~")
     }
     for (let i=0; i<this.post.reviewRate; i++){
-        this.reviewRateStarColors[i] = "000000"
+        this.reviewRateStarColors[i] = "F3C04B"
     }
     //console.log(this.reviewRateStarColors)
     

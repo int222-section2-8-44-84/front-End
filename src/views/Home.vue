@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div @click="categoryTabs(3),filterByCategoryId(2)" v-bind:class="{'bg-white': openTab !== 3, 'bg-roseMadder': openTab === 3}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div @click="categoryTabs(3),filterByCategoryId(3)" v-bind:class="{'bg-white': openTab !== 3, 'bg-roseMadder': openTab === 3}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
                     <img class="w-24" src="../assets/dessertblack.png">
@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <div @click="categoryTabs(4),filterByCategoryId(3)" v-bind:class="{'bg-white': openTab !== 4, 'bg-roseMadder': openTab === 4}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div @click="categoryTabs(4),filterByCategoryId(2)" v-bind:class="{'bg-white': openTab !== 4, 'bg-roseMadder': openTab === 4}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
                      <img class="w-24" src="../assets/drinkblack.png">
@@ -76,9 +76,10 @@
                 <div v-for="post in posts" :key="post.postNumber">
                 <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
                     <router-link :to="{ name: 'Post', params: {postNumber: post.postNumber} }">
-                        <a class="block relative sm:h-80 h-36 md:h-56 xl:h-80 2xl:h-80 sm:rounded-t-lg rounded-t-md overflow-hidden"></a>
-                        <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
-                        <div class="sm:my-3 sm:mx-4 my-2 mx-3">
+                        <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden">
+                            <img class="object-cover object-center w-full h-full block" :src="createImageUrl(post.imageName)"/>
+                        </a>
+                        <div class="sm:my-3 sm:mx-4 md:my-2 md:mx-2 my-2 mx-3">
                             <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.postTitle }}</h2>
                             <p class="mt-1 pb-4 sm:text-base text-xs">THB {{post.foodPrice}}</p>
                         </div>
@@ -92,12 +93,15 @@
             <div class="grid sm:grid-cols-3 sm:gap-6 md:gap-2 xl:gap-4 grid-cols-2 gap-2 sm:py-7 py-8">
             <div v-for="post in postViews" :key="post.postNumber">
             <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
-                <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
-                <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
-                <div class="sm:my-3 sm:mx-4 my-2 mx-3">
+                <router-link :to="{ name: 'Post', params: {postNumber: post.postNumber} }">
+                <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden">
+                    <img class="object-cover object-center w-full h-full block" :src="createImageUrl(post.imageName)">
+                </a>
+                <div class="sm:my-3 sm:mx-4 md:my-2 md:mx-2 my-2 mx-3">
                     <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.postTitle }}</h2>
                     <p class="mt-1 pb-4 sm:text-base text-xs">THB {{post.foodPrice}}</p>
                 </div>
+                </router-link>
             </div>
             </div>
             </div>
@@ -107,12 +111,15 @@
             <div class="grid sm:grid-cols-3 sm:gap-6 md:gap-2 xl:gap-4 grid-cols-2 gap-2 sm:py-7 py-8">
             <div v-for="post in postViews" :key="post.postNumber">
             <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
-                <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
-                <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
-                <div class="sm:my-3 sm:mx-4 my-2 mx-3">
+                <router-link :to="{ name: 'Post', params: {postNumber: post.postNumber} }">
+                <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden">
+                    <img class="object-cover object-center w-full h-full block" :src="createImageUrl(post.imageName)">
+                </a>
+                <div class="sm:my-3 sm:mx-4 md:my-2 md:mx-2 my-2 mx-3">
                     <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.postTitle }}</h2>
                     <p class="mt-1 pb-4 sm:text-base text-xs">THB {{post.foodPrice}}</p>
                 </div>
+                </router-link>
             </div>
         </div>
             </div>
@@ -122,12 +129,15 @@
             <div class="grid sm:grid-cols-3 sm:gap-6 md:gap-2 xl:gap-4 grid-cols-2 gap-2 sm:py-7 py-8">
                 <div v-for="post in postViews" :key="post.postNumber">
             <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
-                <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden"></a>
-                <!-- <img class="object-cover object-center w-full h-full block" src=""> -->
-                <div class="sm:my-3 sm:mx-4 my-2 mx-3">
+                <router-link :to="{ name: 'Post', params: {postNumber: post.postNumber} }">
+                <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden">
+                    <img class="object-cover object-center w-full h-full block" :src="createImageUrl(post.imageName)">
+                </a>
+                <div class="sm:my-3 sm:mx-4 md:my-2 md:mx-2 my-2 mx-3">
                     <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.postTitle }}</h2>
                     <p class="mt-1 pb-4 sm:text-base text-xs">THB {{post.foodPrice}}</p>
                 </div>
+                </router-link>
             </div>
         </div>
             </div>
@@ -152,6 +162,7 @@ export default {
     mobileView: true,
     showNav: false,
         urlpost: "http://localhost:3000/posts",
+        urlImage: "http://localhost:3000/files/",
         posts: [],
         postViews: [],
     };
@@ -183,8 +194,10 @@ export default {
         //console.log(this.postViews)
         this.postViews = this.posts.filter(item => item.categoryId == cId);
         //console.log(this.postViews)
+    },
+    createImageUrl(postimage){
+        return this.urlImage + postimage
     }
-    
 
 },
   async created() {
