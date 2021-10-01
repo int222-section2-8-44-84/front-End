@@ -165,17 +165,20 @@ export default {
         urlpost: "http://localhost:3000/posts",
         urltag: "http://localhost:3000/showAllTags",
         urlposthastag: "http://localhost:3000/showPostsHasTags",
-        urladdpost: "http://localhost:3000/createPost",
-        urladdupload: "http://localhost:3000/uploadimage",
+        // urladdpost: "http://localhost:3000/createPost",
+        // urladdupload: "http://localhost:3000/uploadimage",
         
         categories: [],
         tag: [],
         posts: [],
+        value: 0,
     };
   },
 
   methods: {
     ratingStar(i){
+      this.value = i;
+      this.rating = i;
       console.log(i);
     },
     showNavHam() {

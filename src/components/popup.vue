@@ -151,7 +151,6 @@ export default {
       if(this.invalidUseRegis==false&&this.invalidEmailRegis==false&&this.invalidPassRegis==false){
         this.closeForm();
       }
-      
     },
     closeForm(){
         // this.clearData()
