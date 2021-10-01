@@ -31,8 +31,7 @@
                         KRITSANAPON RAKKIATNGAM
                     </div>
                     <div class="text-xl sm:mt-4 text-left">
-                        <div class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
-                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        <div class="mb-5">62130500008 <br>Responsibilty : Database, Front-End, Back-End</div>
                         <a href="https://www.facebook.com/kritsanapon.melolonjino" class="shadow-md font-medium py-2 px-16 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
                             Contact
                         </a>
@@ -61,8 +60,7 @@
                         NIPPIT CHOTIGO
                     </div>
                     <div class="text-xl sm:mt-4 text-left">
-                        <div class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
-                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        <div class="mb-5">62130500044 <br>Responsibilty : Database, Devops, Back-End</div>
                         <a href="https://www.facebook.com/nippit.kin" class="shadow-md font-medium py-2 px-16 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
                             Contact
                         </a>
@@ -87,8 +85,7 @@
                         WARISARA KHRUAJINLI
                     </div>
                     <div class="text-xl sm:mt-4 text-left">
-                        <div class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
-                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        <div class="mb-5">62130500084 <br>Responsibilty : Front-End, Back- End</div>
                         <a href="https://www.facebook.com/warisarakhrua/" class="shadow-md font-medium py-2 px-16 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
                             Contact
                         </a>
