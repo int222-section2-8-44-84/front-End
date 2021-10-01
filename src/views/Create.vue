@@ -294,7 +294,7 @@ export default {
           )
       // console.log(formData);
       
-      await fetch( urlCreatePost, {
+      await fetch( this.urlCreatePost, {
         method: "POST",
         // headers: {
         //   "Content-type": "application/json",
