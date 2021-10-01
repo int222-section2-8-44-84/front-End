@@ -231,8 +231,8 @@ export default {
       ) {
         // this.addPostsData();
         this.addAllPostsData();
+        this.$router.push("/");
       }
-
       // console.log(
       //   "postTitle: " + this.postTitle,
       //   "food: " + this.foodName,

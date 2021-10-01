@@ -30,7 +30,7 @@
         <div class="md:flex items-center -mx-10">
             <div class="w-full md:w-1/2 px-10 mb-10 md:mb-0">
                 <div class="relative">
-                    <img :src="createImageUrl(post.imageName)" class="w-full relative z-10" alt="">
+                    <img :src="createImageUrl(post.imageName)" class="w-full relative z-10">
                     <!-- <div class="border-4 border-yellow-200 absolute top-10 bottom-10 left-10 right-10 z-0"></div> -->
                 </div>
             </div>
