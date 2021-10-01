@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div @click="categoryTabs(3),filterByCategoryId(3)" v-bind:class="{'bg-white': openTab !== 3, 'bg-roseMadder': openTab === 3}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div @click="categoryTabs(3),filterByCategoryId(2)" v-bind:class="{'bg-white': openTab !== 3, 'bg-roseMadder': openTab === 3}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
                     <img class="w-24" src="../assets/dessertblack.png">
@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <div @click="categoryTabs(4),filterByCategoryId(2)" v-bind:class="{'bg-white': openTab !== 4, 'bg-roseMadder': openTab === 4}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
+        <div @click="categoryTabs(4),filterByCategoryId(3)" v-bind:class="{'bg-white': openTab !== 4, 'bg-roseMadder': openTab === 4}" class="bg-white shadow-md hover:bg-roseMadder transform hover:-translate-y-1 cursor-pointer rounded-lg transition duration-500 hover:shadow-2xl flex items-center justify-between p-3 text-white font-medium">
             <div class="mx-auto text-center">
                 <div class="flex flex-col items-center justify-center h-40 w-full">
                      <img class="w-24" src="../assets/drinkblack.png">
