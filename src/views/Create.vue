@@ -275,7 +275,6 @@ export default {
           categoryId: this.category,
         })
       formData.append("post", post);
-      
       formData.append("tags",JSON.stringify(this.tagsData));
       formData.append("file",this.image,this.image.name);
 
