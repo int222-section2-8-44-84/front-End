@@ -27,12 +27,13 @@
         <div class="m-auto max-w-6xl p-12 sm:mt-12 lg:mt-2">
             <div class="flex flex-col md:flex-row justify-center">
                 <div class="md:w-1/3 max-w-md flex flex-col justify-center">
-                    <div class="md:text-5xl text-2xl text-left uppercase font-extrabold">
+                    <div class="xl:text-5xl lg:text-3xl md:text-3xl text-2xl text-left uppercase font-extrabold">
                         KRITSANAPON RAKKIATNGAM
                     </div>
                     <div class="text-xl sm:mt-4 text-left">
-                        <div class="mb-5">62130500008 <br>Responsibilty : Database, Front-End, Back-End</div>
-                        <a href="https://www.facebook.com/kritsanapon.melolonjino" class="shadow-md font-medium py-2 px-16 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
+                        <!-- <div class="mb-5">62130500008 <br>Responsibilty : Database, Front-End, Back-End</div> -->
+                        <div class="mb-5">Lorem ipsum dolor sit amet, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                        <a href="https://github.com/MeLoLonjiNo" class="shadow-md font-medium py-2 px-16 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
                             Contact
                         </a>
                     </div>
@@ -42,26 +43,24 @@
                 <div class="flex md:justify-end w-full md:w-1/2 sm:-mt-5">
                     <div class="bg-dots">
                         <div class="max-w-md z-10 mt-6 ml-4">
-                            <img alt="card img" class="shadow-2xl lg:w-80 lg:h-auto rounded-full" src="../assets/melo.jpeg">
+                            <img alt="card img" class="shadow-2xl w-64 md:w-64 lg:w-80 2xl:w-80 2xl:h-auto rounded-full" src="../assets/melo.jpeg">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
-
-
         <!-- component -->
         <div class="m-auto max-w-6xl p-12 sm:mt-12 lg:mt-2">
             <div class="flex flex-col md:flex-row justify-center">
                 <div class="md:w-1/3 max-w-md flex flex-col justify-center">
-                    <div class="md:text-5xl text-2xl text-left uppercase font-extrabold">
+                    <div class="xl:text-5xl lg:text-3xl md:text-3xl text-2xl text-left uppercase font-extrabold">
                         NIPPIT CHOTIGO
                     </div>
                     <div class="text-xl sm:mt-4 text-left">
-                        <div class="mb-5">62130500044 <br>Responsibilty : Database, Devops, Back-End</div>
-                        <a href="https://www.facebook.com/nippit.kin" class="shadow-md font-medium py-2 px-16 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
+                        <!-- <div class="mb-5">62130500044 <br>Responsibilty : Database, Devops, Back-End</div> -->
+                        <div class="mb-5">Lorem ipsum dolor sit amet, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                        <a href="https://github.com/Chicky0" class="shadow-md font-medium py-2 px-16 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
                             Contact
                         </a>
                     </div>   
@@ -70,7 +69,7 @@
                 <div class="flex md:justify-end w-full md:w-1/2 sm:-mt-5">
                     <div class="bg-dots">
                         <div class="max-w-md z-10 mt-6 ml-4">
-                            <img alt="card img" class="shadow-2xl lg:w-80 lg:h-auto rounded-full" src="../assets/nippit.jpg">
+                            <img alt="card img" class="shadow-2xl w-64 md:w-64 lg:w-80 2xl:w-80 2xl:h-auto rounded-full" src="../assets/nippit.jpg">
                         </div>
                     </div>
                 </div>
@@ -81,12 +80,13 @@
         <div class="m-auto max-w-6xl p-12 sm:mt-12 lg:mt-2">
             <div class="flex flex-col md:flex-row justify-center">
                 <div class="md:w-1/3 max-w-md flex flex-col justify-center">
-                    <div class="md:text-5xl text-2xl text-left uppercase font-extrabold">
+                    <div class="xl:text-5xl lg:text-3xl md:text-3xl text-2xl text-left uppercase font-extrabold">
                         WARISARA KHRUAJINLI
                     </div>
                     <div class="text-xl sm:mt-4 text-left">
-                        <div class="mb-5">62130500084 <br>Responsibilty : Front-End, Back- End</div>
-                        <a href="https://www.facebook.com/warisarakhrua/" class="shadow-md font-medium py-2 px-16 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
+                        <!-- <div class="mb-5">62130500084 <br>Responsibilty : Front-End, Back- End</div> -->
+                        <div class="mb-5">Lorem ipsum dolor sit amet, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                        <a href="https://github.com/warisara-khruajinli" class="shadow-md font-medium py-2 px-16 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
                             Contact
                         </a>
                     </div>
@@ -95,7 +95,7 @@
                 <div class="flex md:justify-end w-full md:w-1/2 sm:-mt-5">
                     <div class="bg-dots">
                         <div class="max-w-md z-10 mt-6 ml-4">
-                            <img alt="card img" class="shadow-2xl lg:w-auto lg:h-80 rounded-full" src="../assets/namwaan.jpg"> 
+                            <img alt="card img" class="shadow-2xl w-64 md:w-64 lg:w-80 2xl:w-80 2xl:h-auto rounded-full" src="../assets/namwaan.jpg"> 
                         </div>
                     </div>
                 </div>

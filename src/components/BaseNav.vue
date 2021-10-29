@@ -37,7 +37,7 @@
         </ul>
     </div>
 
-    <div>
+    <!-- <div>
       <input
         
         type="text" 
@@ -48,7 +48,8 @@
         dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-teal-500 
         dark:focus:border-teal-500 focus:outline-none focus:ring focus:ring-primary 
         dark:placeholder-gray-400 focus:ring-opacity-40"> 
-    </div>
+    </div> -->
+    
     <!-- <button style="font-size: 32px;" class="ml-2 ri-close-line" v-on:click="searchinput()" v-else></button>
     <i style="font-size: 32px;" class="ml-2 ri-search-line"></i> -->
 
@@ -90,10 +91,10 @@ export default {
     }
   },
   methods: {
-    searchinput(){
-        this.click = !this.click,
-        this.input = ''
-    },
+    // searchinput(){
+    //     this.click = !this.click,
+    //     this.input = ''
+    // },
     toggleModal: function(){
       this.showModal = !this.showModal;
       // console.log(this.invalidEmailInput);
@@ -102,25 +103,6 @@ export default {
     toggleTabs: function(tabNumber){
       this.openTab = tabNumber
     },
-    // submitLoginForm() {
-    //   // if(this.email === ""){
-    //   //   this.invalidEmailInput = true
-    //   // }
-    //   this.invalidEmailLogin = (this.emailLogin === "") ? true : false;
-    //   this.invalidPassLogin = (this.passLogin === "") ? true : false;
-    //   // console.log(
-    //   //   // "Email: " + this.email
-
-    //   // );
-    //   console.log(this.invalidEmailInput);
-    //   console.log(this.invalidPassInput);
-    //   // this.$router.push("/");
-    // },
-    // submitRegisForm(){
-    //   this.invalidUseRegis = (this.userRegis === "") ?  true : false;
-    //   this.invalidEmailRegis = (this.emailRegis === "") ? true : false;
-    //   this.invalidPassRegis = (this.passRegis === "") ? true : false;
-    // }
   },
   // computed: {
   //   filterSearch(){

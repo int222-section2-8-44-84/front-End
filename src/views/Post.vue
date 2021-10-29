@@ -21,8 +21,13 @@
     </div>
     <base-nav-mobile v-if="showNav" />
     <base-nav v-if="!mobileView" />
-    
-    
+
+    <!-- Status Del -->
+    <div v-show="checktran">
+        <div v-show="red" class="bg-red-500 py-2 w-full text-white text-center">Error !! : {{errorMessage}}</div>
+        <div v-show="green" class="bg-green-500 py-2 w-full text-white text-center">Delete success</div>
+    </div>
+
 <!-- Body-->
 <!-- <div v-for="post in posts" :key="post.postNumber"> -->
 <div class="min-w-screen flex items-center p-5 lg:p-8 relative">
@@ -72,11 +77,19 @@
 
                 <div class="flex">
                     <router-link to='/Edit'>
-                        <button class="text-white mr-2 bg-yellow-400 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded shadow-lg">Edit</button>
+                        <button @click="sendEditingPost(this.post)" class="text-white mr-2 bg-yellow-400 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded shadow-lg">Edit</button>
                     </router-link>
-                    <router-link to=''>
-                        <button class="text-white bg-red-500 border-0 py-2 px-4 focus:outline-none hover:bg-red-600 rounded shadow-lg" @click="deletePost(post.postNumber)">Delete</button>
-                    </router-link>
+                    <button @click="deletePost(post.postNumber)" class="text-white bg-red-500 border-0 py-2 px-4 focus:outline-none hover:bg-red-600 rounded shadow-lg">Delete</button>
+                    <div v-if="checkDel" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+                        <confirm-delete
+                        @adding-close-modal="delModal"
+                        :id="id"
+                        @check="check"
+                        >
+                        </confirm-delete>
+                    </div>
+                    <div v-if="checkDel" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                        
                     <button class="flex ml-auto ri-thumb-up-fill rounded-full w-10 h-10 bg-white shadow-lg p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 hover:bg-blue-500 hover:text-white"></button>
                     <!-- <span class="ml-2">15</span> -->
                     <button class="ri-thumb-down-fill rounded-full w-10 h-10 bg-white shadow-lg  p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 hover:bg-red-500 hover:text-white"></button>
@@ -105,22 +118,44 @@ export default {
     return {
     mobileView: true,
     showNav: false,
-        urlpost: "http://localhost:3000/posts/",
-        urlImage: "http://localhost:3000/files/",
-        urlDelete: "http://localhost:3000/deletePost/",
-        // urlcategory: "http://localhost:3000/showAllCategories",
-        post: null,
-        // categories: [],
-        reviewRateStarColors: ["DEDEDE","DEDEDE","DEDEDE","DEDEDE","DEDEDE"]
+    urlpost: "http://localhost:3000/posts/",
+    urlImage: "http://localhost:3000/files/",
+    urlDelete: "http://localhost:3000/deletePost/",
+    post: null,
+    reviewRateStarColors: ["DEDEDE","DEDEDE","DEDEDE","DEDEDE","DEDEDE"],
+    checktran:false,
+    errorMessage: null,
+    red:false,
+    green:false,
+    checkDel: false,
+    id: 0
     };
   },
-
+  emits:[
+    "edit-post"
+  ],
   methods: {
+    sendEditingPost(posts){
+        this.$emit('edit-post',posts)
+    },
     showNavHam() {
       this.showNav = !this.showNav;
     },
     handleView() {
       this.mobileView = window.innerWidth <= 990;
+    },
+    check(c) {
+        this.errorMessage = c.errorMessage
+        this.red = c.red
+        this.green = c.green
+        this.checktran = c.checktran
+    },
+    delModal () {
+        // console.log('Second Step')
+        this.checkDel = !this.checkDel;
+    },
+    createImageUrl(postimage){
+        return this.urlImage + postimage
     },
     async getPostsData(url){
         try {
@@ -132,17 +167,30 @@ export default {
             console.log(`Could not get ${error}`)
         }
     },
-    createImageUrl(postimage){
-        return this.urlImage + postimage
-    },
-    
     async deletePost(postNumber){
-        await fetch(`${this.urlDelete}/${postNumber}`, {
-        method: "DELETE",
-      });
-    alert("Delete: "+postNumber+" complete.")
-    this.$router.push("/");
-},
+        this.checkDel = !this.checkDel;
+        this.id = postNumber
+    //     const res = await fetch(`${this.urlDelete}/${postNumber}`, {
+    //     method: "DELETE",
+    //   });
+    //   if(res.ok){
+    //       await this.getPostsData()
+    //       this.checktran = true;
+    //       this.red = false;
+    //       this.green = true;
+    //       setTimeout(()=>{this.checktran = false } , 5000);
+    //   } else {
+    //       this.checktran = true;
+    //       this.red = false;
+    //       this.green = true;
+    //       this.errorMessage = await res.json().message;
+    //       setTimeout(()=>{this.checktran = false } , 5000);
+    //   }
+    //   location.reload();
+    //setTimeout(function(){location.reload()}, 5000);
+    // alert("Delete: "+postNumber+" complete.")
+    // this.$router.push("/");
+    },
   },
 
   async created() {
@@ -158,11 +206,8 @@ export default {
     for (let i=0; i<this.post.reviewRate; i++){
         this.reviewRateStarColors[i] = "F3C04B"
     }
-    //console.log(this.reviewRateStarColors)
-    
+    console.log(this.reviewRateStarColors)
   }
-
-  
 };
 </script>
 

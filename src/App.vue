@@ -3,12 +3,21 @@
     <!-- <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> -->
   </div>
-<router-view/>
+<router-view :post="updatingObject" @edit-post="editPost"/>
 </template>
 
 <script>
 export default {
-  methods:{}
+  data(){
+    return {
+      updatingObject:[]
+    }
+  },
+  methods:{
+    editPost(post){
+      this.updatingObject = post;
+    }
+  }
 }
 </script>
 
