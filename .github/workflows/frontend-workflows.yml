@@ -39,4 +39,4 @@ jobs:
             sudo docker rm -f frontend
             sudo docker rmi ghcr.io/chicky0/int222-frontend
             sudo docker pull ghcr.io/chicky0/int222-frontend:latest
-            sudo docker-compose up -d
+            sudo docker-compose up -d 
