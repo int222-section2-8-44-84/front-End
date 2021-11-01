@@ -1,4 +1,4 @@
-  name: deploy-frontend-int222
+name: deploy-frontend-int222
 on:
   push:
     branches:
