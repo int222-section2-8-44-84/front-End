@@ -127,20 +127,14 @@ export default {
       this.openTab = tabNumber
     },
     submitLoginForm() {
-      // if(this.email === ""){
-      //   this.invalidEmailInput = true
-      // }
       this.invalidEmailLogin = (this.emailLogin === "") ? true : false;
       this.invalidPassLogin = (this.passLogin === "") ? true : false;
-      // console.log(
-      //   // "Email: " + this.email
-
-      // );
-      console.log(this.invalidEmailInput);
-      console.log(this.invalidPassInput);
+      // console.log(this.invalidEmailInput);
+      // console.log(this.invalidPassInput);
       // this.$router.push("/");
       if(this.invalidEmailLogin==false&&this.invalidPassLogin==false){
         this.closeForm();
+        
       }
       
     },
