@@ -20,7 +20,13 @@
         </div>
         <base-nav-mobile v-if="showNav" />
         <base-nav v-if="!mobileView" />
-        
+
+    <!-- Status -->
+    <div v-show="checktran">
+        <div v-show="red" class="bg-red-500 py-2 w-full text-white text-center">Error !! : {{errorMessage}}</div>
+        <div v-show="green" class="bg-green-500 py-2 w-full text-white text-center">Success</div>
+    </div> 
+
         <!-- Form Create -->
         <form @submit.prevent="submitForm">
         <div class="items-center justify-center flex h-4/5 mt-8">
@@ -56,9 +62,9 @@
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Price</label>
                 <div class="flex flex-row">
                   <span class="flex items-center bg-grey-lighter rounded rounded-r-none mr-2 font-bold text-gray-500">THB</span>
-                  <input v-model="price" class="w-full py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="number"/>
+                  <input v-model="price" class="w-full py-2 px-3 rounded-lg border-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" />
                 </div>
-                <p v-if="invalidPrice" class="text-red-500 text-xs text-left italic">** Please enter your price! **</p>
+                <p v-if="invalidPrice" class="text-red-500 text-xs text-left italic">** Please enter your Price! **</p>
             </div>
             <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Category</label>
@@ -78,7 +84,7 @@
                     <label :for="key" class="ml-2">{{ tag.tag }}</label>
                   </div>
               </div>
-              <p v-if="invalidTags" class="text-red-500 text-xs text-left italic">** Please enter your Tags! **</p>
+              <!-- <p v-if="invalidTags" class="text-red-500 text-xs text-left italic">** Please enter your Tags! **</p> -->
             </div>
 
             <div class="grid grid-cols-1 mt-5 mx-7">
@@ -98,7 +104,7 @@
                             <p class='lowercase text-sm text-gray-400 group-hover:text-roseMadder pt-1 tracking-wider'>Select a photo</p>
                         </div>
                         <div id="preview" v-else>
-                            <img :src="imageshow" class="object-cover object-top w-auto max-h-96"/>
+                            <img :src="imageshow" class="object-cover object-top mx-auto w-auto max-h-96"/>
                         </div>
                             <input id="file-input" type="file" class="hidden" @change="uploadPhoto($event)" />
                     </label>
@@ -107,7 +113,7 @@
             </div>
 
             <div class="grid grid-cols-1 mt-5 mx-7 pb-3">
-              <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Rating</label>
+              <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Rate for you</label>
                 <div class="flex justify-center">
                     <button type="button" v-for="i in 5" :key="i" :class="{ 'mr-1': i < 5 }" @click="ratingStar(i)" class="focus:outline-none">
                     <svg class="block h-8 w-8" :class="[value >= i ? 'text-yellow-400' : 'text-gray-200']" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -146,6 +152,7 @@ export default {
         // postTime: '',
         user: 1,
         rating: 0,
+        value: '',
         tags: [],
         tagsData: [],
         category: '',
@@ -161,10 +168,23 @@ export default {
         invalidImage: false,
         mobileView: true,
         showNav: false,
+
+        
+    checktran:false,
+    errorMessage: null,
+    red:false,
+    green:false,
+
+        urlcategory: "http://localhost:3000/showAllCategories",
+        urlpost: "http://localhost:3000/posts",
+        urltag: "http://localhost:3000/showAllTags",
+        urlposthastag: "http://localhost:3000/showPostsHasTags",
+
         urlcategory: "http://13.76.247.191:3000/showAllCategories",
         urlpost: "http://13.76.247.191:3000/posts",
         urltag: "http://13.76.247.191:3000/showAllTags",
         urlposthastag: "http://13.76.247.191:3000/showPostsHasTags",
+
         // urladdpost: "http://localhost:3000/createPost",
         // urladdupload: "http://localhost:3000/uploadimage",
         urlCreatePost: "http://13.76.247.191:3000/createPostWithImage",
@@ -172,7 +192,6 @@ export default {
         categories: [],
         tag: [],
         posts: [],
-        value: 0,
     };
   },
 
@@ -201,26 +220,27 @@ export default {
     },
     resetCreate(){
       this.postTitle = null
+      this.foodName = null
+      this.restaurant = null
       this.price = null
-      this.tags = null
       this.category = null
       this.description = null
       this.image = null
       this.imageshow = null
       this.tags = []
       this.tagsData = []
+      this.value = null
     },
     submitForm() {
     this.invalidPostTitle = (this.postTitle === "") ? true : false;
     this.invalidFoodName = (this.foodName === "") ? true : false;
     this.invalidRestaurant = (this.restaurant === "") ? true : false;
     this.invalidPrice = (this.price === "") ? true : false;
-    this.invalidTags = (this.tags.length === 0 ) ? true : false;
+    // this.invalidTags = (this.tags.length === 0 ) ? true : false;
     this.invalidCategory = (this.category === "") ? true : false;
     this.invalidDescription = (this.description === "") ? true : false;
-    this.invaildRating = (this.rating === "") ? true : false;
+    this.invaildRating = (this.value === "") ? true : false;
     this.invalidImage = (this.image === "") ? true : false;
-    //document.getElementById("tags").value == "" ? true : false;
 
       if (
         this.postTitle !== "" &&
@@ -235,6 +255,7 @@ export default {
       ) {
         // this.addPostsData();
         this.addAllPostsData();
+        setTimeout(function(){location.reload()}, 1000);
         this.$router.push("/");
       }
       // console.log(
@@ -249,7 +270,7 @@ export default {
       // );
 
     },
-    async addAllPostsData(){ 
+    async addAllPostsData(){
       this.tagsData = [];
       for(let i=0;i < this.tags.length;i++){
         if(this.tags[i] == true){
@@ -292,15 +313,34 @@ export default {
           "categoryId: "+ this.category
           )
       // console.log(formData);
+
+
+      var url = "http://localhost:3000/"
+      const res = await fetch(url+"createPostWithImage",{ 
       
       await fetch( this.urlCreatePost, {
         method: "POST",
-        // headers: {
-        //   "Content-type": "application/json",
-        // },
         body: formData
       });
-      
+      if(res.ok){
+        this.checktran = true;
+        this.red = false;
+        this.green = true;
+        setTimeout(()=>{this.checktran = false } , 1000);
+      }else {
+        this.checktran = true;
+        this.red = true;
+        this.green = false;
+        this.errorMessage = await res.json().message
+        console.log (this.errorMessage)
+        setTimeout(()=>{this.checktran = false } , 1000);
+      }
+
+      // await fetch("http://localhost:3000/createPostWithImage", {
+      //   method: "POST",
+      //   body: formData
+      // });
+
     },
     async addTags(tag){
       await fetch(this.urltag, {
@@ -313,15 +353,6 @@ export default {
         ),
       });
     },
-    // async addUploadPhoto(p){
-    //   var formData = new FormData();
-    //   formData.append("file",p,p.name);
-    //   await fetch(this.urladdupload, {
-    //     method: "POST",
-    //     body: formData,
-    //   });
-    // },
-
     async getBackEndData(url) {
       try {
         const res = await fetch(url);
@@ -331,7 +362,6 @@ export default {
         console.log(`Could not get ${error}`);
       }
     },
-
   },
   async created() {
     this.handleView();

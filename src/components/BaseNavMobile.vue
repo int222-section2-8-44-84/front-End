@@ -43,12 +43,20 @@
           <div class="flex justify-center items-center mt-1">
             <span class="text-sm mt-1"></span>
             <div style="font-size: 24px;">
-                <i class="ri-user-3-line"></i>
+                <button v-on:click="toggleModal()" class="ri-user-3-line"></button>
+                <div v-if="showModal" class="p-4 overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+                  <pop-up
+                    :showModal="showModal"
+                    @adding-showModal='toggleModal'
+                  >
+                  </pop-up>
+                </div>
+            <div v-if="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
             </div>
           </div>
           <!-- </router-link> -->
 
-          <div>
+          <!-- <div>
             <input 
               type="search" 
               name="query" 
@@ -58,7 +66,7 @@
               dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-teal-500 
               dark:focus:border-teal-500 focus:outline-none focus:ring focus:ring-primary 
               dark:placeholder-gray-400 focus:ring-opacity-40">
-          </div> 
+          </div>  -->
           
         </div>
       </div>
@@ -73,11 +81,17 @@ export default {
     return {
       mobileView: true,
       showNav: false,
+      showModal: false,
     };
   },
   methods: {
     showNavHam() {
       this.showNav = !this.showNav;
+    },
+    toggleModal: function(){
+      this.showModal = !this.showModal;
+      // console.log(this.invalidEmailInput);
+      // console.log(this.invalidPassInput);
     },
   },
 };
