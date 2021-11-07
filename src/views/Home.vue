@@ -93,8 +93,12 @@
                         <div class="sm:my-3 sm:mx-4 md:my-2 md:mx-2 my-2 mx-3">
                             <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.food }}</h2>
                             <p class="mt-1 sm:text-base text-xs">Restaurant : {{post.restaurant}}</p>
-                            <p class="mt-1 sm:text-base text-xs">Price : THB {{post.foodPrice}}</p>
-                            <span class="flex mt-1 pb-4 justify-center">
+                            <p class="mt-1 mb-2 sm:text-base text-xs">Price : THB {{post.foodPrice}}</p>
+                            <span v-for="tag in post.postTags" :key="tag.tagId" class="sm:text-base text-xs text-white mr-2 bg-red-600 px-2 rounded-lg">{{tag.tags.tag}}</span>
+                            <!-- <div class="mt-1 sm:text-base text-xs text-gray-500">Tag : 
+                                <span v-for="tag in post.postTags" :key="tag.tagId" class="mr-2">{{tag.tags.tag}}</span>
+                            </div> -->
+                            <span class="flex mt-3 pb-4 justify-center">
                                 <svg v-for="starColor in this.reviewRateStarColors" :key="starColor" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24" :style="{'color': starColor}">
                                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                                 </svg>
@@ -117,8 +121,9 @@
                 <div class="sm:my-3 sm:mx-4 md:my-2 md:mx-2 my-2 mx-3">
                     <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.food }}</h2>
                     <p class="mt-1 sm:text-base text-xs">Restaurant : {{post.restaurant}}</p>
-                    <p class="mt-1 sm:text-base text-xs">Price : THB {{post.foodPrice}}</p>
-                    <span class="flex mt-1 pb-4 justify-center">
+                    <p class="mt-1 mb-2 sm:text-base text-xs">Price : THB {{post.foodPrice}}</p>
+                    <span v-for="tag in post.postTags" :key="tag.tagId" class="sm:text-base text-xs text-white mr-2 bg-red-600 px-2 rounded-lg">{{tag.tags.tag}}</span>
+                    <span class="flex mt-3 pb-4 justify-center">
                         <svg v-for="starColor in this.reviewRateStarColors" :key="starColor" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24" :style="{'color': starColor}">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                         </svg>
@@ -141,8 +146,9 @@
                 <div class="sm:my-3 sm:mx-4 md:my-2 md:mx-2 my-2 mx-3">
                     <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.food }}</h2>
                     <p class="mt-1 sm:text-base text-xs">Restaurant : {{post.restaurant}}</p>
-                    <p class="mt-1 sm:text-base text-xs">Price : THB {{post.foodPrice}}</p>
-                    <span class="flex mt-1 pb-4 justify-center">
+                    <p class="mt-1 mb-2 sm:text-base text-xs">Price : THB {{post.foodPrice}}</p>
+                    <span v-for="tag in post.postTags" :key="tag.tagId" class="sm:text-base text-xs text-white mr-2 bg-red-600 px-2 rounded-lg">{{tag.tags.tag}}</span>
+                    <span class="flex mt-3 pb-4 justify-center">
                         <svg v-for="starColor in this.reviewRateStarColors" :key="starColor" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24" :style="{'color': starColor}">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                         </svg>
@@ -165,8 +171,9 @@
                 <div class="sm:my-3 sm:mx-4 md:my-2 md:mx-2 my-2 mx-3">
                     <h2 class="text-gray-900 title-font sm:text-lg text-sm font-semibold">{{ post.food }}</h2>
                     <p class="mt-1 sm:text-base text-xs">Restaurant : {{post.restaurant}}</p>
-                    <p class="mt-1 sm:text-base text-xs">Price : THB {{post.foodPrice}}</p>
-                    <span class="flex mt-1 pb-4 justify-center">
+                    <p class="mt-1 mb-2 sm:text-base text-xs">Price : THB {{post.foodPrice}}</p>
+                    <span v-for="tag in post.postTags" :key="tag.tagId" class="sm:text-base text-xs text-white mr-2 bg-red-600 px-2 rounded-lg">{{tag.tags.tag}}</span>
+                    <span class="flex mt-3 pb-4 justify-center">
                         <svg v-for="starColor in this.reviewRateStarColors" :key="starColor" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24" :style="{'color': starColor}">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                         </svg>
@@ -199,6 +206,7 @@ export default {
         urlpost: "http://localhost:3000/posts",
         urlImage: "http://localhost:3000/files/",
         posts: [],
+        tag: [],
         postViews: [],
         reviewRateStarColors: ["DEDEDE","DEDEDE","DEDEDE","DEDEDE","DEDEDE"],
         search: '',
@@ -225,6 +233,9 @@ export default {
             console.log(`Could not get ${error}`)
         }
     },
+    createImageUrl(postimage){
+        return this.urlImage + postimage
+    },
     filterByCategoryId(cId){
         if (cId == 1 || cId == 2 || cId ==3) {
             this.postViews = this.posts.filter(item => item.categoryId == cId);
@@ -232,13 +243,23 @@ export default {
             this.postViews = this.posts
         }
     },
-    createImageUrl(postimage){
-        return this.urlImage + postimage
+    filterByTags(posts){
+        // let x = [];
+        // let y = posts.postTags
+        // for (let i = 0; i < y.length; i++) {
+        //     if (this.y[i].tags.tag == this.search) {
+        //         this.x.push(posts[i])
+        //     }
+        // }
+        // return x
+        return posts.filter(t => t.postTags.tags.tag.toLowerCase().includes(this.search.toLowerCase()))
+        // <span v-for="tag in post.postTags" :key="tag.tagId">{{tag.tags.tag}}</span>
     },
     filterBySearch(posts) {
         return posts.filter(p => p.food.toLowerCase().includes(this.search.toLowerCase()))
     },
     returnFilter() {
+        // return this.filterByTags(this.filterBySearch(this.postViews))
         return this.filterBySearch(this.postViews)
     }
 

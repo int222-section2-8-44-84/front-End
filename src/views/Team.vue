@@ -32,7 +32,7 @@
                     </div>
                     <div class="text-xl sm:mt-4 text-left">
                         <!-- <div class="mb-5">62130500008 <br>Responsibilty : Database, Front-End, Back-End</div> -->
-                        <div class="mb-5">Lorem ipsum dolor sit amet, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                        <div class="mb-5">My name is Kritsanapon Rakkiatngam or you can call me MeLo, I am a third-year student in School Information Technology major at KMUTT.</div>
                         <a href="https://github.com/MeLoLonjiNo" class="shadow-md font-medium py-2 px-16 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
                             Contact
                         </a>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="text-xl sm:mt-4 text-left">
                         <!-- <div class="mb-5">62130500044 <br>Responsibilty : Database, Devops, Back-End</div> -->
-                        <div class="mb-5">Lorem ipsum dolor sit amet, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                        <div class="mb-5">My name is Nippit Chotigo or you can call me Kin, I am a third-year student in School Information Technology major at KMUTT.</div>
                         <a href="https://github.com/Chicky0" class="shadow-md font-medium py-2 px-16 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
                             Contact
                         </a>
@@ -85,7 +85,7 @@
                     </div>
                     <div class="text-xl sm:mt-4 text-left">
                         <!-- <div class="mb-5">62130500084 <br>Responsibilty : Front-End, Back- End</div> -->
-                        <div class="mb-5">Lorem ipsum dolor sit amet, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                        <div class="mb-5">My name is Warisara Khruajinli or you can call me Namwaan, I am a third-year student in School Information Technology major at KMUTT.</div>
                         <a href="https://github.com/warisara-khruajinli" class="shadow-md font-medium py-2 px-16 text-white cursor-pointer bg-red-500 hover:bg-red-600 rounded text-lg text-center w-48">
                             Contact
                         </a>
