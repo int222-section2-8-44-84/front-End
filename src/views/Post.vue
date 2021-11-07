@@ -118,7 +118,6 @@ export default {
     return {
     mobileView: true,
     showNav: false,
-
     urlpost: "http://localhost:3000/posts/",
     urlImage: "http://localhost:3000/files/",
     urlDelete: "http://localhost:3000/deletePost/",
@@ -130,7 +129,6 @@ export default {
     green:false,
     checkDel: false,
     id: 0
-
         urlpost: "http://13.76.247.191:3000/posts/",
         urlImage: "http://13.76.247.191:3000/files/",
         urlDelete: "http://13.76.247.191:3000/deletePost/",
@@ -177,7 +175,6 @@ export default {
             console.log(`Could not get ${error}`)
         }
     },
-
     createImageUrl(postimage){
         return this.urlImage + postimage
     },

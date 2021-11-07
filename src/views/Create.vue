@@ -180,6 +180,7 @@ export default {
         urltag: "http://localhost:3000/showAllTags",
         urlposthastag: "http://localhost:3000/showPostsHasTags",
 
+
         urlcategory: "http://13.76.247.191:3000/showAllCategories",
         urlpost: "http://13.76.247.191:3000/posts",
         urltag: "http://13.76.247.191:3000/showAllTags",
@@ -187,7 +188,6 @@ export default {
 
         // urladdpost: "http://localhost:3000/createPost",
         // urladdupload: "http://localhost:3000/uploadimage",
-        urlCreatePost: "http://13.76.247.191:3000/createPostWithImage",
         
         categories: [],
         tag: [],
@@ -314,6 +314,8 @@ export default {
           )
       // console.log(formData);
 
+      var url = "http://localhost:3000/"
+      const res = await fetch(url+"createPostWithImage",{ 
 
       var url = "http://localhost:3000/"
       const res = await fetch(url+"createPostWithImage",{ 

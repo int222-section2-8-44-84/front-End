@@ -201,12 +201,10 @@ export default {
   data() {
     return {
         openTab: 1,
-
         mobileView: true,
         showNav: false,
         urlpost: "http://localhost:3000/posts",
         urlImage: "http://localhost:3000/files/",
-
     mobileView: true,
     showNav: false,
         urlpost: "http://13.76.247.191:3000/posts",

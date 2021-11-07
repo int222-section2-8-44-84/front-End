@@ -93,13 +93,20 @@ export default {
           errorMessage = await res.json().message;
           setTimeout(()=>{checktran = false } , 9000);
       }
+
+      // location.reload()
+
       location.reload()
+
       this.$emit("check",{
         checktran:checktran,
         errorMessage:errorMessage,
         red:red,
         green:green,
       })
+
+      setTimeout( () => this.$router.push({ path: '/'}), 1000);
+
     },
 
   }
