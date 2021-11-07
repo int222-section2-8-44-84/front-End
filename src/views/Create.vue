@@ -168,6 +168,7 @@ export default {
         invalidImage: false,
         mobileView: true,
         showNav: false,
+
         
     checktran:false,
     errorMessage: null,
@@ -178,6 +179,13 @@ export default {
         urlpost: "http://localhost:3000/posts",
         urltag: "http://localhost:3000/showAllTags",
         urlposthastag: "http://localhost:3000/showPostsHasTags",
+
+
+        urlcategory: "http://13.76.247.191:3000/showAllCategories",
+        urlpost: "http://13.76.247.191:3000/posts",
+        urltag: "http://13.76.247.191:3000/showAllTags",
+        urlposthastag: "http://13.76.247.191:3000/showPostsHasTags",
+
         // urladdpost: "http://localhost:3000/createPost",
         // urladdupload: "http://localhost:3000/uploadimage",
         
@@ -308,6 +316,11 @@ export default {
 
       var url = "http://localhost:3000/"
       const res = await fetch(url+"createPostWithImage",{ 
+
+      var url = "http://localhost:3000/"
+      const res = await fetch(url+"createPostWithImage",{ 
+      
+      await fetch( this.urlCreatePost, {
         method: "POST",
         body: formData
       });
