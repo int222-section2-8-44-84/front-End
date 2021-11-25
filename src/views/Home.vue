@@ -99,7 +99,7 @@
                                 <span v-for="tag in post.postTags" :key="tag.tagId" class="mr-2">{{tag.tags.tag}}</span>
                             </div> -->
                             <span class="flex mt-3 pb-4 justify-center">
-                                <svg v-for="starColor in this.reviewRateStarColors" :key="starColor" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24" :style="{'color': starColor}">
+                                <svg v-for="starColor in this.reviewRateStar(post.reviewRate)" :key="starColor" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24" :style="{'color': starColor}">
                                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                                 </svg>
                             </span>
@@ -124,7 +124,7 @@
                     <p class="mt-1 mb-2 sm:text-base text-xs">Price : THB {{post.foodPrice}}</p>
                     <span v-for="tag in post.postTags" :key="tag.tagId" class="sm:text-base text-xs text-white mr-2 bg-red-600 px-2 rounded-lg">{{tag.tags.tag}}</span>
                     <span class="flex mt-3 pb-4 justify-center">
-                        <svg v-for="starColor in this.reviewRateStarColors" :key="starColor" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24" :style="{'color': starColor}">
+                        <svg v-for="starColor in this.reviewRateStar(post.reviewRate)" :key="starColor" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24" :style="{'color': starColor}">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                         </svg>
                     </span>
@@ -149,7 +149,7 @@
                     <p class="mt-1 mb-2 sm:text-base text-xs">Price : THB {{post.foodPrice}}</p>
                     <span v-for="tag in post.postTags" :key="tag.tagId" class="sm:text-base text-xs text-white mr-2 bg-red-600 px-2 rounded-lg">{{tag.tags.tag}}</span>
                     <span class="flex mt-3 pb-4 justify-center">
-                        <svg v-for="starColor in this.reviewRateStarColors" :key="starColor" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24" :style="{'color': starColor}">
+                        <svg v-for="starColor in this.reviewRateStar(post.reviewRate)" :key="starColor" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24" :style="{'color': starColor}">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                         </svg>
                     </span>
@@ -174,7 +174,7 @@
                     <p class="mt-1 mb-2 sm:text-base text-xs">Price : THB {{post.foodPrice}}</p>
                     <span v-for="tag in post.postTags" :key="tag.tagId" class="sm:text-base text-xs text-white mr-2 bg-red-600 px-2 rounded-lg">{{tag.tags.tag}}</span>
                     <span class="flex mt-3 pb-4 justify-center">
-                        <svg v-for="starColor in this.reviewRateStarColors" :key="starColor" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24" :style="{'color': starColor}">
+                        <svg v-for="starColor in this.reviewRateStar(post.reviewRate)" :key="starColor" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24" :style="{'color': starColor}">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                         </svg>
                     </span>
@@ -208,7 +208,7 @@ export default {
         posts: [],
         tag: [],
         postViews: [],
-        reviewRateStarColors: ["DEDEDE","DEDEDE","DEDEDE","DEDEDE","DEDEDE"],
+        //reviewRateStarColors: ["DEDEDE","DEDEDE","DEDEDE","DEDEDE","DEDEDE"],
         search: '',
     };
   },
@@ -261,6 +261,14 @@ export default {
     returnFilter() {
         // return this.filterByTags(this.filterBySearch(this.postViews))
         return this.filterBySearch(this.postViews)
+    },
+    reviewRateStar(reviewRate){
+        let stars = ["DEDEDE","DEDEDE","DEDEDE","DEDEDE","DEDEDE"];
+        for (let i = 0; i < reviewRate; i++) {
+            stars[i] = "F3C04B";
+        }
+        //console.log(stars);
+        return stars;
     }
 
 },
