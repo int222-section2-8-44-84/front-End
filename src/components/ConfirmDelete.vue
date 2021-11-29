@@ -50,8 +50,8 @@ export default {
   data() {
     return {
         checktran: false,
-        urlDelete: "http://localhost:3000/DeletePost",
-        urlpost: "http://localhost:3000/posts/",
+        urlDelete: "http://localhost:3000/deletePost",
+        urlpost: "http://localhost:3000/posts",
     }
   },
   methods: {
@@ -73,12 +73,16 @@ export default {
         }
     },
     async deletePost(postNumber){
+      var token = localStorage.getItem("token");
       let checktran;
       let errorMessage;
       let red;
       let green;
         const res = await fetch(`${this.urlDelete}/${postNumber}`, {
         method: "DELETE",
+        headers: {
+            "Authorization": token,
+          },
       });
       if(res.ok){
           await this.getPostsData(this.urlpost)

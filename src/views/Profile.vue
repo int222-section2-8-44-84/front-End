@@ -29,9 +29,9 @@
             <div class="w-full lg:w-1/2 md:w-1/2 px-5 md:pr-12 xl:pr-24">
                 <div class="mb-3">
                     <h1 class="font-bold uppercase text-4xl pb-4">Profile</h1>
-                    <h1 class="text-base pb-2">Username : @Username</h1>
-                    <p class="text-base pb-2">Email : Sebastian.Schrama@ueber.io</p>
-                    <p class="text-base pb-2">Role : Admin</p>
+                    <h1 class="text-base pb-2">Username : {{this.account.userID}}</h1>
+                    <p class="text-base pb-2">Email : {{this.account.email}}</p>
+                    <p class="text-base pb-2">Role :{{this.account.role.role}}</p>
                 </div>
 
                 <div class="flex">
@@ -76,6 +76,8 @@ export default {
       showNav: false,
       showPro: false,
       checkDel: false,
+      account: null,
+      accountTags: "http://localhost:3000/me"
     };
   },
 
@@ -96,10 +98,28 @@ export default {
       this.checkDel = !this.checkDel;
     },
 
+    async getBackEndData(url) {
+      var token = localStorage.getItem("token");
+      console.log(token);
+      try {
+        const res = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Authorization": token,
+          },
+        });
+        const data = await res.json();
+        return data;
+      } catch (error) {
+        console.log(`Could not get ${error}`);
+      }
+    },
+
   },
-  created() {
+  async created() {
     this.handleView();
     window.addEventListener("resize", this.handleView);
+    this.account = await this.getBackEndData(this.accountTags);
   },
 };
 </script>

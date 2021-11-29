@@ -474,7 +474,9 @@ export default {
       restaurant: "",
       price: "",
       // postTime: '',
-      user: 1,
+      user: null,
+      userID: "",
+      accountNumber: "",
       rating: 0,
       value: "",
       tags: [],
@@ -502,6 +504,7 @@ export default {
       urlpost: "http://localhost:3000/posts",
       urltag: "http://localhost:3000/showAllTags",
       urlposthastag: "http://localhost:3000/showPostsHasTags",
+      urluser: "http://localhost:3000/me",
       // urladdpost: "http://localhost:3000/createPost",
       // urladdupload: "http://localhost:3000/uploadimage",
 
@@ -570,9 +573,16 @@ export default {
         this.tags.length !== 0
       ) {
         // this.addPostsData();
-        this.addAllPostsData();
-        //setTimeout(function(){location.reload()}, 1000);
-        //this.$router.push("/");
+        try {
+          this.addAllPostsData().then
+          setTimeout(function(){location.reload()}, 1000);
+          this.$router.push("/");
+        } catch (error) {
+          console.log(error);
+        }
+        //this.addAllPostsData();
+        // setTimeout(function(){location.reload()}, 1000);
+        // this.$router.push("/");
       }
       // console.log(
       //   "postTitle: " + this.postTitle,
@@ -607,8 +617,8 @@ export default {
         reviewRate: this.rating,
         postTime: today,
         imageName: this.image.name,
-        posterName: "MeLoLonJiNo",
-        accountNumber: 2,
+        posterName: this.userID,
+        accountNumber: this.accountNumber,
         categoryId: this.category,
       });
       formData.append("post", post);
@@ -624,7 +634,8 @@ export default {
         "reviewRate: " + this.rating,
         "postTime: " + today,
         "imageName: " + this.image.name,
-        "userNumber: " + this.user,
+        "posterName: " + this.userID,
+        "accountNumber: " + this.accountNumber,
         "tag: " + this.tagsData,
         "categoryId: " + this.category
       );
@@ -675,7 +686,7 @@ export default {
     },
     async getBackEndData(url) {
       var token = localStorage.getItem("token");
-      console.log(token);
+      //console.log(token);
       try {
         const res = await fetch(url, {
           method: "GET",
@@ -696,6 +707,9 @@ export default {
     this.posts = await this.getBackEndData(this.urlpost);
     this.categories = await this.getBackEndData(this.urlcategory);
     this.tag = await this.getBackEndData(this.urltag);
+    this.user = await this.getBackEndData(this.urluser);
+    this.userID = this.user.userID,
+    this.accountNumber = this.user.accountNumber
   },
 };
 </script>

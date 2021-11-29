@@ -159,16 +159,23 @@ export default {
     createImageUrl(postimage){
         return this.urlImage + postimage
     },
-    async getPostsData(url){
-        try {
-            const res = await fetch(url)
-            const data = await res.json()
-            return data
-        }
-        catch(error){
-            console.log(`Could not get ${error}`)
-        }
+    async getBackEndData(url) {
+      var token = localStorage.getItem("token");
+      console.log(token);
+      try {
+        const res = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Authorization": token,
+          },
+        });
+        const data = await res.json();
+        return data;
+      } catch (error) {
+        console.log(`Could not get ${error}`);
+      }
     },
+
     async deletePost(postNumber){
         this.checkDel = !this.checkDel;
         this.id = postNumber
@@ -198,7 +205,7 @@ export default {
   async created() {
     this.handleView();
     window.addEventListener("resize", this.handleView);
-    this.post = await this.getPostsData(this.urlpost+"/"+this.postNumber);
+    this.post = await this.getBackEndData(this.urlpost+this.postNumber);
     //console.log(this.postNumber)
     //console.log(this.post)
     if (this.post.reviewRate > 5){

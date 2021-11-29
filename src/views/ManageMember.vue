@@ -130,8 +130,8 @@ export default {
   async created() {
     this.handleView();
     window.addEventListener("resize", this.handleView);
-    this.allAccount = await this.getAllAccount(this.urlacc);
-    // this.getAllAccount();
+    //this.allAccount = await this.getAllAccount(this.urlacc);
+     this.getAllAccount();
   },
 };
 </script>
