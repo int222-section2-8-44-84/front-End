@@ -123,10 +123,12 @@ export default {
     urlDelete: "http://localhost:3000/deletePost/",
     post: null,
     reviewRateStarColors: ["DEDEDE","DEDEDE","DEDEDE","DEDEDE","DEDEDE"],
+
     checktran:false,
     errorMessage: null,
     red:false,
     green:false,
+    
     checkDel: false,
     id: 0
     };

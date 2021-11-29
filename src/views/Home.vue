@@ -13,8 +13,9 @@
       </div>
     </div>
   </div>
-  <base-nav-mobile v-if="showNav"/>
-  <base-nav v-if="!mobileView" class="fixed w-full z-50 top-0"/>
+    <base-nav-mobile v-if="showNav"/>
+    <base-nav v-if="!mobileView" class="fixed w-full z-50 top-0"/>
+
 
     <!-- Header -->
     <div class="my-8 sm:pt-20 pt-0 md:pt-0 lg:pt-20">
@@ -208,12 +209,19 @@ export default {
         posts: [],
         tag: [],
         postViews: [],
-        //reviewRateStarColors: ["DEDEDE","DEDEDE","DEDEDE","DEDEDE","DEDEDE"],
         search: '',
+        id: null,
+        // getUser: "http://localhost:3000/me",
     };
   },
 
   methods: {
+    Profile(){
+      this.$router.push({
+          name: "Profile",
+          params: { accNumber: this.id.accountNumber },
+        });
+    },
     categoryTabs: function(tabNumber){
       this.openTab = tabNumber
     },
@@ -233,6 +241,22 @@ export default {
             console.log(`Could not get ${error}`)
         }
     },
+    // async getUserFromToken(){
+    //     let token = localStorage.getItem('token')
+    //     const res = await fetch(this.getUser,{
+    //         method: "GET",
+    //         headers: {
+    //             "Authorization": token,
+    //         }
+    //     })
+    //     // const user = await res.json()
+    //     // console.log(user)
+    //     if(res.ok){
+    //         const user = await res.json()
+    //         this.getUserFromToken = user
+
+    //     }
+    // },
     createImageUrl(postimage){
         return this.urlImage + postimage
     },
@@ -277,14 +301,7 @@ export default {
     this.handleView();
     window.addEventListener("resize", this.handleView);
     this.posts = await this.getPostsData(this.urlpost);
-    // if (this.posts.reviewRate > 5){
-    //     this.posts.reviewRate = 5;
-    //     alert("I see youuuuuuuuuuu~~~")
-    // }
-    // for (let i=0; i<this.posts.reviewRate; i++){
-    //     this.reviewRateStarColors[i] = "F3C04B"
-    // }
-    // console.log(this.reviewRateStarColors)
+    // this.getUserFromToken();
   },
   
 };

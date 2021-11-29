@@ -3,37 +3,10 @@
     <!--LogInForm-->
     <form @submit.prevent="submitLoginForm">
       <div v-bind:class="{ hidden: openTab !== 1, block: openTabMobile === 1 }">
-        <div
-          class="
-            border-0
-            rounded-lg
-            shadow-lg
-            relative
-            flex flex-col
-            w-full
-            bg-white
-            outline-none
-            focus:outline-none
-          "
-        >
+        <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
           <!--header-->
           <div class="flex items-start justify-between p-3 rounded-t">
-            <button
-              class="
-                p-1
-                ml-auto
-                bg-transparent
-                border-0
-                text-black
-                float-right
-                text-3xl
-                leading-none
-                font-medium
-                outline-none
-                focus:outline-none
-              "
-              v-on:click="closeForm()"
-            >
+            <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-medium outline-none focus:outline-none" v-on:click="closeForm()">
               <i class="ri-close-fill"></i>
             </button>
           </div>
@@ -43,71 +16,20 @@
           <div class="relative px-12 flex-auto">
             <div class="space-y-3">
               <div>
-                <input
-                  type="text"
-                  v-model="emailLogin"
-                  placeholder="Username or Email address"
-                  class="
-                    placeholder-gray
-                    block
-                    text-lg
-                    py-2
-                    px-4
-                    rounded-lg
-                    w-full
-                    border-2 border-gray-100
-                    shadow-sm
-                    outline-none
-                  "
-                />
-                <p
-                  v-if="invalidEmailLogin"
-                  class="text-red-500 text-xs text-left italic"
-                >
+                <input type="text" v-model="emailLogin" placeholder="Username or Email address" class="placeholder-gray block text-lg py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none"/>
+                <p v-if="invalidEmailLogin" class="text-red-500 text-xs text-left italic">
                   ** Please enter your Username or Email! **
                 </p>
               </div>
 
               <div>
-                <input
-                  type="password"
-                  v-model="passLogin"
-                  placeholder="Password"
-                  class="
-                    placeholder-gray
-                    block
-                    text-lg
-                    py-2
-                    px-4
-                    rounded-lg
-                    w-full
-                    border-2 border-gray-100
-                    shadow-sm
-                    outline-none
-                  "
-                />
-                <p
-                  v-if="invalidPassLogin"
-                  class="text-red-500 text-xs text-left italic"
-                >
+                <input type="password" v-model="passLogin" placeholder="Password" class="placeholder-gray block text-lg py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none"/>
+                <p v-if="invalidPassLogin" class="text-red-500 text-xs text-left italic">
                   ** Please enter your Password! **
                 </p>
               </div>
 
-              <button
-                class="
-                  font-semibold
-                  text-2xl text-white
-                  py-2
-                  px-4
-                  rounded-lg
-                  w-full
-                  bg-red-600
-                  hover:bg-red-700
-                  shadow-lg
-                "
-                type="submit"
-              >
+              <button class="font-semibold text-2xl text-white py-2 px-4 rounded-lg w-full bg-red-600 hover:bg-red-700 shadow-lg" type="submit">
                 Log In
               </button>
 
@@ -118,8 +40,7 @@
                   v-bind:class="{
                     '': openTabMobile !== 2,
                     '': openTabMobile === 2,
-                  }"
-                  class="text-yellow-400 hover:text-yellow-500"
+                  }" class="text-yellow-400 hover:text-yellow-500"
                 >
                   Register
                 </a>
@@ -136,37 +57,10 @@
     <!-- RegisterForm -->
     <form @submit.prevent="submitRegisForm">
       <div v-bind:class="{ hidden: openTab !== 2, block: openTabMobile === 2 }">
-        <div
-          class="
-            border-0
-            rounded-lg
-            shadow-lg
-            relative
-            flex flex-col
-            w-full
-            bg-white
-            outline-none
-            focus:outline-none
-          "
-        >
+        <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
           <!--header-->
           <div class="flex items-start justify-between p-3 rounded-t">
-            <button
-              class="
-                p-1
-                ml-auto
-                bg-transparent
-                border-0
-                text-black
-                float-right
-                text-3xl
-                leading-none
-                font-medium
-                outline-none
-                focus:outline-none
-              "
-              v-on:click="closeForm()"
-            >
+            <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-medium outline-none focus:outline-none" v-on:click="closeForm()">
               <i class="ri-close-fill"></i>
             </button>
           </div>
@@ -178,97 +72,27 @@
                 Get Started
               </p>
               <div>
-                <input
-                  type="text"
-                  v-model="userRegis"
-                  placeholder="Username"
-                  class="
-                    placeholder-gray
-                    block
-                    text-lg
-                    py-2
-                    px-4
-                    rounded-lg
-                    w-full
-                    border-2 border-gray-100
-                    shadow-sm
-                    outline-none
-                  "
-                />
-                <p
-                  v-if="invalidUseRegis"
-                  class="text-red-500 text-xs text-left italic"
-                >
+                <input type="text" v-model="userRegis" placeholder="Username" class="placeholder-gray block text-lg py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none"/>
+                <p v-if="invalidUseRegis" class="text-red-500 text-xs text-left italic">
                   ** Please enter your Username! **
                 </p>
               </div>
 
-              <div class="">
-                <input
-                  type="email"
-                  v-model="emailRegis"
-                  placeholder="example@mail.com"
-                  class="
-                    placeholder-gray
-                    block
-                    text-lg
-                    py-2
-                    px-4
-                    rounded-lg
-                    w-full
-                    border-2 border-gray-100
-                    shadow-sm
-                    outline-none
-                  "
-                />
-                <p
-                  v-show="invalidEmailRegis"
-                  class="text-red-500 text-xs text-left italic"
-                >
+              <div>
+                <input type="email" v-model="emailRegis" placeholder="example@mail.com" class="placeholder-gray block text-lg py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none"/>
+                <p v-show="invalidEmailRegis" class="text-red-500 text-xs text-left italic">
                   ** Please enter your Email! **
                 </p>
               </div>
 
               <div>
-                <input
-                  type="password"
-                  v-model="passRegis"
-                  placeholder="Password"
-                  class="
-                    placeholder-gray
-                    block
-                    text-lg
-                    py-2
-                    px-4
-                    rounded-lg
-                    w-full
-                    border-2 border-gray-100
-                    shadow-sm
-                    outline-none
-                  "
-                />
-                <p
-                  v-if="invalidPassRegis"
-                  class="text-red-500 text-xs text-left italic"
-                >
+                <input type="password" v-model="passRegis" placeholder="Password" class="placeholder-gray block text-lg py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none"/>
+                <p v-if="invalidPassRegis" class="text-red-500 text-xs text-left italic">
                   ** Please enter your Password! **
                 </p>
               </div>
 
-              <button
-                class="
-                  font-semibold
-                  text-2xl text-white
-                  py-2
-                  px-32
-                  rounded-lg
-                  w-full
-                  bg-red-600
-                  hover:bg-red-700
-                  shadow-lg
-                "
-                type="submit"
-              >
+              <button class="font-semibold text-2xl text-white py-2 px-32 rounded-lg w-full bg-red-600 hover:bg-red-700 shadow-lg" type="submit">
                 Register
               </button>
 
@@ -332,6 +156,7 @@ export default {
       if (this.invalidEmailLogin == false && this.invalidPassLogin == false) {
         this.authen();
         this.closeForm();
+        setTimeout( () => location.reload(), 1000);
       }
     },
     async authen(){

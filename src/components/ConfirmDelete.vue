@@ -50,7 +50,7 @@ export default {
   data() {
     return {
         checktran: false,
-        urlDelete: "http://localhost:3000/deletePost/",
+        urlDelete: "http://localhost:3000/DeletePost",
         urlpost: "http://localhost:3000/posts/",
     }
   },

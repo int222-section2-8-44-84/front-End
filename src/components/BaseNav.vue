@@ -53,9 +53,26 @@
     <!-- <button style="font-size: 32px;" class="ml-2 ri-close-line" v-on:click="searchinput()" v-else></button>
     <i style="font-size: 32px;" class="ml-2 ri-search-line"></i> -->
 
+
+
     <!-- Login / Register -->
-      <div style="font-size: 32px;">
-        <button v-on:click="toggleModal()" class="items-center justify-center w-12 h-12 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-red-200 ml-2 ri-user-3-line"></button>
+      <div v-if="after" style="font-size: 32px;">
+        <!-- <button v-on:click="showDropDown()" class="items-center justify-center transition-colors duration-150 rounded-full focus:shadow-outline w-12 h-12 hover:bg-red-200 ml-2 ri-user-3-line"></button>
+          <div v-if="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+            <pop-up
+            :showModal="showModal"
+            @adding-showModal='toggleModal'
+            >
+            </pop-up>
+          </div> -->
+          <!-- <div v-if="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div> -->
+          <drop-down/>
+      </div>
+
+
+    <!-- Login / Register -->
+      <div v-else style="font-size: 32px;">
+        <button v-on:click="toggleModal()" class="items-center justify-center transition-colors duration-150 w-12 h-12 hover:bg-red-200 rounded-full focus:shadow-outline ri-user-3-line"></button>
           <div v-if="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
             <pop-up
             :showModal="showModal"
@@ -65,12 +82,18 @@
           </div>
           <div v-if="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
       </div>
+      <!-- <drop-down/> -->
+
+
+
     </div>
   </nav>
 </template>
 
 <script>
+import DropDown from './DropDown.vue';
 export default {
+  components: { DropDown },
   name: "regular-modal",
   data() {
     return {
@@ -88,6 +111,10 @@ export default {
       invalidEmailRegis: false,
       invalidPassRegis: false,
       // click: false,
+
+      after: false,
+      getUser: "http://localhost:3000/me",
+      user: null,
     }
   },
   methods: {
@@ -103,11 +130,26 @@ export default {
     toggleTabs: function(tabNumber){
       this.openTab = tabNumber
     },
-  },
-  // computed: {
-  //   filterSearch(){
+    async getUserFromToken(){
+        let token = localStorage.getItem('token')
+        const res = await fetch(this.getUser,{
+            method: "GET",
+            headers: {
+                "Authorization": token,
+            }
+        })
+        // const user = await res.json()
+        // console.log(user)
 
-  //   }
-  // }
-}
+          this.after = true;
+            const user = await res.json()
+            this.user = user
+    },
+  },
+   async created() {
+     if(localStorage.getItem("token")!=null){
+       this.getUserFromToken();
+     }
+  },
+};
 </script>

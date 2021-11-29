@@ -23,7 +23,7 @@
         
         <div class="container mt-12 mx-auto">
           <div class="flex flex-col text-center w-full">
-            <h1 class="sm:text-4xl text-3xl font-medium title-font text-red-600">Post Archive</h1>
+            <h1 class="sm:text-4xl text-3xl font-medium title-font">Post Archive</h1>
           </div>
         </div>
 
