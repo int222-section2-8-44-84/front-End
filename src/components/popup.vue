@@ -185,27 +185,31 @@ export default {
         this.invalidEmailRegis == false &&
         this.invalidPassRegis == false
       ) {
-
-        this.closeForm();
+        try {
+          this.register();
+          this.closeForm();
+        } catch (error) {
+          console.log("Cant Register");
+        }
       }
     },
-    // async register(){
-    //   const response = await fetch(this.urlAuthen, {
-    //       method: "POST",
-    //       headers: {
-    //       "Content-type": "application/json"
-    //     },
-    //       body: JSON.stringify({
-    //           "username": this.userRegis, 
-    //           "password": this.passRegis,
-    //           "email": this.emailRegis
-    //       }),
-    //     });
-    //     const jwt_token = await response.json();
-    //     //console.log(jwt_token)
-    //     localStorage.setItem('token',"Bearer "+jwt_token.token);
-    //     //console.log(localStorage.getItem('token'));
-    // },
+    async register(){
+      var formData = new FormData();
+      console.log(this.userRegis)
+      console.log(this.passRegis)
+      console.log(this.emailRegis)
+      formData.append("userID", this.userRegis);
+      formData.append("password", this.passRegis);
+      formData.append("email", this.emailRegis);
+      await fetch(this.urlRegis, {
+          method: "POST",
+          body: formData
+        });
+        //const jwt_token = await response.json();
+        //console.log(jwt_token)
+        //localStorage.setItem('token',"Bearer "+jwt_token.token);
+        //console.log(localStorage.getItem('token'));
+    },
     closeForm() {
       // this.clearData()
       this.$emit("adding-showModal", false);
