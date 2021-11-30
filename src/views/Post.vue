@@ -304,7 +304,9 @@ export default {
       urlDelete: "http://localhost:3000/deletePost/",
       urluser: "http://localhost:3000/me",
       urlfeeltopost: "http://localhost:3000/feel",
+      urlfindFeelOfPost: "http://localhost:3000/findFeelOfPost",
       post: null,
+      accountFeelForThisPost: null,
       reviewRateStarColors: ["DEDEDE", "DEDEDE", "DEDEDE", "DEDEDE", "DEDEDE"],
       user: null,
       checktran: false,
@@ -345,7 +347,7 @@ export default {
     },
     async getBackEndData(url) {
       var token = localStorage.getItem("token");
-      console.log(token);
+      //console.log(token);
       try {
         const res = await fetch(url, {
           method: "GET",
@@ -434,6 +436,10 @@ export default {
     }
     //console.log(this.reviewRateStarColors);
     this.user = await this.getBackEndData(this.urluser);
+    this.accountFeelForThisPost = await this.getBackEndData(this.urlfindFeelOfPost +"/"+ this.postNumber+"/"+ this.user.accountNumber);
+    if (this.accountFeelForThisPost!=null){
+      this.changeFeelState(this.accountFeelForThisPost.feel);
+    }
   },
   
 };
