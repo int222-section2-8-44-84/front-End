@@ -121,7 +121,7 @@ export default {
         },
       })
         this.allAccount = await res.json();
-        console.log(this.allAccount)
+        //console.log(this.allAccount)
     },
     async deletePost(){
       this.checkDel = !this.checkDel;

@@ -505,6 +505,7 @@ export default {
       urltag: "http://localhost:3000/showAllTags",
       urlposthastag: "http://localhost:3000/showPostsHasTags",
       urluser: "http://localhost:3000/me",
+      urlcreatepost: "http://localhost:3000/createPostWithImage",
       // urladdpost: "http://localhost:3000/createPost",
       // urladdupload: "http://localhost:3000/uploadimage",
 
@@ -640,10 +641,8 @@ export default {
         "categoryId: " + this.category
       );
       // console.log(formData);
-
-      var url = "http://localhost:3000/";
       var token = localStorage.getItem("token");
-      const res = await fetch(url + "createPostWithImage", {
+      const res = await fetch(this.urlcreatepost, {
         method: "POST",
         headers: {
           Authorization: token,

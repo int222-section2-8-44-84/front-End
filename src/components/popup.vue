@@ -136,6 +136,7 @@ export default {
       invalidEmailRegis: false,
       invalidPassRegis: false,
       urlAuthen: "http://localhost:3000/authenticate",
+      urlRegis: "http://localhost:3000/register"
     };
   },
   methods: {
@@ -184,9 +185,27 @@ export default {
         this.invalidEmailRegis == false &&
         this.invalidPassRegis == false
       ) {
+
         this.closeForm();
       }
     },
+    // async register(){
+    //   const response = await fetch(this.urlAuthen, {
+    //       method: "POST",
+    //       headers: {
+    //       "Content-type": "application/json"
+    //     },
+    //       body: JSON.stringify({
+    //           "username": this.userRegis, 
+    //           "password": this.passRegis,
+    //           "email": this.emailRegis
+    //       }),
+    //     });
+    //     const jwt_token = await response.json();
+    //     //console.log(jwt_token)
+    //     localStorage.setItem('token',"Bearer "+jwt_token.token);
+    //     //console.log(localStorage.getItem('token'));
+    // },
     closeForm() {
       // this.clearData()
       this.$emit("adding-showModal", false);

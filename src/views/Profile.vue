@@ -100,7 +100,7 @@ export default {
 
     async getBackEndData(url) {
       var token = localStorage.getItem("token");
-      console.log(token);
+      //console.log(token);
       try {
         const res = await fetch(url, {
           method: "GET",
@@ -111,7 +111,7 @@ export default {
         const data = await res.json();
         return data;
       } catch (error) {
-        console.log(`Could not get ${error}`);
+        //console.log(`Could not get ${error}`);
       }
     },
 
