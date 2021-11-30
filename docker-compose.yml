@@ -6,3 +6,7 @@ services:
         image: frontend
         ports:
             - "8080:8080"
+networks:
+  default:
+    external:
+      name: wongnokproject
