@@ -302,13 +302,13 @@ export default {
       urlpost: "http://localhost:3000/posts/",
       urlImage: "http://localhost:3000/files/",
       urlDelete: "http://localhost:3000/deletePost/",
-      urluser: "http://localhost:3000/me",
+      //urluser: "http://localhost:3000/me",
       urlfeeltopost: "http://localhost:3000/feel",
       urlfindFeelOfPost: "http://localhost:3000/findFeelOfPost",
       post: null,
       accountFeelForThisPost: null,
       reviewRateStarColors: ["DEDEDE", "DEDEDE", "DEDEDE", "DEDEDE", "DEDEDE"],
-      user: null,
+      //user: null,
       checktran: false,
       errorMessage: null,
       red: false,
@@ -389,8 +389,8 @@ export default {
     async feelToPost(feel) {
       var token = localStorage.getItem("token");
       var formData = new FormData();
-      formData.append("accountNumber", JSON.stringify(this.user.accountNumber));
-      formData.append("postNumber", JSON.stringify(this.post.postNumber));
+      formData.append("accountNumber", localStorage.getItem("userAccountNumber"));
+      formData.append("postNumber", this.post.postNumber);
       formData.append("feel", feel);
       let res = await fetch(this.urlfeeltopost, {
         method: "PUT",
@@ -435,8 +435,8 @@ export default {
       this.reviewRateStarColors[i] = "F3C04B";
     }
     //console.log(this.reviewRateStarColors);
-    this.user = await this.getBackEndData(this.urluser);
-    this.accountFeelForThisPost = await this.getBackEndData(this.urlfindFeelOfPost +"/"+ this.postNumber+"/"+ this.user.accountNumber);
+    //this.user = await this.getBackEndData(this.urluser);
+    this.accountFeelForThisPost = await this.getBackEndData(this.urlfindFeelOfPost +"/"+ this.postNumber+"/"+ localStorage.getItem("userAccountNumber"));
     if (this.accountFeelForThisPost!=null){
       this.changeFeelState(this.accountFeelForThisPost.feel);
     }

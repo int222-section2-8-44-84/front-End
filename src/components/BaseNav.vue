@@ -113,8 +113,8 @@ export default {
       // click: false,
 
       after: false,
-      getUser: "http://localhost:3000/me",
-      user: null,
+      //getUser: "http://localhost:3000/me",
+      //user: null,
     }
   },
   methods: {
@@ -130,25 +130,25 @@ export default {
     toggleTabs: function(tabNumber){
       this.openTab = tabNumber
     },
-    async getUserFromToken(){
-        let token = localStorage.getItem('token')
-        const res = await fetch(this.getUser,{
-            method: "GET",
-            headers: {
-                "Authorization": token,
-            }
-        })
-        // const user = await res.json()
-        // console.log(user)
+    // async getUserFromToken(){
+    //     let token = localStorage.getItem('token')
+    //     const res = await fetch(this.getUser,{
+    //         method: "GET",
+    //         headers: {
+    //             "Authorization": token,
+    //         }
+    //     })
+    //     // const user = await res.json()
+    //     // console.log(user)
 
-          this.after = true;
-            const user = await res.json()
-            this.user = user
-    },
+    //       this.after = true;
+    //         const user = await res.json()
+    //         this.user = user
+    // },
   },
    async created() {
      if(localStorage.getItem("token")!=null){
-       this.getUserFromToken();
+       this.after = true;
      }
   },
 };

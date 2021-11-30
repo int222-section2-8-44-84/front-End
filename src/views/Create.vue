@@ -474,7 +474,7 @@ export default {
       restaurant: "",
       price: "",
       // postTime: '',
-      user: null,
+      //user: null,
       userID: "",
       accountNumber: "",
       rating: 0,
@@ -504,7 +504,7 @@ export default {
       urlpost: "http://localhost:3000/posts",
       urltag: "http://localhost:3000/showAllTags",
       urlposthastag: "http://localhost:3000/showPostsHasTags",
-      urluser: "http://localhost:3000/me",
+      //urluser: "http://localhost:3000/me",
       urlcreatepost: "http://localhost:3000/createPostWithImage",
       // urladdpost: "http://localhost:3000/createPost",
       // urladdupload: "http://localhost:3000/uploadimage",
@@ -706,9 +706,9 @@ export default {
     this.posts = await this.getBackEndData(this.urlpost);
     this.categories = await this.getBackEndData(this.urlcategory);
     this.tag = await this.getBackEndData(this.urltag);
-    this.user = await this.getBackEndData(this.urluser);
-    this.userID = this.user.userID,
-    this.accountNumber = this.user.accountNumber
+    //this.user = await this.getBackEndData(this.urluser);
+    this.userID = localStorage.getItem("userID"),
+    this.accountNumber = localStorage.getItem("userAccountNumber")
   },
 };
 </script>

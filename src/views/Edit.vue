@@ -489,7 +489,7 @@ export default {
       description: this.post.description,
       postNumber: this.post.postNumber,
       value: this.post.reviewRate,
-      user: null,
+      //user: null,
       userID: "",
       accountNumber: "",
       rating: 0,
@@ -512,7 +512,7 @@ export default {
       urlposthastag: "http://localhost:3000/showPostsHasTags",
       //urleditpost: "http://localhost:3000/editPost/",
       //urladdupload: "http://localhost:3000/uploadimage",
-      urluser: "http://localhost:3000/me",
+      //urluser: "http://localhost:3000/me",
       urlupdatepost: "http://localhost:3000/editPostWithImage",
       // urlImage: "http://localhost:3000/files/",
 
@@ -704,9 +704,9 @@ export default {
     this.categories = await this.getBackEndData(this.urlcategory);
     this.tag = await this.getBackEndData(this.urltag);
     this.rating = this.post.reviewRate;
-    this.user = await this.getBackEndData(this.urluser);
-    this.userID = this.user.userID,
-    this.accountNumber = this.user.accountNumber;
+    //this.user = await this.getBackEndData(this.urluser);
+    this.userID = localStorage.getItem("userID"),
+    this.accountNumber = localStorage.getItem("userAccountNumber");
     //this.imageshow = await fetch (`http://localhost:3000/files/${this.post.image}`);
     // setTimeout(
     //   () =>

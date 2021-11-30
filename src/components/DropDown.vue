@@ -57,6 +57,9 @@ export default {
     },
     async logout() {
       localStorage.removeItem("token")
+      localStorage.removeItem("userAccountNumber")
+      localStorage.removeItem("userID")
+      localStorage.removeItem("userRole")
         setTimeout( () => location.reload(), 1000);
     },
   },

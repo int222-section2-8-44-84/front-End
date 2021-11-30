@@ -136,7 +136,8 @@ export default {
       invalidEmailRegis: false,
       invalidPassRegis: false,
       urlAuthen: "http://localhost:3000/authenticate",
-      urlRegis: "http://localhost:3000/register"
+      urlRegis: "http://localhost:3000/register",
+      urlMe: "http://localhost:3000/me"
     };
   },
   methods: {
@@ -175,6 +176,20 @@ export default {
         //console.log(jwt_token)
         localStorage.setItem('token',"Bearer "+jwt_token.token);
         //console.log(localStorage.getItem('token'));
+        var token = localStorage.getItem("token");
+        const res = await fetch(this.urlMe, {
+          method: "GET",
+          headers: {
+            Authorization: token,
+          },
+        });
+        const myAccount = await res.json();
+        localStorage.setItem('userAccountNumber',myAccount.accountNumber);
+        //console.log(localStorage.getItem("userAccountNumber"));
+        localStorage.setItem('userID',myAccount.userID);
+        //console.log(localStorage.getItem("userID"));
+        localStorage.setItem('userRole',myAccount.role.role);
+        //console.log(localStorage.getItem("userRole"));
     },
     submitRegisForm() {
       this.invalidUseRegis = this.userRegis === "" ? true : false;
