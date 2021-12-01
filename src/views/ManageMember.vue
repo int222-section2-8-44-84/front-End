@@ -35,41 +35,39 @@
                                 <tr class="border-b border-gray-200 py-10">
                                     <td class="text-lg font-medium text-gray-500 text-left px-4 py-4">Name</td>
                                     <td class="text-lg text-center font-medium text-gray-500 px-4 py-4">Role</td>
-                                    <td class="text-lg font-medium text-gray-500 text-right px-4 py-4 pr-8">Actions</td>
+                                    <td class="text-lg font-medium text-gray-500 text-right px-4 py-4">Actions</td>
                                 </tr>
                                 
                                 <!-- First -->
-                                <div v-for="account in allAccount" :key="account.accountNumber">
-                                <tr class="hover:bg-gray-100 border-gray-200">
+                                <tr v-for="account in allAccount" :key="account.accountNumber" class="hover:bg-gray-100 border-gray-200">
                                     <td class="text-left px-4 py-4">
                                         <div class="font-medium text-lg">{{account.userID}}</div>
                                         <div class="font-light">{{account.email}}</div>
                                     </td>
-                                    <td class="px-4 py-4 text-center">
+                                    <!-- <td class="px-4 py-4 text-center">
                                         <div class="text-lg">{{account.role.role}}</div>
+                                    </td> -->
+                                    <td class="px-4 py-4">
+                                        <select :value="account.role.role" @change="onChange(account)" class="bg-transparent">
+                                            <option :value="null" disabled class="hidden">
+                                                Role
+                                            </option>
+                                            <option value="Admin">Admin</option>
+                                            <option value="User">User</option>
+                                        </select>
                                     </td>
                                      <td class="px-4 py-4 text-right">
-                                        <button @click="EditMember()" type="button" class="ri-edit-line items-center justify-center w-8 h-8 transition-colors duration-150 rounded-full focus:shadow-outline border border-gray-50 shadow-lg bg-white hover:bg-yellow-400 hover:text-white hover:border-transparent sm:mr-5" style="font-size: 18px;"></button>
-                                            <div v-if="showEmem" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
-                                                <edit-member
-                                                @adding-edit-modal="EMem"
-                                                >
-                                                </edit-member>
-                                            </div>
-                                            <div v-if="showEmem" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                                            
-                                        <button @click="deletePost()" type="button" class="ri-delete-bin-line items-center justify-center w-8 h-8 transition-colors duration-150 rounded-full focus:shadow-outline border border-gray-50 shadow-lg bg-white hover:bg-red-400 hover:text-white hover:border-transparent" style="font-size: 18px;"></button>
-                                        <div v-if="checkDel" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+                                        <button @click="deleteAccount(account.accountNumber)" type="button" class="ri-delete-bin-line items-center justify-center w-8 h-8 transition-colors duration-150 rounded-full focus:shadow-outline border border-gray-50 shadow-lg bg-white hover:bg-red-400 hover:text-white hover:border-transparent" style="font-size: 18px;"></button>
+                                        <!-- <div v-if="checkDel" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
                                             <confirm-delete
                                                 @adding-close-modal="delModal"
                                             >
                                             </confirm-delete>
                                         </div>
-                                        <div v-if="checkDel" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                                        <div v-if="checkDel" class="opacity-25 fixed inset-0 z-40 bg-black"></div> -->
 
                                     </td>
                                 </tr>
-                                </div>
                         </table>
                     </div>
                     
@@ -96,6 +94,8 @@ export default {
         allAccount: [],
         account: null,
         urlacc: "http://localhost:3000/showAllAccounts",
+        urlUpdateRole: "http://localhost:3000/manageRole",
+        urldelAccount: "http://localhost:3000/deleteAccount"
     };
   },
 
@@ -106,12 +106,12 @@ export default {
     handleView() {
       this.mobileView = window.innerWidth <= 990;
     },
-    EMem(){
-        this.showEmem =! this.showEmem;
-    },
-    EditMember(){
-        this.showEmem = !this.showEmem;
-    },
+    // EMem(){
+    //     this.showEmem =! this.showEmem;
+    // },
+    // EditMember(){
+    //     this.showEmem = !this.showEmem;
+    // },
     async getAllAccount(){
         let token = localStorage.getItem('token')
         const res =  await fetch(`${this.urlacc}`,{
@@ -123,14 +123,65 @@ export default {
         this.allAccount = await res.json();
         //console.log(this.allAccount)
     },
-    async deletePost(){
-      this.checkDel = !this.checkDel;
+    // async onChange(event) {
+    //     var token = localStorage.getItem("token");
+    //   try {
+    //     const res = await fetch(`${this.urlUpdateRole}`, {
+    //       method: "PUT",
+    //       headers: {
+    //         "Authorization": token,
+    //         "content-type": "application/json",
+    //       },
+    //       body: JSON.stringify({
+    //         role: event.target.value,
+    //       }),
+    //     });
+    //     await res.json();
+    //   } catch (error) {
+    //     console.log(`Could not add ${error}`);
+    //   }
+    // },
+
+    async onChange(acc) {
+        console.log(acc)
+        // console.log(event)
+      var token = localStorage.getItem("token");
+      var formData = new FormData();
+      formData.append("accountNumber", acc.accountNumber);
+      formData.append("roleID", acc.role.roleID);
+      let res = await fetch(this.urlUpdateRole, {
+        method: "PUT",
+        headers: {
+          Authorization: token,
+        },
+        body: formData
+        });
+      if(res.ok){
+        const user = await res.json();
+        return user
+      }
+    },
+    async deleteAccount(accountNumber){
+      var token = localStorage.getItem("token");
+      var formData = new FormData();
+      formData.append("accountNumber", localStorage.getItem("userAccountNumber"));
+
+      let res = await fetch(`${this.urldelAccount}/${accountNumber}`,{
+        method: "DELETE",
+        headers: {
+          Authorization: token,
+        },
+        body: formData
+        });
+      if(res.ok){
+        const user = await res.json();
+        return user
+      }
     },
   },
   async created() {
     this.handleView();
     window.addEventListener("resize", this.handleView);
-    //this.allAccount = await this.getAllAccount(this.urlacc);
      this.getAllAccount();
   },
 };

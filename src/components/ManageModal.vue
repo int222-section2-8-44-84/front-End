@@ -18,12 +18,12 @@
                     <p class="text-left text-yellow-500 text-2xl font-medium leading-relaxed">
                         Edit Member
                     </p>
-                        <div class="">
-                          <input type="text" placeholder="Username" class="placeholder-gray block py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
+                        <div>
+                          <input v-model="username" type="text" placeholder="Username" class="placeholder-gray block py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
                           <!-- <p v-if="invalidUseRegis" class="text-red-500 text-xs text-left italic">** Please enter your Username! **</p> -->
                         </div>
                         <div>
-                          <input type="text" placeholder="example@mail.com" class="placeholder-gray block py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
+                          <input v-model="email" type="text" placeholder="example@mail.com" class="placeholder-gray block py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
                         </div>
                         <div class="grid grid-cols-1">
                             <select class="py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none">
@@ -59,13 +59,20 @@
 export default {
   data() {
     return {
+      username: this.userID,
+      email: this.email,
+      allAccount: "http://localhost:3000/showAllAccounts"
+
     }
   },
   methods: {
     close(){
       this.$emit('adding-edit-modal');
     },
-  }
-}
+  },
+  async created() {
+
+  },
+};
 </script>
 
