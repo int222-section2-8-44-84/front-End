@@ -27,13 +27,13 @@
                 </li>
             </router-link>
 
-            <router-link to="/Create">
-              <li class="nav-item">
-                <div class="px-3 py-2 flex items-center text-2xl hover:text-redRYB">
+            <!-- <router-link to="/Create"> -->
+              <li class="cursor-pointer nav-item">
+                <div v-on:click="checkAuthen()" class="px-3 py-2 flex items-center text-2xl hover:text-redRYB">
                   + Create
                 </div>
               </li>
-            </router-link>
+            <!-- </router-link> -->
         </ul>
     </div>
 
@@ -130,6 +130,15 @@ export default {
     toggleTabs: function(tabNumber){
       this.openTab = tabNumber
     },
+
+    checkAuthen(){
+      if(localStorage.getItem("token")!=null){
+        this.$router.push("/Create");
+      }else{
+        //alert("Please Log-in to use this feature.")
+        this.toggleModal();
+      }
+    }
     // async getUserFromToken(){
     //     let token = localStorage.getItem('token')
     //     const res = await fetch(this.getUser,{

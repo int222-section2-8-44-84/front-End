@@ -167,6 +167,7 @@
             <div class="flex">
               <router-link to="/Edit">
                 <button
+                  v-if="checkAccount()"
                   @click="sendEditingPost(this.post)"
                   class="
                     text-white
@@ -184,7 +185,9 @@
                   Edit
                 </button>
               </router-link>
+
               <button
+                v-if="checkAccount()"
                 @click="deletePost(post.postNumber)"
                 class="
                   text-white
@@ -226,7 +229,7 @@
                 class="opacity-25 fixed inset-0 z-40 bg-black"
               ></div>
 
-<!-- bg-white
+              <!-- bg-white
 text-gray-500 -->
               <button
                 class="
@@ -236,19 +239,17 @@ text-gray-500 -->
                   rounded-full
                   w-10
                   h-10
-                  
                   shadow-lg
                   p-0
                   border-0
                   inline-flex
                   items-center
                   justify-center
-                  
                   ml-4
                   hover:bg-blue-500 hover:text-white
                 "
                 :class="this.likeBg"
-                @click='feelToPost("Like")'
+                @click="feelToPost('Like')"
               ></button>
               <!-- <span class="ml-2">15</span> -->
 
@@ -260,19 +261,17 @@ text-gray-500 -->
                   rounded-full
                   w-10
                   h-10
-                  
                   shadow-lg
                   p-0
                   border-0
                   inline-flex
                   items-center
                   justify-center
-                  
                   ml-4
                   hover:bg-red-500 hover:text-white
                 "
                 :class="this.dislikeBg"
-                @click='feelToPost("Dislike")'
+                @click="feelToPost('Dislike')"
               ></button>
               <!-- <span class="ml-2">15</span> -->
             </div>
@@ -318,7 +317,7 @@ export default {
       like: false,
       dislike: false,
       likeBg: "bg-white text-gray-500",
-      dislikeBg: "bg-white text-gray-500"
+      dislikeBg: "bg-white text-gray-500",
     };
   },
   emits: ["edit-post"],
@@ -344,6 +343,15 @@ export default {
     },
     createImageUrl(postimage) {
       return this.urlImage + postimage;
+    },
+    checkAccount() {
+      if (
+        localStorage.getItem("userAccountNumber") == this.post.accountNumber
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     },
     async getBackEndData(url) {
       var token = localStorage.getItem("token");
@@ -387,38 +395,43 @@ export default {
       // this.$router.push("/");
     },
     async feelToPost(feel) {
-      var token = localStorage.getItem("token");
-      var formData = new FormData();
-      formData.append("accountNumber", localStorage.getItem("userAccountNumber"));
-      formData.append("postNumber", this.post.postNumber);
-      formData.append("feel", feel);
-      let res = await fetch(this.urlfeeltopost, {
-        method: "PUT",
-        headers: {
-          Authorization: token,
-        },
-        body: formData
-        })
-      ;
-      if(res.ok){
+      if (localStorage.getItem("token") != null) {
+        var token = localStorage.getItem("token");
+        var formData = new FormData();
+        formData.append(
+          "accountNumber",
+          localStorage.getItem("userAccountNumber")
+        );
+        formData.append("postNumber", this.post.postNumber);
+        formData.append("feel", feel);
+        let res = await fetch(this.urlfeeltopost, {
+          method: "PUT",
+          headers: {
+            Authorization: token,
+          },
+          body: formData,
+        });
+        if (res.ok) {
           this.changeFeelState(feel);
+        }
+      } else {
+        alert("Please Log-in to use this feature.");
       }
     },
-    changeFeelState(feel){
-        if(feel=="Like"){
-            this.like = true;
-            this.likeBg = "bg-blue-500 text-white",
-            this.dislike = false;
-            this.dislikeBg = "bg-white text-gray-500"
-        } else if (feel=="Dislike"){
-            this.like = false;
-            this.likeBg = "bg-white text-gray-500"
-            this.dislike = true;
-            this.dislikeBg = "bg-red-500 text-white"
-        } else {
-            console.log("Kaaaa Boooom")
-        }
-    }
+    changeFeelState(feel) {
+      if (feel == "Like") {
+        this.like = true;
+        (this.likeBg = "bg-blue-500 text-white"), (this.dislike = false);
+        this.dislikeBg = "bg-white text-gray-500";
+      } else if (feel == "Dislike") {
+        this.like = false;
+        this.likeBg = "bg-white text-gray-500";
+        this.dislike = true;
+        this.dislikeBg = "bg-red-500 text-white";
+      } else {
+        console.log("Error Unauthen.");
+      }
+    },
   },
 
   async created() {
@@ -436,12 +449,19 @@ export default {
     }
     //console.log(this.reviewRateStarColors);
     //this.user = await this.getBackEndData(this.urluser);
-    this.accountFeelForThisPost = await this.getBackEndData(this.urlfindFeelOfPost +"/"+ this.postNumber+"/"+ localStorage.getItem("userAccountNumber"));
-    if (this.accountFeelForThisPost!=null){
-      this.changeFeelState(this.accountFeelForThisPost.feel);
+    if (localStorage.getItem("token") != null) {
+      this.accountFeelForThisPost = await this.getBackEndData(
+        this.urlfindFeelOfPost +
+          "/" +
+          this.postNumber +
+          "/" +
+          localStorage.getItem("userAccountNumber")
+      );
+      if (this.accountFeelForThisPost != null) {
+        this.changeFeelState(this.accountFeelForThisPost.feel);
+      }
     }
   },
-  
 };
 </script>
 

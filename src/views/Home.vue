@@ -16,7 +16,6 @@
     <base-nav-mobile v-if="showNav"/>
     <base-nav v-if="!mobileView" class="fixed w-full z-50 top-0"/>
 
-
     <!-- Header -->
     <div class="my-8 sm:pt-20 pt-0 md:pt-0 lg:pt-20">
         <!-- Search
@@ -302,6 +301,8 @@ export default {
     window.addEventListener("resize", this.handleView);
     this.posts = await this.getPostsData(this.urlpost);
     // this.getUserFromToken();
+    this.categoryTabs(1);
+    this.filterByCategoryId(4);
   },
   
 };
