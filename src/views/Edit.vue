@@ -583,10 +583,16 @@ export default {
         this.image !== null &&
         this.tags.length !== 0
       ) {
-        this.editAllPostsData();
-        //this.$router.push("/");
+        try {
+          this.editAllPostsData();
+          alert("Edit Success.");
+          this.$router.push("/");
+        } catch (error) {
+          console.log(error);
+        }
+        
       }
-      console.log(this.tags);
+      //console.log(this.tags);
     },
     async editAllPostsData() {
       this.tagsData = [];
@@ -595,8 +601,8 @@ export default {
           this.tagsData.push(this.tag[i]);
         }
       }
-      console.log(this.tags);
-      console.log(this.tagsData);
+      //console.log(this.tags);
+      //console.log(this.tagsData);
 
       let timeElapsed = Date.now();
       var today = new Date(timeElapsed);

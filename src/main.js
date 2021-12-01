@@ -10,7 +10,6 @@ import ConfirmDelete from './components/ConfirmDelete.vue'
 import ManageModal from './components/ManageModal'
 // import DropDown from './components/DropDown'
 
-
 const app = createApp(App)
 app.use(router).mount('#app')
 app.component('base-nav', BaseNav)

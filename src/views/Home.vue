@@ -16,7 +16,6 @@
     <base-nav-mobile v-if="showNav"/>
     <base-nav v-if="!mobileView" class="fixed w-full z-50 top-0"/>
 
-
     <!-- Header -->
     <div class="my-8 sm:pt-20 pt-0 md:pt-0 lg:pt-20">
         <!-- Search
@@ -241,22 +240,6 @@ export default {
             console.log(`Could not get ${error}`)
         }
     },
-    // async getUserFromToken(){
-    //     let token = localStorage.getItem('token')
-    //     const res = await fetch(this.getUser,{
-    //         method: "GET",
-    //         headers: {
-    //             "Authorization": token,
-    //         }
-    //     })
-    //     // const user = await res.json()
-    //     // console.log(user)
-    //     if(res.ok){
-    //         const user = await res.json()
-    //         this.getUserFromToken = user
-
-    //     }
-    // },
     createImageUrl(postimage){
         return this.urlImage + postimage
     },
@@ -302,6 +285,8 @@ export default {
     window.addEventListener("resize", this.handleView);
     this.posts = await this.getPostsData(this.urlpost);
     // this.getUserFromToken();
+    this.categoryTabs(1);
+    this.filterByCategoryId(4);
   },
   
 };

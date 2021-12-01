@@ -27,13 +27,13 @@
                 </li>
             </router-link>
 
-            <router-link to="/Create">
-              <li class="nav-item">
-                <div class="px-3 py-2 flex items-center text-2xl hover:text-redRYB">
+            <!-- <router-link to="/Create"> -->
+              <li class="cursor-pointer nav-item">
+                <div v-on:click="checkAuthen()" class="px-3 py-2 flex items-center text-2xl hover:text-redRYB">
                   + Create
                 </div>
               </li>
-            </router-link>
+            <!-- </router-link> -->
         </ul>
     </div>
 
@@ -127,6 +127,14 @@ export default {
     toggleTabs: function(tabNumber){
       this.openTab = tabNumber
     },
+
+    checkAuthen(){
+      if(localStorage.getItem("token")!=null){
+        this.$router.push("/Create");
+      }else{
+        this.toggleModal();
+      }
+    },
     toggleDropdown: function(){
       if(this.dropdownPopoverShow){
         this.dropdownPopoverShow = false;
@@ -142,8 +150,9 @@ export default {
       localStorage.removeItem("userAccountNumber")
       localStorage.removeItem("userID")
       localStorage.removeItem("userRole")
-        setTimeout( () => location.reload(), 1000);
+      setTimeout( () => location.reload(), 1000);
     },
+
   },
    async created() {
      if(localStorage.getItem("token")!=null){
