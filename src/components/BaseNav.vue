@@ -57,13 +57,13 @@
             <i style="font-size: 18px;" class="ri-archive-line mr-4"></i>Archive
           </div>
           </router-link>
-
+  <div v-if="this.checkRole()">
           <router-link to='/ManageMember'>
           <div class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent  text-blueGray-700 hover:bg-red-100 cursor-pointer">
             <i style="font-size: 18px;" class="ri-settings-5-line mr-4"></i>Manage member
           </div>
           </router-link>
-
+</div>
           <div class="h-0 my-2 border border-solid border-t-0 border-blueGray-800 opacity-50"></div>
           <div @click="logout()" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 hover:bg-red-100 cursor-pointer">
             <i style="font-size: 18px;" class="ri-logout-circle-r-line mr-4"></i>Log out
@@ -135,6 +135,14 @@ export default {
         this.toggleModal();
       }
     },
+    checkRole(){
+      if( localStorage.getItem('userRole')=='Admin'){
+        return true
+      }else{
+        return false
+      }
+    },
+   
     toggleDropdown: function(){
       if(this.dropdownPopoverShow){
         this.dropdownPopoverShow = false;
@@ -150,7 +158,8 @@ export default {
       localStorage.removeItem("userAccountNumber")
       localStorage.removeItem("userID")
       localStorage.removeItem("userRole")
-      setTimeout( () => location.reload(), 1000);
+      setTimeout( () => this.$router.push("/"), 1000);
+      setTimeout( () => location.reload(), 1200);
     },
 
   },

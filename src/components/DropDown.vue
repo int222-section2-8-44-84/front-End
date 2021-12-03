@@ -17,12 +17,13 @@
           </div>
           </router-link>
 
+        
           <router-link to='/ManageMember'>
           <div class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent  text-blueGray-700 hover:bg-red-100 cursor-pointer">
             <i style="font-size: 18px;" class="ri-settings-5-line mr-4"></i>Manage member
           </div>
           </router-link>
-
+         
           <div class="h-0 my-2 border border-solid border-t-0 border-blueGray-800 opacity-50"></div>
           <div @click="logout()" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 hover:bg-red-100 cursor-pointer">
             <i style="font-size: 18px;" class="ri-logout-circle-r-line mr-4"></i>Log out
