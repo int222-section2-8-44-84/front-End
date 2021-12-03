@@ -30,7 +30,7 @@
                       <p v-if="invalidEmail" class="text-red-500 text-xs text-left italic">** Please enter your Email! **</p>
                     </div>
                     <div>
-                      <input v-model="role" placeholder="Role" disabled class="placeholder-gray block py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
+                      <input v-model="role" placeholder="Role" disabled class="placeholder-gray block text-gray-400 py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
                     </div>
             </div>
 
@@ -61,8 +61,6 @@ export default {
       username: this.account.userID,
       email: this.account.email,
       role: this.account.role.role,
-      // username:'',
-      // email: '',
       invalidUsername: false,
       invalidEmail: false,
       userID: '',
@@ -90,41 +88,32 @@ export default {
       this.invalidUsername= this.username === "" ? true : false;
       this.invalidEmail = this.email === "" ? true : false;
       if(this.invalidUsername && this.invalidEmail){
-        let update = {
-          userID: this.userID,
-          email: this.email,
+        try {
+          this.editProfile();
+          alert("Edit Success.");
+          // this.$router.push("/");
+          setTimeout( () => location.reload(), 1000);
+        } catch (error) {
+          console.log(error);
         }
-        let formData = JSON.stringify(update);
-        const res = await fetch(`${this.urlEditAcc}/{accountNumber}`,{
-          method: "PUT",
-          body: formData,
-          headers: {
-            "Authorization": this.token,
-            "Content-type": "application/json",
-          },
-        })
-        if(res.ok){
-        const user = await res.json();
-        return user
-      }
-      setTimeout( () => location.reload(), 1000);
       }
     },
     async editProfile(accountNumber){
-      var token = localStorage.getItem("token");
       var formData = new FormData();
-      formData.append("accountNumber", localStorage.getItem("userAccountNumber"));
-      let res = await fetch(`${this.urlEditAcc}/${accountNumber}`, {
+      let update = JSON.stringify({
+          userID: this.username,
+          email: this.email,
+      });
+      formData.append("update", update);
+
+      var token = localStorage.getItem("token");
+      await fetch(`${this.urlEditAcc}/${accountNumber}`, {
         method: "PUT",
+        body: formData,
         headers: {
           Authorization: token,
         },
-        body: formData
-        });
-      if(res.ok){
-        const user = await res.json();
-        return user
-      }
+      });
     },
   },
   async created() {
