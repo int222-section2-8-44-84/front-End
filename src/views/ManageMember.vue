@@ -126,8 +126,15 @@ export default {
     async deletePost(){
       this.checkDel = !this.checkDel;
     },
+    checkAuthen(){
+      if(localStorage.getItem("token")==null){
+        alert("Please Log in to use this feature.")
+        this.$router.push("/");
+      }
+    }
   },
   async created() {
+      this.checkAuthen();
     this.handleView();
     window.addEventListener("resize", this.handleView);
     //this.allAccount = await this.getAllAccount(this.urlacc);
