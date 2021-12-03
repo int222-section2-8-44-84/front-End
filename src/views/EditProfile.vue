@@ -1,4 +1,5 @@
 <template>
+<!-- EditProfile -->
   <div>
       <div class="relative w-auto my-6 mx-auto max-w-sm">
         <!--content-->

@@ -71,9 +71,6 @@ export default {
     BaseNavMobile,
     EditProfile
   },
-  // props: {
-  //   accountNumber: Number,
-  // },
   data() {
     return {
       mobileView: true,
@@ -117,7 +114,7 @@ export default {
         const data = await res.json();
         return data;
       } catch (error) {
-        //console.log(`Could not get ${error}`);
+        console.log(`Could not get ${error}`);
       }
     },
     checkAuthen(){
