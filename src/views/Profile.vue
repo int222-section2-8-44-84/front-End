@@ -31,7 +31,7 @@
                     <h1 class="font-bold uppercase text-4xl pb-4">Profile</h1>
                     <h1 class="text-base pb-2">Username : {{this.account.userID}}</h1>
                     <p class="text-base pb-2">Email : {{this.account.email}}</p>
-                    <p class="text-base pb-2">Role :{{this.account.role.role}}</p>
+                    <p class="text-base pb-2">Role : {{this.account.role.role}}</p>
                 </div>
 
                 <div class="flex">
@@ -39,6 +39,7 @@
                         <div v-if="showPro" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
                           <edit-profile
                             @adding-edit-profile="close"
+                            :account= "this.id"
                           >
                           </edit-profile>
                         </div>
@@ -77,7 +78,8 @@ export default {
       showPro: false,
       checkDel: false,
       account: null,
-      accountTags: "http://localhost:3000/me"
+      accountTags: "http://localhost:3000/me",
+      id: 0
     };
   },
 
@@ -93,6 +95,7 @@ export default {
     },
     EditMember(){
         this.showPro = !this.showPro;
+        this.id = this.account;
     },
     async deletePost(){
       this.checkDel = !this.checkDel;
@@ -111,7 +114,7 @@ export default {
         const data = await res.json();
         return data;
       } catch (error) {
-        //console.log(`Could not get ${error}`);
+        console.log(`Could not get ${error}`);
       }
     },
     checkAuthen(){
