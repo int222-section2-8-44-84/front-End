@@ -506,15 +506,15 @@ export default {
       invalidImage: false,
       mobileView: true,
       showNav: false,
-      urlcategory: "http://localhost:3000/showAllCategories",
-      urlpost: "http://localhost:3000/posts",
-      urltag: "http://localhost:3000/showAllTags",
-      urlposthastag: "http://localhost:3000/showPostsHasTags",
-      //urleditpost: "http://localhost:3000/editPost/",
-      //urladdupload: "http://localhost:3000/uploadimage",
-      //urluser: "http://localhost:3000/me",
-      urlupdatepost: "http://localhost:3000/editPostWithImage",
-      // urlImage: "http://localhost:3000/files/",
+      urlcategory: "http://52.152.137.28:3000/showAllCategories",
+      urlpost: "http://52.152.137.28:3000/posts",
+      urltag: "http://52.152.137.28:3000/showAllTags",
+      urlposthastag: "http://52.152.137.28:3000/showPostsHasTags",
+      //urleditpost: "http://52.152.137.28:3000/editPost/",
+      //urladdupload: "http://52.152.137.28:3000/uploadimage",
+      //urluser: "http://52.152.137.28:3000/me",
+      urlupdatepost: "http://52.152.137.28:3000/editPostWithImage",
+      // urlImage: "http://52.152.137.28:3000/files/",
 
       categories: [],
       tag: [], //from DB
@@ -720,11 +720,11 @@ export default {
     //this.user = await this.getBackEndData(this.urluser);
     this.userID = localStorage.getItem("userID"),
     this.accountNumber = localStorage.getItem("userAccountNumber");
-    //this.imageshow = await fetch (`http://localhost:3000/files/${this.post.image}`);
+    //this.imageshow = await fetch (`http://52.152.137.28:3000/files/${this.post.image}`);
     // setTimeout(
     //   () =>
     //     (
-          this.imageshow = `http://localhost:3000/files/${this.post.imageName}`
+          this.imageshow = `http://52.152.137.28:3000/files/${this.post.imageName}`
           const response = await fetch(this.imageshow);
     //       ),
     //   500

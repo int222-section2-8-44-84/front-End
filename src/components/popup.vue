@@ -311,9 +311,9 @@ export default {
       invalidUseRegis: false,
       invalidEmailRegis: false,
       invalidPassRegis: false,
-      urlAuthen: "http://localhost:3000/authenticate",
-      urlRegis: "http://localhost:3000/register",
-      urlMe: "http://localhost:3000/me",
+      urlAuthen: "http://52.152.137.28:3000/authenticate",
+      urlRegis: "http://52.152.137.28:3000/register",
+      urlMe: "http://52.152.137.28:3000/me",
     };
   },
   methods: {
@@ -333,7 +333,7 @@ export default {
       // this.$router.push("/");
       if (this.invalidEmailLogin == false && this.invalidPassLogin == false) {
         this.authen();
-        
+   
       }
     },
     async authen() {

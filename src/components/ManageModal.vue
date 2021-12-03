@@ -61,8 +61,7 @@ export default {
     return {
       username: this.userID,
       email: this.email,
-      allAccount: "http://localhost:3000/showAllAccounts"
-
+      allAccount: "http://52.152.137.28:3000/showAllAccounts"
     }
   },
   methods: {
@@ -74,5 +73,6 @@ export default {
 
   },
 };
+
 </script>
 

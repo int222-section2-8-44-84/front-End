@@ -36,7 +36,6 @@
             <!-- </router-link> -->
         </ul>
     </div>
-
     <!-- Login / Register -->
       <div v-if="after" style="font-size: 32px;">
           <!-- <drop-down/> -->
@@ -73,7 +72,6 @@
     </div>
   </div>
       </div>
-
 
     <!-- Login / Register -->
       <div v-else style="font-size: 32px;">
@@ -121,6 +119,7 @@ export default {
     }
   },
   methods: {
+
     toggleModal: function(){
       this.showModal = !this.showModal;
     },
@@ -161,6 +160,7 @@ export default {
       setTimeout( () => this.$router.push("/"), 1000);
       setTimeout( () => location.reload(), 1200);
     },
+
 
   },
    async created() {

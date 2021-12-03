@@ -71,6 +71,7 @@ export default {
       showNav: false,
       showModal: false,
       after: false,
+
     };
   },
   methods: {

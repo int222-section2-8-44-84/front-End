@@ -155,9 +155,9 @@ export default {
       checkDel: false,
       allAccount: [],
       account: null,
-      urlacc: "http://localhost:3000/showAllAccounts",
-      urlUpdateRole: "http://localhost:3000/manageRole",
-      urldelAccount: "http://localhost:3000/deleteAccount",
+      urlacc: "http://52.152.137.28:3000/showAllAccounts",
+      urlUpdateRole: "http://52.152.137.28:3000/manageRole",
+      urldelAccount: "http://52.152.137.28:3000/deleteAccount",
     };
   },
 

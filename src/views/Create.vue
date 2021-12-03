@@ -500,18 +500,19 @@ export default {
       red: false,
       green: false,
 
-      urlcategory: "http://localhost:3000/showAllCategories",
-      urlpost: "http://localhost:3000/posts",
-      urltag: "http://localhost:3000/showAllTags",
-      urlposthastag: "http://localhost:3000/showPostsHasTags",
-      //urluser: "http://localhost:3000/me",
-      urlcreatepost: "http://localhost:3000/createPostWithImage",
-      // urladdpost: "http://localhost:3000/createPost",
-      // urladdupload: "http://localhost:3000/uploadimage",
+      urlcategory: "http://52.152.137.28:3000/showAllCategories",
+      urlpost: "http://52.152.137.28:3000/posts",
+      urltag: "http://52.152.137.28:3000/showAllTags",
+      urlposthastag: "http://52.152.137.28:3000/showPostsHasTags",
+      //urluser: "http://52.152.137.28:3000/me",
+      urlcreatepost: "http://52.152.137.28:3000/createPostWithImage",
+      // urladdpost: "http://52.152.137.28:3000/createPost",
+      // urladdupload: "http://52.152.137.28:3000/uploadimage",
 
       categories: [],
       tag: [],
       posts: [],
+
     };
   },
 
