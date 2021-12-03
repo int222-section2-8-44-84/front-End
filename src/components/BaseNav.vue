@@ -37,36 +37,41 @@
         </ul>
     </div>
 
-    <!-- <div>
-      <input
-        
-        type="text" 
-        name="query" 
-        placeholder="Search" 
-        class="w-full h-12 px-4 text-xl text-gray-700 bg-white border border-gray-300 
-        rounded-lg lg:w-48 xl:transition-all xl:duration-300 xl:w-48 xl:focus:w-44 lg:h-10 
-        dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-teal-500 
-        dark:focus:border-teal-500 focus:outline-none focus:ring focus:ring-primary 
-        dark:placeholder-gray-400 focus:ring-opacity-40"> 
-    </div> -->
-    
-    <!-- <button style="font-size: 32px;" class="ml-2 ri-close-line" v-on:click="searchinput()" v-else></button>
-    <i style="font-size: 32px;" class="ml-2 ri-search-line"></i> -->
-
-
-
     <!-- Login / Register -->
       <div v-if="after" style="font-size: 32px;">
-        <!-- <button v-on:click="showDropDown()" class="items-center justify-center transition-colors duration-150 rounded-full focus:shadow-outline w-12 h-12 hover:bg-red-200 ml-2 ri-user-3-line"></button>
-          <div v-if="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
-            <pop-up
-            :showModal="showModal"
-            @adding-showModal='toggleModal'
-            >
-            </pop-up>
-          </div> -->
-          <!-- <div v-if="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div> -->
-          <drop-down/>
+          <!-- <drop-down/> -->
+  <div class="flex flex-wrap">
+    <div class="w-full sm:w-6/12 md:w-4/12 px-4">
+      <div class="relative inline-flex align-middle w-full">
+      <button @click="toggleDropdown()" ref="btnDropdownRef" class="items-center justify-center transition-colors duration-150 rounded-full focus:shadow-outline ri-user-3-line"></button>
+        <div v-bind:class="{'hidden': !dropdownPopoverShow, 'block': dropdownPopoverShow}" class="bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1" style="min-width:12rem" ref="popoverDropdownRef">
+          
+          <router-link to='/Profile'>
+          <div class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent  text-blueGray-700 hover:bg-red-100 cursor-pointer">
+            <i style="font-size: 18px;" class="ri-user-3-line mr-4"></i>Profile
+          </div>
+          </router-link>
+
+          <router-link to='/PostsArchive'>
+          <div class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent  text-blueGray-700 hover:bg-red-100 cursor-pointer">
+            <i style="font-size: 18px;" class="ri-archive-line mr-4"></i>Archive
+          </div>
+          </router-link>
+
+          <router-link to='/ManageMember'>
+          <div class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent  text-blueGray-700 hover:bg-red-100 cursor-pointer">
+            <i style="font-size: 18px;" class="ri-settings-5-line mr-4"></i>Manage member
+          </div>
+          </router-link>
+
+          <div class="h-0 my-2 border border-solid border-t-0 border-blueGray-800 opacity-50"></div>
+          <div @click="logout()" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 hover:bg-red-100 cursor-pointer">
+            <i style="font-size: 18px;" class="ri-logout-circle-r-line mr-4"></i>Log out
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
       </div>
 
 
@@ -91,9 +96,10 @@
 </template>
 
 <script>
-import DropDown from './DropDown.vue';
+// import DropDown from './DropDown.vue';
+import { createPopper } from "@popperjs/core";
 export default {
-  components: { DropDown },
+  // components: { DropDown },
   name: "regular-modal",
   data() {
     return {
@@ -110,22 +116,13 @@ export default {
       invalidUseRegis: false,
       invalidEmailRegis: false,
       invalidPassRegis: false,
-      // click: false,
-
       after: false,
-      //getUser: "http://localhost:3000/me",
-      //user: null,
+      dropdownPopoverShow: false,
     }
   },
   methods: {
-    // searchinput(){
-    //     this.click = !this.click,
-    //     this.input = ''
-    // },
     toggleModal: function(){
       this.showModal = !this.showModal;
-      // console.log(this.invalidEmailInput);
-      // console.log(this.invalidPassInput);
     },
     toggleTabs: function(tabNumber){
       this.openTab = tabNumber
@@ -135,25 +132,27 @@ export default {
       if(localStorage.getItem("token")!=null){
         this.$router.push("/Create");
       }else{
-        //alert("Please Log-in to use this feature.")
         this.toggleModal();
       }
-    }
-    // async getUserFromToken(){
-    //     let token = localStorage.getItem('token')
-    //     const res = await fetch(this.getUser,{
-    //         method: "GET",
-    //         headers: {
-    //             "Authorization": token,
-    //         }
-    //     })
-    //     // const user = await res.json()
-    //     // console.log(user)
+    },
+    toggleDropdown: function(){
+      if(this.dropdownPopoverShow){
+        this.dropdownPopoverShow = false;
+      } else {
+        this.dropdownPopoverShow = true;
+        createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
+          placement: "bottom-start"
+        });
+      }
+    },
+    async logout() {
+      localStorage.removeItem("token")
+      localStorage.removeItem("userAccountNumber")
+      localStorage.removeItem("userID")
+      localStorage.removeItem("userRole")
+      setTimeout( () => location.reload(), 1000);
+    },
 
-    //       this.after = true;
-    //         const user = await res.json()
-    //         this.user = user
-    // },
   },
    async created() {
      if(localStorage.getItem("token")!=null){

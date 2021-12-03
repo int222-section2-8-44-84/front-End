@@ -240,22 +240,6 @@ export default {
             console.log(`Could not get ${error}`)
         }
     },
-    // async getUserFromToken(){
-    //     let token = localStorage.getItem('token')
-    //     const res = await fetch(this.getUser,{
-    //         method: "GET",
-    //         headers: {
-    //             "Authorization": token,
-    //         }
-    //     })
-    //     // const user = await res.json()
-    //     // console.log(user)
-    //     if(res.ok){
-    //         const user = await res.json()
-    //         this.getUserFromToken = user
-
-    //     }
-    // },
     createImageUrl(postimage){
         return this.urlImage + postimage
     },
