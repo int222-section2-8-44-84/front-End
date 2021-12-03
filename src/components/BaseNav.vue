@@ -27,35 +27,55 @@
                 </li>
             </router-link>
 
-            <router-link to="/Create">
-              <li class="nav-item">
-                <div class="px-3 py-2 flex items-center text-2xl hover:text-redRYB">
+            <!-- <router-link to="/Create"> -->
+              <li class="cursor-pointer nav-item">
+                <div v-on:click="checkAuthen()" class="px-3 py-2 flex items-center text-2xl hover:text-redRYB">
                   + Create
                 </div>
               </li>
-            </router-link>
+            <!-- </router-link> -->
         </ul>
     </div>
+    <!-- Login / Register -->
+      <div v-if="after" style="font-size: 32px;">
+          <!-- <drop-down/> -->
+  <div class="flex flex-wrap">
+    <div class="w-full sm:w-6/12 md:w-4/12 px-4">
+      <div class="relative inline-flex align-middle w-full">
+      <button @click="toggleDropdown()" ref="btnDropdownRef" class="items-center justify-center transition-colors duration-150 rounded-full focus:shadow-outline ri-user-3-line"></button>
+        <div v-bind:class="{'hidden': !dropdownPopoverShow, 'block': dropdownPopoverShow}" class="bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1" style="min-width:12rem" ref="popoverDropdownRef">
+          
+          <router-link to='/Profile'>
+          <div class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent  text-blueGray-700 hover:bg-red-100 cursor-pointer">
+            <i style="font-size: 18px;" class="ri-user-3-line mr-4"></i>Profile
+          </div>
+          </router-link>
 
-    <!-- <div>
-      <input
-        
-        type="text" 
-        name="query" 
-        placeholder="Search" 
-        class="w-full h-12 px-4 text-xl text-gray-700 bg-white border border-gray-300 
-        rounded-lg lg:w-48 xl:transition-all xl:duration-300 xl:w-48 xl:focus:w-44 lg:h-10 
-        dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-teal-500 
-        dark:focus:border-teal-500 focus:outline-none focus:ring focus:ring-primary 
-        dark:placeholder-gray-400 focus:ring-opacity-40"> 
-    </div> -->
-    
-    <!-- <button style="font-size: 32px;" class="ml-2 ri-close-line" v-on:click="searchinput()" v-else></button>
-    <i style="font-size: 32px;" class="ml-2 ri-search-line"></i> -->
+          <router-link to='/PostsArchive'>
+          <div class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent  text-blueGray-700 hover:bg-red-100 cursor-pointer">
+            <i style="font-size: 18px;" class="ri-archive-line mr-4"></i>Archive
+          </div>
+          </router-link>
+  <div v-if="this.checkRole()">
+          <router-link to='/ManageMember'>
+          <div class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent  text-blueGray-700 hover:bg-red-100 cursor-pointer">
+            <i style="font-size: 18px;" class="ri-settings-5-line mr-4"></i>Manage member
+          </div>
+          </router-link>
+</div>
+          <div class="h-0 my-2 border border-solid border-t-0 border-blueGray-800 opacity-50"></div>
+          <div @click="logout()" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 hover:bg-red-100 cursor-pointer">
+            <i style="font-size: 18px;" class="ri-logout-circle-r-line mr-4"></i>Log out
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      </div>
 
     <!-- Login / Register -->
-      <div style="font-size: 32px;">
-        <button v-on:click="toggleModal()" class="items-center justify-center w-12 h-12 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-red-200 ml-2 ri-user-3-line"></button>
+      <div v-else style="font-size: 32px;">
+        <button v-on:click="toggleModal()" class="items-center justify-center transition-colors duration-150 w-12 h-12 hover:bg-red-200 rounded-full focus:shadow-outline ri-user-3-line"></button>
           <div v-if="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
             <pop-up
             :showModal="showModal"
@@ -65,12 +85,19 @@
           </div>
           <div v-if="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
       </div>
+      <!-- <drop-down/> -->
+
+
+
     </div>
   </nav>
 </template>
 
 <script>
+// import DropDown from './DropDown.vue';
+import { createPopper } from "@popperjs/core";
 export default {
+  // components: { DropDown },
   name: "regular-modal",
   data() {
     return {
@@ -87,27 +114,59 @@ export default {
       invalidUseRegis: false,
       invalidEmailRegis: false,
       invalidPassRegis: false,
-      // click: false,
+      after: false,
+      dropdownPopoverShow: false,
     }
   },
   methods: {
-    // searchinput(){
-    //     this.click = !this.click,
-    //     this.input = ''
-    // },
+
     toggleModal: function(){
       this.showModal = !this.showModal;
-      // console.log(this.invalidEmailInput);
-      // console.log(this.invalidPassInput);
     },
     toggleTabs: function(tabNumber){
       this.openTab = tabNumber
     },
-  },
-  // computed: {
-  //   filterSearch(){
 
-  //   }
-  // }
-}
+    checkAuthen(){
+      if(localStorage.getItem("token")!=null){
+        this.$router.push("/Create");
+      }else{
+        this.toggleModal();
+      }
+    },
+    checkRole(){
+      if( localStorage.getItem('userRole')=='Admin'){
+        return true
+      }else{
+        return false
+      }
+    },
+   
+    toggleDropdown: function(){
+      if(this.dropdownPopoverShow){
+        this.dropdownPopoverShow = false;
+      } else {
+        this.dropdownPopoverShow = true;
+        createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
+          placement: "bottom-start"
+        });
+      }
+    },
+    async logout() {
+      localStorage.removeItem("token")
+      localStorage.removeItem("userAccountNumber")
+      localStorage.removeItem("userID")
+      localStorage.removeItem("userRole")
+      setTimeout( () => this.$router.push("/"), 1000);
+      setTimeout( () => location.reload(), 1200);
+    },
+
+
+  },
+   async created() {
+     if(localStorage.getItem("token")!=null){
+       this.after = true;
+     }
+  },
+};
 </script>

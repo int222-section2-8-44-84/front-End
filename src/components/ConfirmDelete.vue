@@ -50,8 +50,9 @@ export default {
   data() {
     return {
         checktran: false,
-        urlDelete: "http://localhost:3000/deletePost/",
-        urlpost: "http://localhost:3000/posts/",
+        urlDelete: "http://52.152.137.28:3000/deletePost",
+        urlpost: "http://52.152.137.28:3000/posts",
+
     }
   },
   methods: {
@@ -73,12 +74,16 @@ export default {
         }
     },
     async deletePost(postNumber){
+      var token = localStorage.getItem("token");
       let checktran;
       let errorMessage;
       let red;
       let green;
         const res = await fetch(`${this.urlDelete}/${postNumber}`, {
         method: "DELETE",
+        headers: {
+            "Authorization": token,
+          },
       });
       if(res.ok){
           await this.getPostsData(this.urlpost)
@@ -93,20 +98,14 @@ export default {
           errorMessage = await res.json().message;
           setTimeout(()=>{checktran = false } , 9000);
       }
-
       // location.reload()
-
-      location.reload()
-
       this.$emit("check",{
         checktran:checktran,
         errorMessage:errorMessage,
         red:red,
         green:green,
       })
-
       setTimeout( () => this.$router.push({ path: '/'}), 1000);
-
     },
 
   }

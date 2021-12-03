@@ -16,64 +16,70 @@
         <base-nav-mobile v-if="showNav" />
         <base-nav v-if="!mobileView" />
 
-        <div class="items-center justify-center flex h-4/5 mt-8">
-            <div class="grid bg-white rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-1/2 mb-12">
-                <div class="flex justify-center py-4">
+ <div class="min-w-screen flex items-center p-5 lg:p-8 relative">
+    <div class="w-full max-w-3xl rounded-md bg-white shadow-xl p-10 lg:p-10 mx-auto text-gray-800 relative md:text-left">
+        <div class="md:flex items-center -mx-10">
+            <div class="w-full md:w-1/2 px-10 mb-10 md:mb-0">
+                <div class="relative">
+                    <img src="../assets/sapiensProfile.png" class="w-full relative z-10">
+                    <!-- <div class="border-4 border-yellow-200 absolute top-10 bottom-10 left-10 right-10 z-0"></div> -->
                 </div>
-                    <div class="flex justify-center">
-                        <div class="flex">
-                            <h1 class="font-bold md:text-2xl text-xl text-red-600">Profile</h1>
-                        </div>
-                    </div>
-                    <div class="flex justify-center my-3">
-                        <div class="flex">
-                            <h3 class="text-romanSilver">Personal login information of your account</h3>
-                        </div>
-                    </div>
-
-                <form @submit.prevent="submitForm">
-                    <div class="grid grid-cols-1 mt-5 mx-7">
-                        <label class="uppercase md:text-sm text-xs text-gray-500 text-light text-left font-semibold">Username</label>
-                        <input v-model="userName" class="py-2 px-3 rounded-lg border-2  mt-1 focus:outline-none focus:ring-2 focus:ring-roseMadder focus:border-transparent" type="text" placeholder="Username" />
-                        <p v-if="invalidUserName" class="text-red-500 text-xs text-left italic">** Please enter your username! **</p>
-                    </div>
-                    <div class="grid grid-cols-1 mt-5 mx-7">
-                        <label class="uppercase md:text-sm text-xs text-gray-500 text-light text-left font-semibold">Email</label>
-                        <input v-model="email" class="py-2 px-3 rounded-lg border-2  mt-1 focus:outline-none focus:ring-2 focus:ring-roseMadder focus:border-transparent" type="text" placeholder="example@mail.com" />
-                        <p v-if="invalidEmail" class="text-red-500 text-xs text-left italic">** Please enter your email! **</p>
-                    </div>
-                    <div class="grid grid-cols-1 mt-5 mx-7">
-                        <label class="uppercase md:text-sm text-xs text-gray-500 text-light text-left font-semibold">Role</label>
-                        <input class="disabled py-2 px-3 rounded-lg border-2  mt-1 focus:outline-none focus:ring-2 focus:ring-roseMadder focus:border-transparent"  />
-                    </div>
-
-
-                    <div class='flex items-center justify-center md:gap-8 gap-4 pt-5 pb-5 xl:px-8 md:px-8'>
-                        <button type="submit" class='sm:w-6/12 bg-blue-500 hover:bg-blue-600 rounded-lg shadow-xl font-medium text-white text-xl px-4 py-2'>Update</button>
-                        <button class='sm:w-6/12 bg-red-600 hover:bg-red-700 rounded-lg shadow-xl font-medium text-white text-xl px-4 py-2'>Delete</button>
-                    </div>
-                </form>
-
             </div>
+
+            <div class="w-full lg:w-1/2 md:w-1/2 px-5 md:pr-12 xl:pr-24">
+                <div class="mb-3">
+                    <h1 class="font-bold uppercase text-4xl pb-4">Profile</h1>
+                    <h1 class="text-base pb-2">Username : {{this.account.userID}}</h1>
+                    <p class="text-base pb-2">Email : {{this.account.email}}</p>
+                    <p class="text-base pb-2">Role : {{this.account.role.role}}</p>
+                </div>
+
+                <div class="flex">
+                        <button @click="EditMember()" class="text-white mr-2 bg-yellow-400 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded shadow-lg">Edit</button>
+                        <div v-if="showPro" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+                          <edit-profile
+                            @adding-edit-profile="close"
+                            :account= "this.id"
+                          >
+                          </edit-profile>
+                        </div>
+                        <div v-if="showPro" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                    
+                    <button @click="deletePost()" class="text-white bg-red-500 border-0 py-2 px-4 focus:outline-none hover:bg-red-600 rounded shadow-lg">Delete Account</button>
+                    <div v-if="checkDel" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+                      <confirm-delete
+                        @adding-close-modal="delModal"
+                      >
+                      </confirm-delete>
+                    </div>
+                    <div v-if="checkDel" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+
+                </div>
+            </div>  
         </div>
-        
+    </div>
+</div>
+
 </template>
 <script>
 import BaseNavMobile from "../components/BaseNavMobile.vue";
+import EditProfile from "../views/EditProfile.vue"
 
 export default {
     el: '#color-picker',
   components: {
     BaseNavMobile,
+    EditProfile
   },
   data() {
     return {
-        userName: '',
-        email: '',
-        mobileView: true,
-        showNav: false, 
-        invalidUserName: false,
-        invalidUEmail: false,
+      mobileView: true,
+      showNav: false,
+      showPro: false,
+      checkDel: false,
+      account: null,
+      accountTags: "http://localhost:3000/me",
+      id: 0
     };
   },
 
@@ -84,14 +90,45 @@ export default {
     handleView() {
       this.mobileView = window.innerWidth <= 990;
     },
-    submitForm() {
-    this.invalidUserName = (this.userName === "") ? true : false;
-    this.invalidEmail = (this.email === "") ? true : false;
+    close(){
+        this.showPro =! this.showPro;
     },
+    EditMember(){
+        this.showPro = !this.showPro;
+        this.id = this.account;
+    },
+    async deletePost(){
+      this.checkDel = !this.checkDel;
+    },
+
+    async getBackEndData(url) {
+      var token = localStorage.getItem("token");
+      //console.log(token);
+      try {
+        const res = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Authorization": token,
+          },
+        });
+        const data = await res.json();
+        return data;
+      } catch (error) {
+        console.log(`Could not get ${error}`);
+      }
+    },
+    checkAuthen(){
+      if(localStorage.getItem("token")==null){
+        alert("Please Log in to use this feature.")
+        this.$router.push("/");
+      }
+    }
   },
-  created() {
+  async created() {
+    this.checkAuthen();
     this.handleView();
     window.addEventListener("resize", this.handleView);
+    this.account = await this.getBackEndData(this.accountTags);
   },
 };
 </script>

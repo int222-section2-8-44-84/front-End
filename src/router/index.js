@@ -7,7 +7,7 @@ import Edit from '../views/Edit.vue'
 import Profile from '../views/Profile.vue'
 import PostsArchive from '../views/PostsArchive.vue'
 import ManageMember from '../views/ManageMember.vue'
-// import Login from '../views/Login.vue'
+import EditProfile from '../views/EditProfile.vue'
 
 const routes = [
   {
@@ -40,7 +40,15 @@ const routes = [
   {
     path: '/Profile',
     name: 'Profile',
-    component: Profile
+    component: Profile,
+    // meta: {
+    //   auth: true
+    // }
+  },
+  {
+    path: '/EditProfile',
+    name: 'EditProfile',
+    component: EditProfile
   },
   {
     path: '/PostsArchive',
@@ -52,11 +60,6 @@ const routes = [
     name: 'ManageMember',
     component: ManageMember
   },
-  // {
-  //   path: '/Login',
-  //   name: 'Login',
-  //   component: Login
-  // },
   // {
   //   path: '/about',
   //   name: 'About',

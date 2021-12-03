@@ -32,18 +32,19 @@
             </div>
           </router-link>
 
-          <router-link to="/Create">
+          <!-- <router-link to="/Create"> -->
             <div class="flex justify-center items-center mt-1">
               <span class="text-sm mt-1"></span>
               <p class="uppercase font-medium text-base">Create +</p>
             </div>
-          </router-link>
+          <!-- </router-link> -->
 
           <!-- <router-link to="/login"> -->
           <div class="flex justify-center items-center mt-1">
             <span class="text-sm mt-1"></span>
             <div style="font-size: 24px;">
-                <button v-on:click="toggleModal()" class="ri-user-3-line"></button>
+                <!-- <button v-on:click="toggleModal()" class="ri-user-3-line"></button> -->
+                <button class="ri-user-3-line"></button>
                 <div v-if="showModal" class="p-4 overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
                   <pop-up
                     :showModal="showModal"
@@ -55,19 +56,6 @@
             </div>
           </div>
           <!-- </router-link> -->
-
-          <!-- <div>
-            <input 
-              type="search" 
-              name="query" 
-              placeholder="Search" 
-              class="w-full h-12 px-4 text-lg text-gray-700 bg-white border border-gray-300 
-              rounded-lg lg:w-56 xl:transition-all xl:duration-300 xl:w-56 xl:focus:w-44 lg:h-10 
-              dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-teal-500 
-              dark:focus:border-teal-500 focus:outline-none focus:ring focus:ring-primary 
-              dark:placeholder-gray-400 focus:ring-opacity-40">
-          </div>  -->
-          
         </div>
       </div>
     </div>
@@ -82,6 +70,8 @@ export default {
       mobileView: true,
       showNav: false,
       showModal: false,
+      after: false,
+
     };
   },
   methods: {
@@ -93,6 +83,25 @@ export default {
       // console.log(this.invalidEmailInput);
       // console.log(this.invalidPassInput);
     },
+    // checkAuthen(){
+    //   if(localStorage.getItem("token")!=null){
+    //     this.$router.push("/Create");
+    //   }else{
+    //     this.toggleModal();
+    //   }
+    // },
+    // async logout() {
+    //   localStorage.removeItem("token")
+    //   localStorage.removeItem("userAccountNumber")
+    //   localStorage.removeItem("userID")
+    //   localStorage.removeItem("userRole")
+    //   setTimeout( () => location.reload(), 1000);
+    // },
+  },
+   async created() {
+    //  if(localStorage.getItem("token")!=null){
+    //    this.after = true;
+    //  }
   },
 };
 </script>
