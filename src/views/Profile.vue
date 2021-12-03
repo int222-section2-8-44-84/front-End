@@ -78,7 +78,7 @@ export default {
       showPro: false,
       checkDel: false,
       account: null,
-      accountTags: "http://localhost:3000/me",
+      accountTags: "https://localhost:3000/me",
       id: 0
     };
   },

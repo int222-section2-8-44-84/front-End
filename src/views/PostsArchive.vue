@@ -87,9 +87,9 @@ export default {
     return {
         mobileView: true,
         showNav: false, 
-        urlpost: "http://localhost:3000/postsByAccount",
+        urlpost: "https://localhost:3000/postsByAccount",
         posts: [],
-        urlImage: "http://localhost:3000/files/",
+        urlImage: "https://localhost:3000/files/",
     };
   },
 

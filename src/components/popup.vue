@@ -311,9 +311,9 @@ export default {
       invalidUseRegis: false,
       invalidEmailRegis: false,
       invalidPassRegis: false,
-      urlAuthen: "http://52.152.137.28:3000/authenticate",
-      urlRegis: "http://52.152.137.28:3000/register",
-      urlMe: "http://52.152.137.28:3000/me",
+      urlAuthen: "https://52.152.137.28:3000/authenticate",
+      urlRegis: "https://52.152.137.28:3000/register",
+      urlMe: "https://52.152.137.28:3000/me",
     };
   },
   methods: {

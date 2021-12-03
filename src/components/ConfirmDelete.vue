@@ -50,8 +50,8 @@ export default {
   data() {
     return {
         checktran: false,
-        urlDelete: "http://52.152.137.28:3000/deletePost",
-        urlpost: "http://52.152.137.28:3000/posts",
+        urlDelete: "https://52.152.137.28:3000/deletePost",
+        urlpost: "https://52.152.137.28:3000/posts",
 
     }
   },

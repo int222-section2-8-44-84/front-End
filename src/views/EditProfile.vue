@@ -65,8 +65,8 @@ export default {
       invalidEmail: false,
       userID: '',
       accountNumber: '',
-      urlme: "http://localhost:3000/me",
-      urlEditAcc: "http://localhost:3000/editAccount"
+      urlme: "https://localhost:3000/me",
+      urlEditAcc: "https://localhost:3000/editAccount"
     }
   },
   methods: {

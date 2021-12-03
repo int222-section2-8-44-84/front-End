@@ -155,9 +155,9 @@ export default {
       checkDel: false,
       allAccount: [],
       account: null,
-      urlacc: "http://52.152.137.28:3000/showAllAccounts",
-      urlUpdateRole: "http://52.152.137.28:3000/manageRole",
-      urldelAccount: "http://52.152.137.28:3000/deleteAccount",
+      urlacc: "https://52.152.137.28:3000/showAllAccounts",
+      urlUpdateRole: "https://52.152.137.28:3000/manageRole",
+      urldelAccount: "https://52.152.137.28:3000/deleteAccount",
     };
   },
 
