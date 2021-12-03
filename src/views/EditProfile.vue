@@ -22,13 +22,14 @@
                     <p class="text-sm text-gray-400 pb-4">Personal login information of your account</p>
                     <div>
                       <input v-model="username" type="text" placeholder="Username" class="placeholder-gray block py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
-                      <!-- <p v-if="invalidUseRegis" class="text-red-500 text-xs text-left italic">** Please enter your Username! **</p> -->
+                      <p v-if="invalidUsername" class="text-red-500 text-xs text-left italic">** Please enter your Username! **</p>
                     </div>
                     <div>
                       <input v-model="email" type="text" placeholder="example@mail.com" class="placeholder-gray block py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
+                      <p v-if="invalidEmail" class="text-red-500 text-xs text-left italic">** Please enter your Email! **</p>
                     </div>
                     <div>
-                      <input v-model="role" type="text" placeholder="Role" class="placeholder-gray block py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
+                      <input v-model="role" placeholder="Role" disabled class="placeholder-gray block py-2 px-4 rounded-lg w-full border-2 border-gray-100 shadow-sm outline-none" />
                     </div>
             </div>
 
@@ -53,38 +54,82 @@
 </template>
 <script>
 export default {
+  props: ["account"],
   data() {
     return {
-      username: this.userID,
-      email: this.email,
-      // role: this.role.role,
-      account: null,
+      username: this.account.userID,
+      email: this.account.email,
+      role: this.account.role.role,
+      // username:'',
+      // email: '',
+      invalidUsername: false,
+      invalidEmail: false,
+      userID: '',
+      accountNumber: '',
       urlme: "http://localhost:3000/me",
+      urlEditAcc: "http://localhost:3000/editAccount"
     }
   },
   methods: {
     close(){
       this.$emit('adding-edit-profile');
     },
-    async getBackEndData(url) {
+    async getBackEndData() {
       var token = localStorage.getItem("token");
-      try {
-        const res = await fetch(url, {
-          method: "GET",
+      const res = await fetch(this.urlme, {
+        method: "GET",
+        headers: {
+          Authorization: token,
+        },
+      });
+      const data = await res.json();
+      return data;
+    },
+    async submitForm() {
+      this.invalidUsername= this.username === "" ? true : false;
+      this.invalidEmail = this.email === "" ? true : false;
+      if(this.invalidUsername && this.invalidEmail){
+        let update = {
+          userID: this.userID,
+          email: this.email,
+        }
+        let formData = JSON.stringify(update);
+        const res = await fetch(`${this.urlEditAcc}/{accountNumber}`,{
+          method: "PUT",
+          body: formData,
           headers: {
-            "Authorization": token,
+            "Authorization": this.token,
+            "Content-type": "application/json",
           },
-        });
-        const data = await res.json();
-        return data;
-      } catch (error) {
-        console.log(`Could not get ${error}`);
+        })
+        if(res.ok){
+        const user = await res.json();
+        return user
+      }
+      setTimeout( () => location.reload(), 1000);
       }
     },
-    
+    async editProfile(accountNumber){
+      var token = localStorage.getItem("token");
+      var formData = new FormData();
+      formData.append("accountNumber", localStorage.getItem("userAccountNumber"));
+      let res = await fetch(`${this.urlEditAcc}/${accountNumber}`, {
+        method: "PUT",
+        headers: {
+          Authorization: token,
+        },
+        body: formData
+        });
+      if(res.ok){
+        const user = await res.json();
+        return user
+      }
+    },
   },
   async created() {
-    this.account = await this.getBackEndData(this.urlme);
+    this.getBackEndData();
+    this.userID = localStorage.getItem("userID"),
+    this.accountNumber = localStorage.getItem("userAccountNumber");
   },
 };
 </script>
