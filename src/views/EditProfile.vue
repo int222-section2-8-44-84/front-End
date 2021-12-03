@@ -87,12 +87,17 @@ export default {
     async submitForm() {
       this.invalidUsername= this.username === "" ? true : false;
       this.invalidEmail = this.email === "" ? true : false;
-      if(this.invalidUsername && this.invalidEmail){
+      alert(this.invalidUsername);
+      alert(this.invalidEmail);
+      if(this.invalidUsername == false && this.invalidEmail == false){
+        //alert("Pass if.");
         try {
-          this.editProfile();
-          alert("Edit Success.");
+          //alert("pass try.");
+          this.editProfile(localStorage.getItem("userAccountNumber"));
+          //alert("Edit Success.");
           // this.$router.push("/");
-          setTimeout( () => location.reload(), 1000);
+          this.logout();
+          //setTimeout( () => location.reload(), 1000);
         } catch (error) {
           console.log(error);
         }
@@ -100,26 +105,37 @@ export default {
     },
     async editProfile(accountNumber){
       var formData = new FormData();
-      let update = JSON.stringify({
-          userID: this.username,
-          email: this.email,
-      });
-      formData.append("update", update);
+      // let update = JSON.stringify({
+      //     userID: this.username,
+      //     email: this.email,
+      // });
+      formData.append("userID", this.username);
+      formData.append("email", this.email);
 
       var token = localStorage.getItem("token");
       await fetch(`${this.urlEditAcc}/${accountNumber}`, {
         method: "PUT",
-        body: formData,
         headers: {
           Authorization: token,
         },
+        body: formData,
       });
+      alert("Edit profile success. Please Log again.");
+    },
+
+    async logout() {
+      localStorage.removeItem("token")
+      localStorage.removeItem("userAccountNumber")
+      localStorage.removeItem("userID")
+      localStorage.removeItem("userRole")
+      setTimeout( () => this.$router.push("/"), 1000);
+      setTimeout( () => location.reload(), 1200);
     },
   },
   async created() {
     this.getBackEndData();
-    this.userID = localStorage.getItem("userID"),
-    this.accountNumber = localStorage.getItem("userAccountNumber");
+    this.userID = this.account.userID,
+    this.accountNumber = this.account.accountNumber;
   },
 };
 </script>

@@ -86,7 +86,7 @@
             <div class="grid sm:grid-cols-3 sm:gap-6 md:gap-2 xl:gap-4 grid-cols-2 gap-2 sm:py-7 py-8">
                 <div v-for="post in returnFilter()" :key="post.postNumber">
                 <div class="bg-white rounded-lg sm:rounded-md shadow-md cursor-pointer">
-                    <router-link :to="{ name: 'Post', params: {postNumber: post.postNumber} }">
+                    <router-link :to="{name: 'Post', params: {postNumber: post.postNumber}}">
                         <a class="block relative sm:h-80 h-36 md:h-64 2xl:h-80 sm:rounded-t-lg rounded-t-md  overflow-hidden">
                             <img class="object-cover object-center w-full h-full block" :src="createImageUrl(post.imageName)"/>
                         </a>

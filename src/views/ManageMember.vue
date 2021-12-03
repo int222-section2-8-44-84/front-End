@@ -221,7 +221,11 @@ export default {
           body: formData,
         });
         if (res.ok) {
-          alert("Change account "+accountNumber+" to role "+newrole+" complete.")
+          alert("Change account "+accountNumber+" to role "+newrole+" complete.");
+          if(accountNumber == localStorage.getItem("userAccountNumber")){
+            alert("Your role has been change. Please Log in again.");
+            this.logout();
+          }
         }else{alert("Error cant change the role account number "+accountNumber)}
       }
     },
@@ -243,6 +247,10 @@ export default {
       });
       if (res.ok) {
         alert("Delete account number "+ accountNumber + "compleate.")
+        if(accountNumber == localStorage.getItem("userAccountNumber")){
+            alert("You has been delete your account, We will let you log out.");
+            this.logout();
+          }
       }
       }
       
@@ -258,6 +266,14 @@ export default {
         alert("I see youuuuuuuu");
         this.$router.push("/");
       }
+    },
+    async logout() {
+      localStorage.removeItem("token")
+      localStorage.removeItem("userAccountNumber")
+      localStorage.removeItem("userID")
+      localStorage.removeItem("userRole")
+      setTimeout( () => this.$router.push("/"), 1000);
+      setTimeout( () => location.reload(), 1200);
     },
   },
   async created() {

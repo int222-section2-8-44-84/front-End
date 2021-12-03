@@ -123,7 +123,6 @@ export default {
         this.$router.push("/");
       }
     }
-
   },
   async created() {
     this.checkAuthen();
