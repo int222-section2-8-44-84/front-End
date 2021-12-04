@@ -155,9 +155,9 @@ export default {
       checkDel: false,
       allAccount: [],
       account: null,
-      urlacc: "https://52.152.137.28:3000/showAllAccounts",
-      urlUpdateRole: "https://52.152.137.28:3000/manageRole",
-      urldelAccount: "https://52.152.137.28:3000/deleteAccount",
+      urlacc: "https://wongnok.onthewifi.com/backend/showAllAccounts",
+      urlUpdateRole: "https://wongnok.onthewifi.com/backend/manageRole",
+      urldelAccount: "https://wongnok.onthewifi.com/backend/deleteAccount",
     };
   },
 

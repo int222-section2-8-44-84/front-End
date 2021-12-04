@@ -65,8 +65,8 @@ export default {
       invalidEmail: false,
       userID: '',
       accountNumber: '',
-      urlme: "https://localhost:3000/me",
-      urlEditAcc: "https://localhost:3000/editAccount"
+      urlme: "https://wongnok.onthewifi.com/backend/me",
+      urlEditAcc: "https://wongnok.onthewifi.com/backend/editAccount"
     }
   },
   methods: {

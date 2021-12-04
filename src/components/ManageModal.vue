@@ -61,7 +61,7 @@ export default {
     return {
       username: this.userID,
       email: this.email,
-      allAccount: "https://52.152.137.28:3000/showAllAccounts"
+      allAccount: "https://wongnok.onthewifi.com/backend/showAllAccounts"
     }
   },
   methods: {

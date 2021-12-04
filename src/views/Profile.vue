@@ -78,7 +78,7 @@ export default {
       showPro: false,
       checkDel: false,
       account: null,
-      accountTags: "https://localhost:3000/me",
+      accountTags: "https://wongnok.onthewifi.com/backend/me",
       id: 0
     };
   },

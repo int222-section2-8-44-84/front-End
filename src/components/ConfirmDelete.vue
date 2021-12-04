@@ -50,8 +50,8 @@ export default {
   data() {
     return {
         checktran: false,
-        urlDelete: "https://52.152.137.28:3000/deletePost",
-        urlpost: "https://52.152.137.28:3000/posts",
+        urlDelete: "https://wongnok.onthewifi.com/backend/deletePost",
+        urlpost: "https://wongnok.onthewifi.com/backend/posts",
 
     }
   },

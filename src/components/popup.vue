@@ -311,9 +311,9 @@ export default {
       invalidUseRegis: false,
       invalidEmailRegis: false,
       invalidPassRegis: false,
-      urlAuthen: "https://52.152.137.28:3000/authenticate",
-      urlRegis: "https://52.152.137.28:3000/register",
-      urlMe: "https://52.152.137.28:3000/me",
+      urlAuthen: "https://wongnok.onthewifi.com/backend/authenticate",
+      urlRegis: "https://wongnok.onthewifi.com/backend/register",
+      urlMe: "https://wongnok.onthewifi.com/backend/me",
     };
   },
   methods: {

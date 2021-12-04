@@ -87,9 +87,9 @@ export default {
     return {
         mobileView: true,
         showNav: false, 
-        urlpost: "https://localhost:3000/postsByAccount",
+        urlpost: "https://wongnok.onthewifi.com/backend/postsByAccount",
         posts: [],
-        urlImage: "https://localhost:3000/files/",
+        urlImage: "https://wongnok.onthewifi.com/backend/files/",
     };
   },
 

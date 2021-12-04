@@ -506,15 +506,15 @@ export default {
       invalidImage: false,
       mobileView: true,
       showNav: false,
-      urlcategory: "https://52.152.137.28:3000/showAllCategories",
-      urlpost: "https://52.152.137.28:3000/posts",
-      urltag: "https://52.152.137.28:3000/showAllTags",
-      urlposthastag: "https://52.152.137.28:3000/showPostsHasTags",
-      //urleditpost: "https://52.152.137.28:3000/editPost/",
-      //urladdupload: "https://52.152.137.28:3000/uploadimage",
-      //urluser: "https://52.152.137.28:3000/me",
-      urlupdatepost: "https://52.152.137.28:3000/editPostWithImage",
-      // urlImage: "https://52.152.137.28:3000/files/",
+      urlcategory: "https://wongnok.onthewifi.com/backend/showAllCategories",
+      urlpost: "https://wongnok.onthewifi.com/backend/posts",
+      urltag: "https://wongnok.onthewifi.com/backend/showAllTags",
+      urlposthastag: "https://wongnok.onthewifi.com/backend/showPostsHasTags",
+      //urleditpost: "https://wongnok.onthewifi.com/backend/editPost/",
+      //urladdupload: "https://wongnok.onthewifi.com/backend/uploadimage",
+      //urluser: "https://wongnok.onthewifi.com/backend/me",
+      urlupdatepost: "https://wongnok.onthewifi.com/backend/editPostWithImage",
+      // urlImage: "https://wongnok.onthewifi.com/backend/files/",
 
       categories: [],
       tag: [], //from DB
@@ -724,7 +724,7 @@ export default {
     // setTimeout(
     //   () =>
     //     (
-          this.imageshow = `https://52.152.137.28:3000/files/${this.post.imageName}`
+          this.imageshow = `https://wongnok.onthewifi.com/backend/files/${this.post.imageName}`
           const response = await fetch(this.imageshow);
     //       ),
     //   500
