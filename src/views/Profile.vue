@@ -109,7 +109,14 @@ export default {
       }
       }
     },
-
+    async logout() {
+      localStorage.removeItem("token")
+      localStorage.removeItem("userAccountNumber")
+      localStorage.removeItem("userID")
+      localStorage.removeItem("userRole")
+      setTimeout( () => this.$router.push("/"), 1000);
+      setTimeout( () => location.reload(), 1200);
+    },
     async getBackEndData(url) {
       var token = localStorage.getItem("token");
       try {
