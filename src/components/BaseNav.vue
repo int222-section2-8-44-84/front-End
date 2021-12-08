@@ -1,7 +1,6 @@
 <template>
   <nav class="bg-white shadow-md">
     <div class="container mx-auto py-2 px-7 flex justify-between items-center">
-      <!-- Logo -->
       <router-link to="/">
         <div class="flex items-center mb-4 md:mb-0">
         <img class="leading-relaxed inline-block py-2 w-auto h-16" src="../assets/wongnoklogo.png">
@@ -27,18 +26,14 @@
                 </li>
             </router-link>
 
-            <!-- <router-link to="/Create"> -->
               <li class="cursor-pointer nav-item">
                 <div v-on:click="checkAuthen()" class="px-3 py-2 flex items-center text-2xl hover:text-redRYB">
                   + Create
                 </div>
               </li>
-            <!-- </router-link> -->
         </ul>
     </div>
-    <!-- Login / Register -->
       <div v-if="after" style="font-size: 32px;">
-          <!-- <drop-down/> -->
   <div class="flex flex-wrap">
     <div class="w-full sm:w-6/12 md:w-4/12 px-4">
       <div class="relative inline-flex align-middle w-full">
@@ -73,7 +68,6 @@
   </div>
       </div>
 
-    <!-- Login / Register -->
       <div v-else style="font-size: 32px;">
         <button v-on:click="toggleModal()" class="items-center justify-center transition-colors duration-150 w-12 h-12 hover:bg-red-200 rounded-full focus:shadow-outline ri-user-3-line"></button>
           <div v-if="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
@@ -85,19 +79,14 @@
           </div>
           <div v-if="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
       </div>
-      <!-- <drop-down/> -->
-
-
 
     </div>
   </nav>
 </template>
 
 <script>
-// import DropDown from './DropDown.vue';
 import { createPopper } from "@popperjs/core";
 export default {
-  // components: { DropDown },
   name: "regular-modal",
   data() {
     return {
@@ -107,7 +96,6 @@ export default {
       userRegis: "",
       emailRegis: "",
       passRegis: "",
-      // input: '',
       showModal: false,
       invalidEmailLogin: false,
       invalidPassLogin: false,

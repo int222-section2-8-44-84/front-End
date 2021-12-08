@@ -233,17 +233,11 @@ export default {
       var con = confirm("Do you confirm to delete account "+accountNumber);
       if (con == true) {
         var token = localStorage.getItem("token");
-      var formData = new FormData();
-      formData.append(
-        "accountNumber",
-        localStorage.getItem("userAccountNumber")
-      );
       let res = await fetch(`${this.urldelAccount}/${accountNumber}`, {
         method: "DELETE",
         headers: {
           Authorization: token,
         },
-        body: formData,
       });
       if (res.ok) {
         alert("Delete account number "+ accountNumber + "compleate.")

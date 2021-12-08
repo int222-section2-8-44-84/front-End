@@ -41,9 +41,6 @@ const routes = [
     path: '/Profile',
     name: 'Profile',
     component: Profile,
-    // meta: {
-    //   auth: true
-    // }
   },
   {
     path: '/EditProfile',
@@ -60,14 +57,6 @@ const routes = [
     name: 'ManageMember',
     component: ManageMember
   },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
 ]
 
 const router = createRouter({

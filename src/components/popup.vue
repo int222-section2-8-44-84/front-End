@@ -1,6 +1,5 @@
 <template>
   <div class="relative w-auto my-6 mx-auto max-w-md">
-    <!--LogInForm-->
     <form @submit.prevent="submitLoginForm">
       <div v-bind:class="{ hidden: openTab !== 1, block: openTabMobile === 1 }">
         <div
@@ -16,7 +15,6 @@
             focus:outline-none
           "
         >
-          <!--header-->
           <div class="flex items-start justify-between p-3 rounded-t">
             <button
               class="
@@ -39,7 +37,6 @@
           </div>
           <img class="mx-auto px-20" src="../assets/sapiens.png" />
 
-          <!--body-->
           <div class="relative px-12 flex-auto">
             <div class="space-y-3">
               <div>
@@ -127,13 +124,11 @@
             </div>
           </div>
 
-          <!--footer-->
           <div class="flex items-center justify-end p-3 rounded-b"></div>
         </div>
       </div>
     </form>
 
-    <!-- RegisterForm -->
     <form @submit.prevent="submitRegisForm">
       <div v-bind:class="{ hidden: openTab !== 2, block: openTabMobile === 2 }">
         <div
@@ -149,7 +144,6 @@
             focus:outline-none
           "
         >
-          <!--header-->
           <div class="flex items-start justify-between p-3 rounded-t">
             <button
               class="
@@ -171,7 +165,6 @@
             </button>
           </div>
 
-          <!--body-->
           <div class="relative px-12 flex-auto">
             <div class="space-y-3">
               <p class="font-medium text-3xl text-left text-redRYB py-2">
@@ -286,7 +279,6 @@
               </div>
             </div>
           </div>
-          <!--footer-->
           <div class="flex items-center justify-end p-3 rounded-b"></div>
         </div>
       </div>
@@ -317,20 +309,12 @@ export default {
     };
   },
   methods: {
-    // toggleModal: function(){
-    //   this.showModal = !this.showModal;
-    //   //console.log(this.invalidEmailInput);
-    //   //console.log(this.invalidPassInput);
-    // },
     toggleTabs: function (tabNumber) {
       this.openTab = tabNumber;
     },
     async submitLoginForm() {
       this.invalidEmailLogin = this.emailLogin === "" ? true : false;
       this.invalidPassLogin = this.passLogin === "" ? true : false;
-      // console.log(this.invalidEmailInput);
-      // console.log(this.invalidPassInput);
-      // this.$router.push("/");
       if (this.invalidEmailLogin == false && this.invalidPassLogin == false) {
         this.authen();
    
@@ -339,9 +323,9 @@ export default {
     async authen() {
       const response = await fetch(this.urlAuthen, {
         method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
+        // headers: {
+        //   "Content-type": "application/json",
+        // },
         body: JSON.stringify({
           username: this.emailLogin,
           password: this.passLogin,
@@ -352,7 +336,6 @@ export default {
       } else {
         var jwt_token = await response.json();
         localStorage.setItem("token", "Bearer " + jwt_token.token);
-        //console.log(localStorage.getItem('token'));
         var token = localStorage.getItem("token");
         const res = await fetch(this.urlMe, {
           method: "GET",
@@ -362,11 +345,8 @@ export default {
         });
         const myAccount = await res.json();
         localStorage.setItem("userAccountNumber", myAccount.accountNumber);
-        //console.log(localStorage.getItem("userAccountNumber"));
         localStorage.setItem("userID", myAccount.userID);
-        //console.log(localStorage.getItem("userID"));
         localStorage.setItem("userRole", myAccount.role.role);
-        //console.log(localStorage.getItem("userRole"));
         this.closeForm();
         setTimeout( () => location.reload(), 1000);
       }
@@ -389,9 +369,6 @@ export default {
     },
     async register() {
       var formData = new FormData();
-      console.log(this.userRegis);
-      console.log(this.passRegis);
-      console.log(this.emailRegis);
       formData.append("userID", this.userRegis);
       formData.append("password", this.passRegis);
       formData.append("email", this.emailRegis);
@@ -406,17 +383,10 @@ export default {
       }else if(res.status==200){
         alert("Register complete. Welcome "+ this.userRegis + ". \n Please Log in to.");
         this.toggleTabs(1);
-        //this.closeForm();
       }
-      //const jwt_token = await response.json();
-      //console.log(jwt_token)
-      //localStorage.setItem('token',"Bearer "+jwt_token.token);
-      //console.log(localStorage.getItem('token'));
     },
     closeForm() {
-      // this.clearData()
       this.$emit("adding-showModal", false);
-      // this.$emit('editing-state',(false,null));
     },
   },
 };
