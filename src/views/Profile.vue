@@ -46,14 +46,6 @@
                         <div v-if="showPro" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
                     
                     <button @click="deleteAccount()" class="text-white bg-red-500 border-0 py-2 px-4 focus:outline-none hover:bg-red-600 rounded shadow-lg">Delete Account</button>
-                    <div v-if="checkDel" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
-                      <confirm-delete
-                        @adding-close-modal="delModal"
-                      >
-                      </confirm-delete>
-                    </div>
-                    <div v-if="checkDel" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
-
                 </div>
             </div>  
         </div>
@@ -76,9 +68,9 @@ export default {
       mobileView: true,
       showNav: false,
       showPro: false,
-      checkDel: false,
       account: null,
       accountTags: "https://wongnok.onthewifi.com/backend/me",
+      urldelAccount: "https://wongnok.onthewifi.com/backend/deleteAccount",
       id: 0
     };
   },
@@ -109,7 +101,7 @@ export default {
         },
       });
       if (res.ok) {
-        alert("Delete account number "+ accountNumber + "compleate.")
+        alert("Delete account number "+ accountNumber + "complete.")
         if(accountNumber == localStorage.getItem("userAccountNumber")){
             alert("You has been delete your account, We will let you log out.");
             this.logout();

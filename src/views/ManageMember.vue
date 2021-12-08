@@ -240,7 +240,7 @@ export default {
         },
       });
       if (res.ok) {
-        alert("Delete account number "+ accountNumber + "compleate.")
+        alert("Delete account number "+ accountNumber + "complete.")
         if(accountNumber == localStorage.getItem("userAccountNumber")){
             alert("You has been delete your account, We will let you log out.");
             this.logout();
