@@ -323,9 +323,9 @@ export default {
     async authen() {
       const response = await fetch(this.urlAuthen, {
         method: "POST",
-        // headers: {
-        //   "Content-type": "application/json",
-        // },
+        headers: {
+          "Content-type": "application/json",
+        },
         body: JSON.stringify({
           username: this.emailLogin,
           password: this.passLogin,

@@ -45,7 +45,7 @@
                         </div>
                         <div v-if="showPro" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
                     
-                    <button @click="deletePost()" class="text-white bg-red-500 border-0 py-2 px-4 focus:outline-none hover:bg-red-600 rounded shadow-lg">Delete Account</button>
+                    <button @click="deleteAccount()" class="text-white bg-red-500 border-0 py-2 px-4 focus:outline-none hover:bg-red-600 rounded shadow-lg">Delete Account</button>
                     <div v-if="checkDel" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
                       <confirm-delete
                         @adding-close-modal="delModal"
@@ -97,13 +97,29 @@ export default {
         this.showPro = !this.showPro;
         this.id = this.account;
     },
-    async deletePost(){
-      this.checkDel = !this.checkDel;
+    async deleteAccount() {
+      var accountNumber = localStorage.getItem("userAccountNumber");
+      var con = confirm("Do you confirm to delete account "+accountNumber);
+      if (con == true) {
+        var token = localStorage.getItem("token");
+      let res = await fetch(`${this.urldelAccount}/${accountNumber}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: token,
+        },
+      });
+      if (res.ok) {
+        alert("Delete account number "+ accountNumber + "compleate.")
+        if(accountNumber == localStorage.getItem("userAccountNumber")){
+            alert("You has been delete your account, We will let you log out.");
+            this.logout();
+          }
+      }
+      }
     },
 
     async getBackEndData(url) {
       var token = localStorage.getItem("token");
-      //console.log(token);
       try {
         const res = await fetch(url, {
           method: "GET",
