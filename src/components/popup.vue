@@ -331,9 +331,12 @@ export default {
           password: this.passLogin,
         }),
       });
-      if (response.status != 200) {
+      if (response.status == 500) {
         alert("Your username or password are worng. Please try again.")
-      } else {
+      } else if (response.status != 200){
+        alert("Something error with status "+ response.status + " please try again.")
+      }
+       else {
         var jwt_token = await response.json();
         localStorage.setItem("token", "Bearer " + jwt_token.token);
         var token = localStorage.getItem("token");
