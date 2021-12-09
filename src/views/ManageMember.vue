@@ -222,10 +222,12 @@ export default {
         });
         if (res.ok) {
           alert("Change account "+accountNumber+" to role "+newrole+" complete.");
+          this.$router.push("/ManageMember");
           if(accountNumber == localStorage.getItem("userAccountNumber")){
             alert("Your role has been change. Please Log in again.");
             this.logout();
           }
+          
         }else{alert("Error cant change the role account number "+accountNumber)}
       }
     },

@@ -384,7 +384,7 @@ export default {
       }else if(res.status==901){
         alert("This email has already exit.");
       }else if(res.status==200){
-        alert("Register complete. Welcome "+ this.userRegis + ". \n Please Log in to.");
+        alert("Register complete. Welcome "+ this.userRegis + ". \n Please Log in.");
         this.toggleTabs(1);
       }
     },
